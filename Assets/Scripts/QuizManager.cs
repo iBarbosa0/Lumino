@@ -40,6 +40,7 @@ public class QuizManager : MonoBehaviour
 
     public void Correct()
     {
+        //when you are right
         score += 1;
         QnA.RemoveAt(currentQuestion);
         GenerateQuestion();
@@ -47,6 +48,7 @@ public class QuizManager : MonoBehaviour
 
     public void Wrong()
     {
+        //when you answer wrong
         QnA.RemoveAt(currentQuestion);
         GenerateQuestion();
     }
