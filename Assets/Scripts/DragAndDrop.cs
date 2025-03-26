@@ -28,7 +28,6 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
    public void OnDrag(PointerEventData eventData)
    {
-      // Convert screen coordinates to anchored position
       Vector2 localPoint;
       RectTransformUtility.ScreenPointToLocalPointInRectangle(
          _rectTransform.parent as RectTransform,
