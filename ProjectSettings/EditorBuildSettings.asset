@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level Template Scene.unity
     guid: d8eaa38849c424dadbc55c386ce514b0
   - enabled: 1
-    path: Assets/Scenes/Levels/Level-School.unity
+    path: Assets/Scenes/Levels/School Level/Level-School.unity
     guid: 7a0f61498102b4bef8f8a38b4a03443b
   - enabled: 1
     path: Assets/Scenes/Levels/Level-Home.unity
