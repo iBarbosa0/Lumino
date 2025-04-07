@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pngfind.com-pink-arrow-png-6325956_0: 8260353901269925804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
