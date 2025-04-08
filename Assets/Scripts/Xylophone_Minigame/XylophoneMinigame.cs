@@ -5,124 +5,128 @@ using UnityEngine.UI;
 
 public class XylophoneMinigame : MonoBehaviour
 {
-    public Image PreviewImage;
+    public List<Color> ColorList; // Lista de cores
+    public List<Image> PreviewColors; // 4 imagens de PreviewColors
+    public List<Button> ColorButtons; // Botões clicáveis
 
     public GameObject DoNotPressImage;
-
-    public List<Color> ColorList;
-
-    public int ColorNumber;
-    public int ShowColor;
-
-    public int StillMissing;
-    public Text StillMissingText;
-
-    public List<int> Sequence;
-
     public Text LevelText;
-
     public GameObject EndScene;
-
-    public int Highscore;
     public Text HighscoreText;
 
-   void Start()
+    private List<int> Sequence = new List<int>();
+    private int ColorNumber = 0;
+    private int ShowColor = 0;
+    private int StillMissing = 0;
+    private int Highscore = 0;
+
+    void Start()
     {
-        Sequence = new List<int>();
-        StartCoroutine(StartGame());
-    }
-
-    public void Generator()
-    {
-        ColorNumber++;
-
-        LevelText.text = "Level: " + ColorNumber;
-
-        Sequence.Add(Random.Range(0, 4));
-
-        ShowPreview();
-    }
-
-    public void ShowPreview()
-    {
-        if (Sequence.Count <= ShowColor)
-        {
-            PreviewImage.color = Color.white;
-            ShowColor = 0;
-            StillMissing = Sequence.Count;
-            StillMissingText.text = StillMissing.ToString();
-            DoNotPressImage.SetActive(false);
-        }
-        else
-        {
-            PreviewImage.color = ColorList[Sequence[ShowColor]];
-
-            StartCoroutine(ShowNext());
-        }
-    }
-
-    public void ColorButton(int ID)
-    {
-        if(ID == Sequence[ShowColor])
-        {
-            ShowColor++;
-            StillMissing--;
-            StillMissingText.text = StillMissing.ToString();
-
-            if (StillMissing == 0)
-            {
-                DoNotPressImage.SetActive(true);
-                StillMissingText.text = "";
-
-                ShowColor = 0;
-
-                StartCoroutine(StartGame());
-            }
-
-        }
-        else
-        {
-            EndScene.SetActive(true);
-            DoNotPressImage.SetActive(true);
-            Highscore = PlayerPrefs.GetInt("Highscore", Highscore);
-            if(ColorNumber > Highscore)
-            {
-                Highscore = ColorNumber;
-                PlayerPrefs.SetInt("Highscore: ", Highscore);
-            }
-            HighscoreText.text = "Highscore: " + Highscore;
-            StillMissingText.text = "";
-            StillMissing = 0;
-            ShowColor = 0;
-        }
-    }
-
-    public void TryAgain()
-    {
-        Sequence = new List<int>();
-        ColorNumber = 0;
-        LevelText.text = "Level: " + ColorNumber;   
-        EndScene.SetActive(false);
         StartCoroutine(StartGame());
     }
 
     IEnumerator StartGame()
     {
+        // Inicializa PreviewColors a branco
+        foreach (var preview in PreviewColors)
+        {
+            preview.color = Color.white;
+        }
+
+        // Desativa os ColorButtons enquanto mostra sequência
+        SetColorButtonsInteractable(false);
+
         yield return new WaitForSeconds(0.5f);
 
         Generator();
     }
 
-    IEnumerator ShowNext()
+    void Generator()
     {
-        yield return new WaitForSeconds(0.3f);
+        ColorNumber++;
+        LevelText.text = "Level: " + ColorNumber;
 
-        PreviewImage.color = Color.white;
+        int sequenceLength = Mathf.Min(1 + (ColorNumber - 1) / 2, 4); // Ex: niv.1-2: 1 cor, 3-4: 2 cores, etc.
 
-        yield return new WaitForSeconds(0.7f);
+        Sequence.Clear();
+        for (int i = 0; i < sequenceLength; i++)
+        {
+            Sequence.Add(Random.Range(0, ColorList.Count));
+        }
 
-        ShowColor++;
+        ShowColor = 0;
+        StillMissing = sequenceLength;
 
-        ShowPreview();
+        StartCoroutine(RevealSequence());
+    }
+
+    IEnumerator RevealSequence()
+    {
+        float revealSpeed = Mathf.Clamp(1.0f - (ColorNumber * 0.05f), 0.3f, 1.0f); // Fica mais rápido com o nível
+
+        // Quando o jogo começa, as PreviewColors começam a branco
+        for (int i = 0; i < PreviewColors.Count; i++)
+        {
+            PreviewColors[i].color = Color.white;
+        }
+
+        for (int i = 0; i < Sequence.Count; i++)
+        {
+            // Mostra a cor da sequência
+            PreviewColors[i].color = ColorList[Sequence[i]];
+
+            yield return new WaitForSeconds(revealSpeed);
+
+            // Volta a branco
+            PreviewColors[i].color = Color.white;
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // Quando a sequência termina, o jogador pode clicar
+        SetColorButtonsInteractable(true);
+    }
+
+    public void ColorButton(int ID)
+    {
+        if (ID == Sequence[ShowColor])
+        {
+            ShowColor++;
+            StillMissing--;
+
+            if (StillMissing == 0)
+            {
+                SetColorButtonsInteractable(false);
+                StartCoroutine(StartGame());
+            }
+        }
+        else
+        {
+            EndScene.SetActive(true);
+            Highscore = PlayerPrefs.GetInt("Highscore", 0);
+            if (ColorNumber > Highscore)
+            {
+                Highscore = ColorNumber;
+                PlayerPrefs.SetInt("Highscore", Highscore);
+            }
+
+            HighscoreText.text = "Highscore: " + Highscore;
+        }
+    }
+
+    public void TryAgain()
+    {
+        Sequence.Clear();
+        ColorNumber = 0;
+        EndScene.SetActive(false);
+        StartCoroutine(StartGame());
+    }
+
+    void SetColorButtonsInteractable(bool active)
+    {
+        foreach (Button b in ColorButtons)
+        {
+            b.interactable = active;
+        }
     }
 }
