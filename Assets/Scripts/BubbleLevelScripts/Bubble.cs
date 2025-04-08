@@ -33,7 +33,6 @@ public class Bubble : MonoBehaviour
     
     void OnMouseDown()
     {
-        Debug.Log("Clicked on " + gameObject.name);
         _animator.SetTrigger("Bubble Pop");
     }
 
@@ -45,7 +44,6 @@ public class Bubble : MonoBehaviour
     IEnumerator Xdeviation()
     {
         _XAxisdeviation += UnityEngine.Random.Range(-0.0075f, 0.0075f);
-        Debug.unityLogger.Log(_XAxisdeviation);
         yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f,0.5f));
         //_XAxisdeviation = UnityEngine.Random.Range(-0.025f, 0.02f);
         StartCoroutine(Xdeviation());

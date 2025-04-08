@@ -25,9 +25,7 @@ public class BubbleSpawner : MonoBehaviour, IPointerDownHandler
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
-        Debug.Log(eventData);
-        
+      
     }
 
     IEnumerator SpawnBubble()
