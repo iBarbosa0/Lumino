@@ -1,16 +1,20 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class Bubble : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     private Vector3 _startPosition;
+    private Animator _animator;
 
     private float _XAxisdeviation = 0 ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _animator = GetComponent<Animator>();
         _startPosition = transform.position;
         _rigidbody = GetComponent<Rigidbody2D>();
         StartCoroutine(Xdeviation());
@@ -25,6 +29,17 @@ public class Bubble : MonoBehaviour
         {
             //Destroy(gameObject);
         }
+    }
+    
+    void OnMouseDown()
+    {
+        Debug.Log("Clicked on " + gameObject.name);
+        _animator.SetTrigger("Bubble Pop");
+    }
+
+    void Destroybubble()
+    {
+        Destroy(gameObject);
     }
     
     IEnumerator Xdeviation()

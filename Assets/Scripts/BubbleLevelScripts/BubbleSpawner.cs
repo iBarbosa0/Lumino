@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 
 
-public class BubbleSpawner : MonoBehaviour
+public class BubbleSpawner : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     public GameObject bubble;
@@ -13,7 +14,22 @@ public class BubbleSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnBubble());
     }
+
+    private void FixedUpdate()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            //Debug.Log("awsdf");
+        }
+    }
     
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("OnPointerDown");
+        Debug.Log(eventData);
+        
+    }
+
     IEnumerator SpawnBubble()
     {
         
