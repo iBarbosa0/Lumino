@@ -27,7 +27,7 @@ public class Bubble : MonoBehaviour
 
         if (_rigidbody.transform.position.y>9)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
     
