@@ -62,7 +62,7 @@ public class XylophoneMinigame : MonoBehaviour
 
     IEnumerator RevealSequence()
     {
-        float revealSpeed = Mathf.Clamp(1.0f - (ColorNumber * 0.05f), 0.3f, 1.0f); // Fica mais rápido com o nível
+        float revealSpeed = Mathf.Clamp(1.5f - (ColorNumber * 0.05f), 0.3f, 1.5f); // Fica mais rápido com o nível
 
         // Quando o jogo começa, as PreviewColors começam a branco
         for (int i = 0; i < PreviewColors.Count; i++)
@@ -80,7 +80,7 @@ public class XylophoneMinigame : MonoBehaviour
             // Volta a branco
             PreviewColors[i].color = Color.white;
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         // Quando a sequência termina, o jogador pode clicar
