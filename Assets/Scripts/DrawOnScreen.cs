@@ -13,6 +13,9 @@ public class DrawOnScreen : MonoBehaviour
     public Texture2D texture;
     private RectTransform _rectTransform;
     private Renderer _renderQuad;
+    private int _lastPixelX;
+    private int _lastPixelY;
+    private bool _isdrawing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,25 +38,67 @@ public class DrawOnScreen : MonoBehaviour
         {
             //transform the x and y position into pixels (100*100)
             int pixelX = Mathf.FloorToInt(scalePosition.x * 100);
-            Debug.Log("Pixel X: " + pixelX);
+            //Debug.Log("Pixel X: " + pixelX);
             int pixelY = Mathf.FloorToInt(scalePosition.y * 100);
-            Debug.Log("Pixel Y: " + pixelY);
-            if (!(pixelX>100 || pixelX<0) && !(pixelY>100 || pixelY<0))
+            //Debug.Log("Pixel Y: " + pixelY);
+
+            if (_isdrawing == false)
             {
-                for (int i = -2; i < 2; i++)
-                {
-                    for (int j = -2; j < 2; j++)
-                    {
-                        texture.SetPixel(pixelX+i,pixelY+j,Color.white);
-                    }
-                }
-                texture.Apply();
+                _lastPixelX = pixelX; 
+                _lastPixelY = pixelY;
+                _isdrawing = true;
             }
-            GetComponent<Renderer>().material.mainTexture = texture;
+            DrawLine(_lastPixelX, _lastPixelY, pixelX, pixelY);
+            _renderQuad.material.mainTexture = texture;
+            _lastPixelX = pixelX;
+            _lastPixelY = pixelY;
         }
-        
+        else
+        {
+            _isdrawing = false;
+        }
+    }
+  
+    //Function To draw. The loop is for brush size instead of 1*1 pixel size without, with the loop is 5*5
+    void DrawBrush(int pixelX, int pixelY)
+    {
+        for (int i = -2; i <= 2; i++)
+        {
+            for (int j = -2; j <= 2; j++) 
+            {
+                // This is not to draw out of bounds of the blackboard
+                if (!(pixelX + i >= 100 || pixelX + i <= 0) && !(pixelY + j >= 100 || pixelY + j <= 0))
+                {
+                    texture.SetPixel(pixelX+i,pixelY+j,Color.white);
+                }
+            }
+        }
+        texture.Apply();
+        _renderQuad.material.mainTexture = texture;
+    }
+    //Bresenham’s algorithm to help draw a line between to 2 points
+    void DrawLine(int x0, int y0, int x1, int y1)
+    {
+        int dx = Mathf.Abs(x1 - x0);
+        int dy = Mathf.Abs(y1 - y0);
+        int sx = x0 < x1 ? 1 : -1;
+        int sy = y0 < y1 ? 1 : -1;
+        int err = dx - dy;
+
+        int x = x0;
+        int y = y0;
+
+        while (true)
+        {
+            DrawBrush(x, y);
+            if (x == x1 && y == y1) break;
+            int e2 = 2 * err;
+            if (e2 > -dy) { err -= dy; x += sx; }
+            if (e2 < dx) { err += dx; y += sy; }
+        }
     }
     
+    //Reset Blackboard to Black
     public void PaintBoardBlack()
     {
         _quadPosition = transform.position;
