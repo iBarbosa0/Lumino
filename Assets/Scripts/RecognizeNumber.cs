@@ -75,7 +75,7 @@ public class RecognizeNumber : MonoBehaviour
         Debug.Log("probability: " + probability * 100 + "%");
         Debug.Log("predicted number: " + predictedNumber);
         //predictionText.text = predictedNumber.ToString();
-        if (probabilityText) probabilityText.text = Mathf.Floor(probability * 100) + "%";
+        //if (probabilityText) probabilityText.text = Mathf.Floor(probability * 100) + "%";
     }
     
     private void OnDestroy()

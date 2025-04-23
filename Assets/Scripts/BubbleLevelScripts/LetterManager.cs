@@ -7,9 +7,10 @@ public class LetterManager : MonoBehaviour
 {
     public static LetterManager  LetterManagerInstance;
     private string[] _guessWords = new string[6];
-    public string _ChosenWord { get; private set; }
+    public string ChosenWord { get; private set; }
     private Vector3 _spawnPoint;
-    [SerializeField] private GameObject _letterPrefab;
+    [SerializeField] private GameObject _letterPrefab; 
+    public GameObject[] BubbleLetterBox { get; private set; }
     public Sprite[] SpritesArray { get; private set; }
     public char[] Alphabet { get; private set; }
     public int[] AlphabetPosition { get; private set; }
@@ -32,24 +33,28 @@ public class LetterManager : MonoBehaviour
     void Start()
     {
         InitializeAlphabet();
-        _ChosenWord = _guessWords[UnityEngine.Random.Range(0, 5)];
-        AlphabetPosition = new int[_ChosenWord.Length];
+        ChosenWord = _guessWords[UnityEngine.Random.Range(0, 5)];
+        AlphabetPosition = new int[ChosenWord.Length];
+        BubbleLetterBox =  new GameObject[ChosenWord.Length];
         _spawnPoint = new Vector3(-7.15f, -3.44f);
-        Debug.Log(_ChosenWord);
-        for (int i = 0; i < _ChosenWord.Length; i++)
-        {
-            Instantiate(_letterPrefab,  _spawnPoint, Quaternion.identity);
+        Debug.Log(ChosenWord);
+        for (int i = 0; i < ChosenWord.Length; i++)
+        { 
+            //Instantiate(_letterPrefab,  _spawnPoint, Quaternion.identity);
+            BubbleLetterBox[i] = Instantiate(_letterPrefab,  _spawnPoint, Quaternion.identity);
+            BubbleLetterBox[i].AddComponent<BubbleLetterBox>();
             _spawnPoint += new Vector3(2f, 0, 0f);
         }
         SpritesArray = Resources.LoadAll<Sprite>("Letters");
         int j = 0;
-        foreach (char c in _ChosenWord.ToCharArray())
+        foreach (char c in ChosenWord.ToCharArray())
         {
             for (int i = 0; i < 25; i++)
             {
                 if (c == Alphabet[i] )
                 {
                     AlphabetPosition[j] = i;
+                    BubbleLetterBox[j].GetComponent<BubbleLetterBox>().Initialize(i);
                     j++;
                 }
             }
