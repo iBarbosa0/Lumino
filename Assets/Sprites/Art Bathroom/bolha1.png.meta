@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 26ab6d2d72e995c4d98945450d4697a1
+guid: 94ddbf1f61a5542c4a10ad925abccbd8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8142421610710119483
-    second: bedroom_background_0
+      213: -9041673403038069113
+    second: bolha1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bedroom_background_0
+      name: bolha1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 339
+        y: 514
+        width: 417
+        height: 387
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3437d58051bff070800000000000000
-      internalID: 8142421610710119483
+      spriteID: 78e81dcd1f5858280800000000000000
+      internalID: -9041673403038069113
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bedroom_background_0: 8142421610710119483
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

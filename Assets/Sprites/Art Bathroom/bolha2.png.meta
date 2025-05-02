@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 26ab6d2d72e995c4d98945450d4697a1
+guid: fee8c55042f89491fa4d3d26dd2426bd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8142421610710119483
-    second: bedroom_background_0
+      213: -7945426544579586973
+    second: bolha2_0
+  - first:
+      213: -1136979972109770158
+    second: bolha2_1
+  - first:
+      213: -6754875477514257440
+    second: bolha2_2
+  - first:
+      213: -2000119579827269501
+    second: bolha2_3
+  - first:
+      213: 7814794414531251443
+    second: bolha2_4
+  - first:
+      213: 9100652816515506642
+    second: bolha2_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bedroom_background_0
+      name: bolha2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 488
+        y: 841
+        width: 48
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +156,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3437d58051bff070800000000000000
-      internalID: 8142421610710119483
+      spriteID: 364df5587ac2cb190800000000000000
+      internalID: -7945426544579586973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bolha2_1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 738
+        width: 110
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252e9a54db2a830f0800000000000000
+      internalID: -1136979972109770158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bolha2_2
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 763
+        width: 84
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ebf3c4ca8cd142a0800000000000000
+      internalID: -6754875477514257440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bolha2_3
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 613
+        width: 55
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3809718d6d52e34e0800000000000000
+      internalID: -2000119579827269501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bolha2_4
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 478
+        width: 19
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fc87de8d1ab37c60800000000000000
+      internalID: 7814794414531251443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bolha2_5
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 544
+        width: 84
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d1a090f4830c4e70800000000000000
+      internalID: 9100652816515506642
       vertices: []
       indices: 
       edges: []
@@ -160,8 +285,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bedroom_background_0: 8142421610710119483
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

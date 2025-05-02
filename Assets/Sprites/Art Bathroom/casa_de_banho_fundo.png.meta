@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 26ab6d2d72e995c4d98945450d4697a1
+guid: b87f2f9344cb94089ba4c241fad2751f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8142421610710119483
-    second: bedroom_background_0
+      213: -1988053467900975242
+    second: casa_de_banho_fundo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bedroom_background_0
+      name: casa_de_banho_fundo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3437d58051bff070800000000000000
-      internalID: 8142421610710119483
+      spriteID: 677674377e30964e0800000000000000
+      internalID: -1988053467900975242
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bedroom_background_0: 8142421610710119483
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
