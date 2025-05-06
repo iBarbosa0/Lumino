@@ -9,10 +9,11 @@ public class XylophoneMinigame : MonoBehaviour
     public List<Image> PreviewColors; // 4 imagens de PreviewColors
     public List<Button> ColorButtons; // Botões clicáveis
 
-    public GameObject DoNotPressImage;
     public Text LevelText;
     public GameObject EndScene;
     public Text HighscoreText;
+
+    public GameObject StartPanel; // Painel de início do minigame
 
     private List<int> Sequence = new List<int>();
     private int ColorNumber = 0;
@@ -20,9 +21,17 @@ public class XylophoneMinigame : MonoBehaviour
     private int StillMissing = 0;
     private int Highscore = 0;
 
+
     void Start()
     {
-        StartCoroutine(StartGame());
+        StartPanel.SetActive(true); // Exibe o menu inicial
+        EndScene.SetActive(false); // Garante que o painel de fim de jogo esteja escondido
+    }
+
+    public void StartMinigame()
+    {
+        StartPanel.SetActive(false); // Esconde o menu de início
+        StartCoroutine(StartGame()); // Inicia o minigame
     }
 
     IEnumerator StartGame()

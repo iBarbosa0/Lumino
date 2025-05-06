@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 63168090}
   - component: {fileID: 63168089}
   m_Layer: 5
-  m_Name: Xylophone Txt
+  m_Name: Minigame Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,81 +386,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132589324}
-  m_CullTransparentMesh: 1
---- !u!1 &154326902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 154326903}
-  - component: {fileID: 154326905}
-  - component: {fileID: 154326904}
-  m_Layer: 5
-  m_Name: '"Do Not Press" Image'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &154326903
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154326902}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.8225923}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1391344516}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.531006, y: -91.99567}
-  m_SizeDelta: {x: 400, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &154326904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154326902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.22745098, g: 0.22745098, b: 0.22745098, a: 0.78039217}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &154326905
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154326902}
   m_CullTransparentMesh: 1
 --- !u!1 &173606728
 GameObject:
@@ -874,6 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27a08b1306dd2d478538291a91fe8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelToActivate: Minigame Selection Panel (Living Room)
 --- !u!114 &341275156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,7 +906,7 @@ GameObject:
   - component: {fileID: 416687633}
   - component: {fileID: 416687632}
   m_Layer: 5
-  m_Name: StartGame Txt
+  m_Name: StartTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,22 +1267,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391344515}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1575906767}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1146601754}
+        m_TargetAssemblyTypeName: XylophoneMinigame, Assembly-CSharp
+        m_MethodName: StartMinigame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1420,7 +1334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1126897768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1527,10 +1441,10 @@ MonoBehaviour:
   - {fileID: 2012926458}
   - {fileID: 178659386}
   - {fileID: 667102286}
-  DoNotPressImage: {fileID: 154326902}
   LevelText: {fileID: 1174832579}
   EndScene: {fileID: 1126897767}
   HighscoreText: {fileID: 5930982}
+  StartPanel: {fileID: 1575906767}
 --- !u!224 &1146601755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2086,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1391344516
 Transform:
   m_ObjectHideFlags: 0
@@ -2105,7 +2019,6 @@ Transform:
   - {fileID: 1465774026}
   - {fileID: 118624593}
   - {fileID: 1436130235}
-  - {fileID: 154326903}
   - {fileID: 1174832577}
   - {fileID: 1126897768}
   m_Father: {fileID: 1446828376}
