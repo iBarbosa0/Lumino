@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BubbleLetter : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class BubbleLetter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-          LetterPosition = UnityEngine.Random.Range(0, 25);
+        if (UnityEngine.Random.Range(0, 1) == 0)
+        {
+           LetterPosition =  LetterManager.LetterManagerInstance.AlphabetPosition[UnityEngine.Random.Range(0, LetterManager.LetterManagerInstance.AlphabetPosition.Length)];
+        }
+        else
+        {
+            LetterPosition = UnityEngine.Random.Range(0, 25);
+        }
+         
          _spriteRenderer = GetComponent<SpriteRenderer>();
          _spriteRenderer.sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
     }
