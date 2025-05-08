@@ -3,120 +3,144 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class AnimalSprite
+{
+    public Sprite closedMouth; // Sprite com a boca fechada
+    public Sprite openMouth;   // Sprite com a boca aberta
+}
+
 public class XylophoneMinigame : MonoBehaviour
 {
-    public List<Color> ColorList; // Lista de cores
-    public List<Image> PreviewColors; // 4 imagens de PreviewColors
-    public List<Button> ColorButtons; // Botões clicáveis
+    public List<AnimalSprite> AnimalSprites;     // Lista de sprites dos animais (aberto/fechado)
+    public List<Image> PreviewAnimals;           // Imagens para mostrar a sequência
+    public List<Button> AnimalButtons;           // Botões clicáveis com imagens dos animais
 
-    public Text LevelText;
-    public GameObject EndScene;
-    public Text HighscoreText;
+    public List<AudioClip> AnimalSounds;         // <- Sons dos animais (na mesma ordem dos sprites)
 
-    public GameObject StartPanel; // Painel de início do minigame
+    public Text LevelText;                       // Texto do nível atual
+    public GameObject EndScene;                  // Painel de fim de jogo
+    public Text HighscoreText;                   // Texto da pontuação máxima
+    public GameObject StartPanel;                // Painel inicial antes de começar o jogo
 
-    private List<int> Sequence = new List<int>();
-    private int ColorNumber = 0;
-    private int ShowColor = 0;
-    private int StillMissing = 0;
-    private int Highscore = 0;
+    private AudioSource audioSource;             // <- Fonte de áudio
 
+    private List<int> Sequence = new List<int>(); // Lista com a sequência gerada
+    private int ColorNumber = 0;                  // Nível atual (quantidade de animais na sequência)
+    private int ShowColor = 0;                    // Índice da sequência que o jogador está a tentar acertar
+    private int StillMissing = 0;                 // Quantos animais faltam clicar corretamente
+    private int Highscore = 0;                    // Maior nível atingido
 
     void Start()
     {
-        StartPanel.SetActive(true); // Exibe o menu inicial
-        EndScene.SetActive(false); // Garante que o painel de fim de jogo esteja escondido
+        StartPanel.SetActive(true);   // Mostra o painel inicial
+        EndScene.SetActive(false);    // Esconde o painel de fim de jogo
+
+        audioSource = GetComponent<AudioSource>(); // <- Pega o AudioSource
     }
 
     public void StartMinigame()
     {
-        StartPanel.SetActive(false); // Esconde o menu de início
-        StartCoroutine(StartGame()); // Inicia o minigame
+        StartPanel.SetActive(false);  // Esconde o menu inicial
+        StartCoroutine(StartGame());  // Começa o jogo
     }
 
     IEnumerator StartGame()
     {
-        // Inicializa PreviewColors a branco
-        foreach (var preview in PreviewColors)
+        // Limpa os previews
+        foreach (var preview in PreviewAnimals)
         {
-            preview.color = Color.white;
+            preview.sprite = null;
         }
 
-        // Desativa os ColorButtons enquanto mostra sequência
-        SetColorButtonsInteractable(false);
+        SetAnimalButtonsInteractable(false); // Desativa os botões
 
         yield return new WaitForSeconds(0.5f);
 
-        Generator();
+        Generator(); // Gera nova sequência
     }
 
     void Generator()
     {
-        ColorNumber++;
+        ColorNumber++; // Aumenta o nível
         LevelText.text = "Level: " + ColorNumber;
 
-        int sequenceLength = Mathf.Min(1 + (ColorNumber - 1) / 2, 4); // Ex: niv.1-2: 1 cor, 3-4: 2 cores, etc.
+        // Aumenta o tamanho da sequência a cada dois níveis (máx 4)
+        int sequenceLength = Mathf.Min(1 + (ColorNumber - 1) / 2, 4);
 
         Sequence.Clear();
         for (int i = 0; i < sequenceLength; i++)
         {
-            Sequence.Add(Random.Range(0, ColorList.Count));
+            Sequence.Add(Random.Range(0, AnimalSprites.Count)); // Adiciona um índice aleatório à sequência
         }
 
         ShowColor = 0;
         StillMissing = sequenceLength;
 
-        StartCoroutine(RevealSequence());
+        StartCoroutine(RevealSequence()); // Mostra a sequência ao jogador
     }
 
     IEnumerator RevealSequence()
     {
-        float revealSpeed = Mathf.Clamp(1.5f - (ColorNumber * 0.05f), 0.3f, 1.5f); // Fica mais rápido com o nível
+        // Velocidade de exibição diminui com o nível (mínimo 0.3s)
+        float revealSpeed = Mathf.Clamp(1.5f - (ColorNumber * 0.05f), 0.3f, 1.5f);
 
-        // Quando o jogo começa, as PreviewColors começam a branco
-        for (int i = 0; i < PreviewColors.Count; i++)
+        // Limpa previews
+        for (int i = 0; i < PreviewAnimals.Count; i++)
         {
-            PreviewColors[i].color = Color.white;
+            PreviewAnimals[i].sprite = null;
         }
 
+        // Mostra sequência de animais (boca aberta -> fechada)
         for (int i = 0; i < Sequence.Count; i++)
         {
-            // Mostra a cor da sequência
-            PreviewColors[i].color = ColorList[Sequence[i]];
+            int id = Sequence[i];
 
+            PreviewAnimals[i].sprite = AnimalSprites[id].openMouth;
+            PlayAnimalSound(id); // <- Toca o som
             yield return new WaitForSeconds(revealSpeed);
 
-            // Volta a branco
-            PreviewColors[i].color = Color.white;
-
+            PreviewAnimals[i].sprite = AnimalSprites[id].closedMouth;
             yield return new WaitForSeconds(0.5f);
         }
 
-        // Quando a sequência termina, o jogador pode clicar
-        SetColorButtonsInteractable(true);
+        // Após mostrar a sequência, ativa os botões com boca fechada
+        for (int i = 0; i < AnimalButtons.Count; i++)
+        {
+            AnimalButtons[i].GetComponent<Image>().sprite = AnimalSprites[i].closedMouth;
+        }
+
+        SetAnimalButtonsInteractable(true);
     }
 
-    public void ColorButton(int ID)
+    public void AnimalButton(int ID)
     {
         if (ID == Sequence[ShowColor])
         {
+            // Resposta correta: mostra boca aberta
+            AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].openMouth;
+            PlayAnimalSound(ID); // <- Toca o som
+
             ShowColor++;
             StillMissing--;
 
             if (StillMissing == 0)
             {
-                SetColorButtonsInteractable(false);
+                // Passou o nível
+                SetAnimalButtonsInteractable(false);
                 StartCoroutine(StartGame());
             }
         }
         else
         {
+            // Errou: fim de jogo
             EndScene.SetActive(true);
+
             Highscore = PlayerPrefs.GetInt("Highscore", 0);
             if (ColorNumber > Highscore)
             {
                 Highscore = ColorNumber;
-                PlayerPrefs.SetInt("Highscore", Highscore);
+                PlayerPrefs.SetInt("Highscore", Highscore); // Guarda novo recorde
             }
 
             HighscoreText.text = "Highscore: " + Highscore;
@@ -125,17 +149,28 @@ public class XylophoneMinigame : MonoBehaviour
 
     public void TryAgain()
     {
+        // Reinicia o jogo
         Sequence.Clear();
         ColorNumber = 0;
         EndScene.SetActive(false);
         StartCoroutine(StartGame());
     }
 
-    void SetColorButtonsInteractable(bool active)
+    void SetAnimalButtonsInteractable(bool active)
     {
-        foreach (Button b in ColorButtons)
+        // Ativa ou desativa todos os botões de animal
+        foreach (Button b in AnimalButtons)
         {
             b.interactable = active;
         }
     }
+
+    void PlayAnimalSound(int id)
+    {
+        if (id >= 0 && id < AnimalSounds.Count && audioSource != null && AnimalSounds[id] != null)
+        {
+            audioSource.PlayOneShot(AnimalSounds[id]);
+        }
+    }
 }
+
