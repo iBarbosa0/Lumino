@@ -42,7 +42,9 @@ public class BubbleLetter : MonoBehaviour
         {
             if (LetterPosition ==LetterManager.LetterManagerInstance.BubbleLetterBox[i].GetComponent<BubbleLetterBox>().letterPosition )
             {
-                LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>().sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
+                //LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>().sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
+                SpriteRenderer _spriteRenderer = LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>();
+                _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
                 Debug.Log("Letter Position of the bubble " + LetterPosition);
                 Debug.Log("letter position " + LetterManager.LetterManagerInstance.AlphabetPosition[i]);
                 Debug.Log("Correct letter");
