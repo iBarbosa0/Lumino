@@ -301,7 +301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LIVING ROOM
+  m_Text: SALA DE ESTAR
 --- !u!222 &72439406
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KITCHEN
+  m_Text: COZINHA
 --- !u!222 &343645778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2529,11 +2529,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 343435892}
   - {fileID: 2075504358}
   - {fileID: 704363524}
   - {fileID: 45443820}
   - {fileID: 1919985192}
-  - {fileID: 343435892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5247,7 +5247,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BEDROOM
+  m_Text: QUARTO
 --- !u!222 &1308376347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6952,11 +6952,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels:
+  - {fileID: 343435891}
   - {fileID: 2075504357}
   - {fileID: 704363523}
   - {fileID: 45443819}
   - {fileID: 1919985191}
-  - {fileID: 343435891}
 --- !u!4 &1889700129
 Transform:
   m_ObjectHideFlags: 0
@@ -8463,7 +8463,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BATHROOM
+  m_Text: CASA DE BANHO
 --- !u!222 &2133464527
 CanvasRenderer:
   m_ObjectHideFlags: 0

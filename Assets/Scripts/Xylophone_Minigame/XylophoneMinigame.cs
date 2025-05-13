@@ -22,6 +22,15 @@ public class XylophoneMinigame : MonoBehaviour
     public GameObject EndScene;                  // Painel de fim de jogo
     public Text HighscoreText;                   // Texto da pontuação máxima
     public GameObject StartPanel;                // Painel inicial antes de começar o jogo
+    public Image FeedbackImage;                  // A imagem mostra o "certo" ou "errado"
+
+    public Sprite CorrectSprite;                 // Sprite de feedback certo;
+    public Sprite WrongSprite;                   // Sprite de feedback errado;
+    public float FeedbackDuration = 1f;          // Tempo que o feedback aparece (em segundos)
+    public float MouthOpenDuration = 0.5f;       // Duração da boca aberta após o clique
+
+    public AudioClip CorrectSound;              // Som para resposta certa
+    public AudioClip WrongSound;                // Som para resposta errada
 
     private AudioSource audioSource;             // <- Fonte de áudio
 
@@ -37,6 +46,15 @@ public class XylophoneMinigame : MonoBehaviour
         EndScene.SetActive(false);    // Esconde o painel de fim de jogo
 
         audioSource = GetComponent<AudioSource>(); // <- Pega o AudioSource
+
+        // Define a opacidade e a boca fechada nos PreviewAnimals
+        foreach (var preview in PreviewAnimals)
+        {
+            var color = preview.color;
+            color.a = 0.2f; // Opacidade baixa
+            preview.color = color;
+            preview.sprite = AnimalSprites[0].closedMouth; // Inicia com boca fechada
+        }
     }
 
     public void StartMinigame()
@@ -47,16 +65,18 @@ public class XylophoneMinigame : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        // Limpa os previews
-        foreach (var preview in PreviewAnimals)
-        {
-            preview.sprite = null;
+        // Reseta os Preview Animals para a opacidade baixa e boca fechada
+        for (int i = 0; i < PreviewAnimals.Count; i++) 
+        {           
+                PreviewAnimals[i].sprite = AnimalSprites[i].closedMouth;
+
+                var color = PreviewAnimals[i].color;
+                color.a = 0.2f; // Opacidade baixa
+                PreviewAnimals[i].color = color;         
         }
 
         SetAnimalButtonsInteractable(false); // Desativa os botões
-
         yield return new WaitForSeconds(0.5f);
-
         Generator(); // Gera nova sequência
     }
 
@@ -85,23 +105,27 @@ public class XylophoneMinigame : MonoBehaviour
         // Velocidade de exibição diminui com o nível (mínimo 0.3s)
         float revealSpeed = Mathf.Clamp(1.5f - (ColorNumber * 0.05f), 0.3f, 1.5f);
 
-        // Limpa previews
-        for (int i = 0; i < PreviewAnimals.Count; i++)
-        {
-            PreviewAnimals[i].sprite = null;
-        }
-
         // Mostra sequência de animais (boca aberta -> fechada)
         for (int i = 0; i < Sequence.Count; i++)
         {
             int id = Sequence[i];
 
-            PreviewAnimals[i].sprite = AnimalSprites[id].openMouth;
+            // Aumentar a opacidade e abrir a boca para o animal atual da sequência
+            PreviewAnimals[id].sprite = AnimalSprites[id].openMouth;
+            var color = PreviewAnimals[id].color;
+            color.a = 1f; // Opacidade Normal
+            PreviewAnimals[id].color = color;
+            
             PlayAnimalSound(id); // <- Toca o som
+
             yield return new WaitForSeconds(revealSpeed);
 
-            PreviewAnimals[i].sprite = AnimalSprites[id].closedMouth;
-            yield return new WaitForSeconds(0.5f);
+            // Depois de exibir, volta ao estado inicial
+            PreviewAnimals[id].sprite = AnimalSprites[id].closedMouth;
+            color.a = 0.2f;
+            PreviewAnimals[id].color = color;
+
+            yield return new WaitForSeconds(0.5f); // Pausa antes de passar para o próximo
         }
 
         // Após mostrar a sequência, ativa os botões com boca fechada
@@ -113,37 +137,83 @@ public class XylophoneMinigame : MonoBehaviour
         SetAnimalButtonsInteractable(true);
     }
 
+    IEnumerator ShowFeedback(Sprite spriteToShow, bool nextLevel)
+    {
+        FeedbackImage.sprite = spriteToShow;
+        FeedbackImage.gameObject.SetActive(true);
+
+        // Toca o som correto
+        if (spriteToShow == CorrectSprite && CorrectSound != null)
+        {
+            audioSource.PlayOneShot(CorrectSound);
+        }
+        else if (spriteToShow == WrongSprite && WrongSound != null)
+        {
+            audioSource.PlayOneShot(WrongSound);
+        }
+
+        yield return new WaitForSeconds(FeedbackDuration);
+
+        FeedbackImage.gameObject.SetActive(false);
+
+        if (nextLevel)
+        {
+            StartCoroutine(StartGame()); // Próximo nível
+        }
+        else
+        {
+            EndScene.SetActive(true); // Game over
+        }
+    }
+
     public void AnimalButton(int ID)
     {
+        StartCoroutine(HandleAnimalClick(ID));
+    }
+
+    IEnumerator HandleAnimalClick(int ID)
+    {
+        // Desativa o botão temporariamente
+        AnimalButtons[ID].interactable = false;
+
+        // Mostra a boca aberta e toca o som
+        AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].openMouth;
+        PlayAnimalSound(ID);
+
+        yield return new WaitForSeconds(MouthOpenDuration);
+
+        // Fecha a boca
+        AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].closedMouth;
+
+        // Só reativa se o jogador ainda estiver a jogar
         if (ID == Sequence[ShowColor])
         {
-            // Resposta correta: mostra boca aberta
-            AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].openMouth;
-            PlayAnimalSound(ID); // <- Toca o som
-
             ShowColor++;
             StillMissing--;
 
             if (StillMissing == 0)
             {
-                // Passou o nível
                 SetAnimalButtonsInteractable(false);
-                StartCoroutine(StartGame());
+                StartCoroutine(ShowFeedback(CorrectSprite, true));
+            }
+            else
+            {
+                AnimalButtons[ID].interactable = true;
             }
         }
         else
         {
-            // Errou: fim de jogo
-            EndScene.SetActive(true);
-
+            SetAnimalButtonsInteractable(false);
             Highscore = PlayerPrefs.GetInt("Highscore", 0);
             if (ColorNumber > Highscore)
             {
                 Highscore = ColorNumber;
-                PlayerPrefs.SetInt("Highscore", Highscore); // Guarda novo recorde
+                PlayerPrefs.SetInt("Highscore", Highscore);
             }
 
             HighscoreText.text = "Highscore: " + Highscore;
+
+            StartCoroutine(ShowFeedback(WrongSprite, false));
         }
     }
 

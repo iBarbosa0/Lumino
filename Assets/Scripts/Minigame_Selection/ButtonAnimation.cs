@@ -16,6 +16,7 @@ public class ButtonAnimation : MonoBehaviour
     {
         // Aumenta ligeiramente o botão (efeito de clique)
         LeanTween.scale(gameObject, upScale, 0.1f);
+
         // Retorna à escala normal após um pequeno delay
         LeanTween.scale(gameObject, Vector3.one, 0.1f).setDelay(0.1f);
     }
