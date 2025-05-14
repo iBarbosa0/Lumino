@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BubbleLetter : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class BubbleLetter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-          LetterPosition = UnityEngine.Random.Range(0, 25);
+        if (UnityEngine.Random.Range(0, 1) == 0)
+        {
+           LetterPosition =  LetterManager.LetterManagerInstance.AlphabetPosition[UnityEngine.Random.Range(0, LetterManager.LetterManagerInstance.AlphabetPosition.Length)];
+        }
+        else
+        {
+            LetterPosition = UnityEngine.Random.Range(0, 25);
+        }
+         
          _spriteRenderer = GetComponent<SpriteRenderer>();
          _spriteRenderer.sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
     }
@@ -33,7 +42,9 @@ public class BubbleLetter : MonoBehaviour
         {
             if (LetterPosition ==LetterManager.LetterManagerInstance.BubbleLetterBox[i].GetComponent<BubbleLetterBox>().letterPosition )
             {
-                LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>().sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
+                //LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>().sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
+                SpriteRenderer _spriteRenderer = LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>();
+                _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
                 Debug.Log("Letter Position of the bubble " + LetterPosition);
                 Debug.Log("letter position " + LetterManager.LetterManagerInstance.AlphabetPosition[i]);
                 Debug.Log("Correct letter");

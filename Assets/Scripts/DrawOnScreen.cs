@@ -16,11 +16,15 @@ public class DrawOnScreen : MonoBehaviour
     private int _lastPixelX;
     private int _lastPixelY;
     private bool _isdrawing = false;
+    public Color drawColor = Color.white; // White for chalk digits
+    public Color backgroundColor = new Color(0.1f, 0.2f, 0.1f); // Dark green chalkboard
+    public Texture2D chalkTexture;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _renderQuad = FindAnyObjectByType<Renderer>();
+        _renderQuad.material = new Material(Shader.Find("Unlit/Texture"));
         PaintBoardBlack();
     }
 
@@ -69,7 +73,24 @@ public class DrawOnScreen : MonoBehaviour
                 // This is not to draw out of bounds of the blackboard
                 if (!(pixelX + i >= 100 || pixelX + i <= 0) && !(pixelY + j >= 100 || pixelY + j <= 0))
                 {
-                    texture.SetPixel(pixelX+i,pixelY+j,Color.white);
+                    // Perlin noise for chalk irregularity
+                    float noise = Mathf.PerlinNoise((pixelX + i + Time.time) * 0.2f, (pixelY + j + Time.time) * 0.2f);
+                    float opacity = Mathf.Lerp(0.7f, 1.0f, noise);
+                    Color chalkColor = new Color(drawColor.r, drawColor.g, drawColor.b, opacity);
+
+                    // Optional: Blend with chalk texture if assigned
+                    if (chalkTexture != null)
+                    {
+                        int texX = Mathf.FloorToInt((i + 2) * chalkTexture.width / 5f);
+                        int texY = Mathf.FloorToInt((j + 2) * chalkTexture.height / 5f);
+                        Color textureColor = chalkTexture.GetPixel(texX, texY);
+                        chalkColor = new Color(chalkColor.r * textureColor.r, chalkColor.g * textureColor.g, chalkColor.b * textureColor.b, opacity * textureColor.a);
+                    }
+
+                    // Blend with existing pixel for chalk dust effect
+                    Color current = texture.GetPixel(pixelX + i, pixelY + j);
+                    Color blended = Color.Lerp(current, chalkColor, chalkColor.a);
+                    texture.SetPixel(pixelX + i, pixelY + j, blended);
                 }
             }
         }
@@ -102,7 +123,8 @@ public class DrawOnScreen : MonoBehaviour
     public void PaintBoardBlack()
     {
         _quadPosition = transform.position;
-        texture =  new Texture2D(100,100);
+        texture = new Texture2D(100, 100, TextureFormat.RGBA32, false);
+        texture.filterMode = FilterMode.Point;
         for (int i = 0; i < 100; i++)
         {
             for (int j = 0; j < 100; j++)

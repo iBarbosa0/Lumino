@@ -36,14 +36,17 @@ public class LetterManager : MonoBehaviour
         ChosenWord = _guessWords[UnityEngine.Random.Range(0, 5)];
         AlphabetPosition = new int[ChosenWord.Length];
         BubbleLetterBox =  new GameObject[ChosenWord.Length];
-        _spawnPoint = new Vector3(-7.15f, -3.44f);
-        Debug.Log(ChosenWord);
+        _spawnPoint = new Vector3(-7.30f, -4.44f);
+        Debug.Log(ChosenWord); 
+        float distanceBetweenLetters = 10/ChosenWord.Length + 2f;
+
         for (int i = 0; i < ChosenWord.Length; i++)
         { 
             //Instantiate(_letterPrefab,  _spawnPoint, Quaternion.identity);
             BubbleLetterBox[i] = Instantiate(_letterPrefab,  _spawnPoint, Quaternion.identity);
             BubbleLetterBox[i].AddComponent<BubbleLetterBox>();
-            _spawnPoint += new Vector3(2f, 0, 0f);
+            BubbleLetterBox[i].transform.localScale = new Vector3((1f/ChosenWord.Length)+0.5f, 1f/ChosenWord.Length+0.5f);
+            _spawnPoint += new Vector3(distanceBetweenLetters, 0, 0f);
         }
         SpritesArray = Resources.LoadAll<Sprite>("Letters");
         int j = 0;

@@ -129,20 +129,20 @@ TextureImporter:
       name: casa_de_banho_pato1_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 62
-        width: 342
-        height: 173
+        x: 119
+        y: 30
+        width: 343
+        height: 204
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ce8fd057faf13e750800000000000000
-      internalID: 6332940339456637164
+      spriteID: aefb19fc50b7e48a2856eeaa9711679d
+      internalID: -714716516
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 35924893492e74affa37a7d4e74e132b
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      casa_de_banho_pato1_0: -714716516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
