@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e34d52a3a6b2e456d88ebae33c2ba4f8
+guid: 9ab4e5a3ac4494b1293bd603cb1f44d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1507152172695197607
-    second: bath_0001s_0000_Layer-1_0
+      213: 70364811865627504
+    second: sol_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bath_0001s_0000_Layer-1_0
+      name: sol_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 232
+        x: 282
+        y: 26
+        width: 1318
+        height: 1053
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a794f37aea7ae410800000000000000
-      internalID: 1507152172695197607
+      spriteID: 07b10ff6c6cf9f000800000000000000
+      internalID: 70364811865627504
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bath_0001s_0000_Layer-1_0: 1507152172695197607
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
