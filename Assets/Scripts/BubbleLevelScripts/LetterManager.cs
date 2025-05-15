@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class LetterManager : MonoBehaviour
 {
     public static LetterManager  LetterManagerInstance;
-    private string[] _guessWords = new string[6];
+    private string[] _guessWords = new string[9];
     public string ChosenWord { get; private set; }
     private Vector3 _spawnPoint;
     [SerializeField] private GameObject _letterPrefab; 
@@ -14,7 +14,21 @@ public class LetterManager : MonoBehaviour
     public Sprite[] SpritesArray { get; private set; }
     public char[] Alphabet { get; private set; }
     public int[] AlphabetPosition { get; private set; }
+    
+    //load Sprites
+    [SerializeField] private GameObject keywordPrefab;
+    [SerializeField] private Sprite lua;
+    [SerializeField] private Sprite banana;
+    [SerializeField] private Sprite carro;
+    [SerializeField] private Sprite chocolate;
+    [SerializeField] private Sprite gato;
+    [SerializeField] private Sprite livro;
+    [SerializeField] private Sprite pizza;
+    [SerializeField] private Sprite sol;
+    [SerializeField] private Sprite sapo;
 
+    //Dictionary to match guess word to the respective sprite
+    private Dictionary<string, Sprite> _guessWordsDictionary = new Dictionary<string, Sprite>();
 
     private void Awake()
     {
@@ -23,22 +37,37 @@ public class LetterManager : MonoBehaviour
             LetterManagerInstance = this;
         }
         _guessWords[0] = "gato";
-       _guessWords[1] = "copo";
-       _guessWords[2] = "tigre";
-       _guessWords[3] = "morango";
-       _guessWords[4] = "banana";
-       _guessWords[5] = "chocolate";
+        _guessWords[1] = "lua";
+        _guessWords[2] = "carro";
+        _guessWords[3] = "sol";
+        _guessWords[4] = "sapo";
+        _guessWords[5] = "pizza";
+        _guessWords[6] = "livro";
+        _guessWords[7] = "banana";
+      //  _guessWords[8] = "chocolate";
+        _guessWordsDictionary.Add(_guessWords[0], gato);
+        _guessWordsDictionary.Add(_guessWords[1], lua);
+        _guessWordsDictionary.Add(_guessWords[2], carro);
+        _guessWordsDictionary.Add(_guessWords[3], sol);
+        _guessWordsDictionary.Add(_guessWords[4], sapo);
+        _guessWordsDictionary.Add(_guessWords[5], pizza);
+        _guessWordsDictionary.Add(_guessWords[6], livro);
+        _guessWordsDictionary.Add(_guessWords[7], banana);
+      //  _guessWordsDictionary.Add(_guessWords[8], chocolate);
+
     }
 
     void Start()
     {
         InitializeAlphabet();
-        ChosenWord = _guessWords[UnityEngine.Random.Range(0, 5)];
+        ChosenWord = _guessWords[UnityEngine.Random.Range(0, _guessWords.Length)];
+        GameObject Keyword = Instantiate(keywordPrefab, new Vector3(7, -3.44f), Quaternion.identity);
+        Keyword.GetComponent<SpriteRenderer>().sprite = _guessWordsDictionary[ChosenWord];
         AlphabetPosition = new int[ChosenWord.Length];
         BubbleLetterBox =  new GameObject[ChosenWord.Length];
-        _spawnPoint = new Vector3(-7.30f, -4.44f);
+        _spawnPoint = new Vector3(-8f, -4.44f);
         Debug.Log(ChosenWord); 
-        float distanceBetweenLetters = 10/ChosenWord.Length + 2f;
+        float distanceBetweenLetters = 10/ChosenWord.Length +1f;
 
         for (int i = 0; i < ChosenWord.Length; i++)
         { 
@@ -52,7 +81,7 @@ public class LetterManager : MonoBehaviour
         int j = 0;
         foreach (char c in ChosenWord.ToCharArray())
         {
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 26; i++)
             {
                 if (c == Alphabet[i] )
                 {
@@ -68,13 +97,6 @@ public class LetterManager : MonoBehaviour
             Debug.Log(AlphabetPosition[i]);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void InitializeAlphabet()
     {
         Debug.Log(("Initializing alphabet"));
