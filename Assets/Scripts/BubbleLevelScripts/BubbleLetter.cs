@@ -38,6 +38,7 @@ public class BubbleLetter : MonoBehaviour
             return;
         }
         
+        
         for (int i = 0; i < LetterManager.LetterManagerInstance.ChosenWord.Length; i++)
         {
             if (LetterPosition ==LetterManager.LetterManagerInstance.BubbleLetterBox[i].GetComponent<BubbleLetterBox>().letterPosition )
@@ -48,6 +49,7 @@ public class BubbleLetter : MonoBehaviour
                 Debug.Log("Letter Position of the bubble " + LetterPosition);
                 Debug.Log("letter position " + LetterManager.LetterManagerInstance.AlphabetPosition[i]);
                 Debug.Log("Correct letter");
+                SFXManager.SfxManagerInstance.PlayGettingRightLetter(transform.position);
                // break;
             }
         }
