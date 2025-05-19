@@ -5,15 +5,16 @@ using System.Collections.Generic;
 
 public class LetterManager : MonoBehaviour
 {
-    public static LetterManager  LetterManagerInstance;
-    private string[] _guessWords = new string[9];
-    public string ChosenWord { get; private set; }
-    private Vector3 _spawnPoint;
-    [SerializeField] private GameObject _letterPrefab; 
-    public GameObject[] BubbleLetterBox { get; private set; }
-    public Sprite[] SpritesArray { get; private set; }
-    public char[] Alphabet { get; private set; }
+    public static LetterManager  LetterManagerInstance; //Static Variable to acess it globally 
+    private string[] _guessWords = new string[9]; //GuessWordList
+    public string ChosenWord { get; private set; } //chosen word from guessworldList
+    private Vector3 _spawnPoint; //Spawnpoint for spawing the cases for the letters
+    [SerializeField] private GameObject _letterPrefab; // The Case letters prefab txo make it spawn dynamically 
+    public GameObject[] BubbleLetterBox { get; private set; } // Game object array to store the CaseLetters prefab that will be Instantiated 
+    public Sprite[] SpritesArray { get; private set; } //Array to store all the letters of the alphabets sprites
+    public char[] Alphabet { get; private set; } //char string to store all the letters of the alphabet
     public int[] AlphabetPosition { get; private set; }
+    public Queue<int> QueueAlphabetPosition  = new Queue<int>();
     
     //load Sprites
     [SerializeField] private GameObject keywordPrefab;
@@ -85,6 +86,7 @@ public class LetterManager : MonoBehaviour
             {
                 if (c == Alphabet[i] )
                 {
+                    QueueAlphabetPosition.Enqueue(i);
                     AlphabetPosition[j] = i;
                     BubbleLetterBox[j].GetComponent<BubbleLetterBox>().Initialize(i);
                     j++;
