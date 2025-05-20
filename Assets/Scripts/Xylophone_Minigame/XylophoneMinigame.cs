@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,6 @@ public class AnimalSprite
 public class XylophoneMinigame : MonoBehaviour
 {
     public List<AnimalSprite> AnimalSprites;     // Lista de sprites dos animais (aberto/fechado)
-    public List<Image> PreviewAnimals;           // Imagens para mostrar a sequência
     public List<Button> AnimalButtons;           // Botões clicáveis com imagens dos animais
 
     public List<AudioClip> AnimalSounds;         // <- Sons dos animais (na mesma ordem dos sprites)
@@ -48,12 +48,13 @@ public class XylophoneMinigame : MonoBehaviour
         audioSource = GetComponent<AudioSource>(); // <- Pega o AudioSource
 
         // Define a opacidade e a boca fechada nos PreviewAnimals
-        foreach (var preview in PreviewAnimals)
+        foreach (var button in AnimalButtons)
         {
-            var color = preview.color;
+            var img = button.GetComponent<Image>();
+            var color = img.color;
             color.a = 0.2f; // Opacidade baixa
-            preview.color = color;
-            preview.sprite = AnimalSprites[0].closedMouth; // Inicia com boca fechada
+            img.color = color;
+            img.sprite = AnimalSprites[0].closedMouth; // Inicia com boca fechada
         }
     }
 
@@ -66,13 +67,14 @@ public class XylophoneMinigame : MonoBehaviour
     IEnumerator StartGame()
     {
         // Reseta os Preview Animals para a opacidade baixa e boca fechada
-        for (int i = 0; i < PreviewAnimals.Count; i++) 
-        {           
-                PreviewAnimals[i].sprite = AnimalSprites[i].closedMouth;
+        for (int i = 0; i < AnimalButtons.Count; i++)
+        {
+            var img = AnimalButtons[i].GetComponent<Image>();
+            img.sprite = AnimalSprites[i].closedMouth;
 
-                var color = PreviewAnimals[i].color;
-                color.a = 0.2f; // Opacidade baixa
-                PreviewAnimals[i].color = color;         
+            var color = img.color;
+            color.a = 0.2f;
+            img.color = color;
         }
 
         SetAnimalButtonsInteractable(false); // Desativa os botões
@@ -105,25 +107,38 @@ public class XylophoneMinigame : MonoBehaviour
         // Velocidade de exibição diminui com o nível (mínimo 0.3s)
         float revealSpeed = Mathf.Clamp(1.5f - (ColorNumber * 0.05f), 0.3f, 1.5f);
 
+        // Deixa todos os animais com opacidade reduzida e boca fechada
+        for (int i = 0; i < AnimalButtons.Count; i++)
+        {
+            var img = AnimalButtons[i].GetComponent<Image>();
+            img.sprite = AnimalSprites[i].closedMouth;
+
+            var color = img.color;
+            color.a = 0.2f;
+            img.color = color;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
         // Mostra sequência de animais (boca aberta -> fechada)
         for (int i = 0; i < Sequence.Count; i++)
         {
             int id = Sequence[i];
 
             // Aumentar a opacidade e abrir a boca para o animal atual da sequência
-            PreviewAnimals[id].sprite = AnimalSprites[id].openMouth;
-            var color = PreviewAnimals[id].color;
-            color.a = 1f; // Opacidade Normal
-            PreviewAnimals[id].color = color;
+            var img = AnimalButtons[id].GetComponent<Image>();
+            img.sprite = AnimalSprites[id].openMouth;
+            var color = img.color;
+            color.a = 0.8f;
+            img.color = color;
             
             PlayAnimalSound(id); // <- Toca o som
-
             yield return new WaitForSeconds(revealSpeed);
 
             // Depois de exibir, volta ao estado inicial
-            PreviewAnimals[id].sprite = AnimalSprites[id].closedMouth;
+            img.sprite = AnimalSprites[id].closedMouth;
             color.a = 0.2f;
-            PreviewAnimals[id].color = color;
+            img.color = color;
 
             yield return new WaitForSeconds(0.5f); // Pausa antes de passar para o próximo
         }
@@ -131,7 +146,12 @@ public class XylophoneMinigame : MonoBehaviour
         // Após mostrar a sequência, ativa os botões com boca fechada
         for (int i = 0; i < AnimalButtons.Count; i++)
         {
-            AnimalButtons[i].GetComponent<Image>().sprite = AnimalSprites[i].closedMouth;
+            var img = AnimalButtons[i].GetComponent<Image>();
+            img.sprite = AnimalSprites[i].closedMouth;
+
+            var color = img.color;
+            color.a = 1f;
+            img.color = color;
         }
 
         SetAnimalButtonsInteractable(true);
@@ -153,7 +173,6 @@ public class XylophoneMinigame : MonoBehaviour
         }
 
         yield return new WaitForSeconds(FeedbackDuration);
-
         FeedbackImage.gameObject.SetActive(false);
 
         if (nextLevel)
@@ -177,13 +196,23 @@ public class XylophoneMinigame : MonoBehaviour
         AnimalButtons[ID].interactable = false;
 
         // Mostra a boca aberta e toca o som
-        AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].openMouth;
+        var img = AnimalButtons[ID].GetComponent<Image>();
+        img.sprite = AnimalSprites[ID].openMouth;
+
+        // Garante opacidade total
+        var color = img.color;
+        color.a = 1f;
+        img.color = color;
+
         PlayAnimalSound(ID);
 
         yield return new WaitForSeconds(MouthOpenDuration);
 
-        // Fecha a boca
-        AnimalButtons[ID].GetComponent<Image>().sprite = AnimalSprites[ID].closedMouth;
+        // Fecha a boca e mantém a opacidade total
+        img.sprite = AnimalSprites[ID].closedMouth;
+        color = img.color;
+        color.a = 1f;
+        img.color = color;
 
         // Só reativa se o jogador ainda estiver a jogar
         if (ID == Sequence[ShowColor])
@@ -212,7 +241,6 @@ public class XylophoneMinigame : MonoBehaviour
             }
 
             HighscoreText.text = "Highscore: " + Highscore;
-
             StartCoroutine(ShowFeedback(WrongSprite, false));
         }
     }
