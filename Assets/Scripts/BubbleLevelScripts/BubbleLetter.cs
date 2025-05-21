@@ -9,6 +9,7 @@ public class BubbleLetter : MonoBehaviour
     private Sprite[] _spritesArray;
     public bool WasItPoped = true;
     private int LetterPosition;
+    private int positioncounter = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,19 +38,17 @@ public class BubbleLetter : MonoBehaviour
         {
             return;
         }
-        
-        for (int i = 0; i < LetterManager.LetterManagerInstance.ChosenWord.Length; i++)
+
+        if (LetterManager.LetterManagerInstance.QueueAlphabetPosition.Count == 0)
         {
-            if (LetterPosition ==LetterManager.LetterManagerInstance.BubbleLetterBox[i].GetComponent<BubbleLetterBox>().letterPosition )
-            {
-                //LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>().sprite = LetterManager.LetterManagerInstance.SpritesArray[LetterPosition];
-                SpriteRenderer _spriteRenderer = LetterManager.LetterManagerInstance.BubbleLetterBox[i].transform.Find("Letter").GetComponent<SpriteRenderer>();
-                _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
-                Debug.Log("Letter Position of the bubble " + LetterPosition);
-                Debug.Log("letter position " + LetterManager.LetterManagerInstance.AlphabetPosition[i]);
-                Debug.Log("Correct letter");
-               // break;
-            }
+           // return;
+        }
+        if (LetterPosition == LetterManager.LetterManagerInstance.QueueAlphabetPosition.Peek())
+        {
+            SpriteRenderer _spriteRenderer = LetterManager.LetterManagerInstance.BubbleLetterBox[LetterManager.LetterManagerInstance.ChosenWord.Length-LetterManager.LetterManagerInstance.QueueAlphabetPosition.Count].transform.Find("Letter").GetComponent<SpriteRenderer>();// Get the spriterenderer of the case letter that i want to change 
+            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f); //access the sprite renderer of the letter i want to change and change opacity to 1.0
+            LetterManager.LetterManagerInstance.QueueAlphabetPosition.Dequeue(); //POP the correct letter of the queu list;
+            SFXManager.SfxManagerInstance.PlayGettingRightLetter(transform.position); //play audio of getting the right letter
         }
     }
 }

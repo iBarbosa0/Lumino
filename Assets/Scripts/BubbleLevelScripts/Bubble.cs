@@ -9,12 +9,16 @@ public class Bubble : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector3 _startPosition;
     private Animator _animator;
+    private AudioSource _bubbleSoundSource;
+    [SerializeField] private AudioClip bubblepopSound;
     public bool WasItPoped { get; private set; } = true;
 
     private float _XAxisdeviation = 0 ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _bubbleSoundSource = GetComponent<AudioSource>();
+        _bubbleSoundSource.clip = bubblepopSound;
         _animator = GetComponent<Animator>(); // Animator to control the animation of the bubble popping
         _startPosition = transform.position; // get the position
         _rigidbody = GetComponent<Rigidbody2D>();// get the rigidbody of the bubble
@@ -43,7 +47,8 @@ public class Bubble : MonoBehaviour
     //This function is called at a certain frame in the animation "Bubble Pop" so it is only destroyed when the animation finishes
     void Destroybubble()
     {
-        
+        //_bubbleSoundSource.resource = bubblepopSound;
+        SFXManager.SfxManagerInstance.PlayBubblePop(transform.position);
         Destroy(gameObject);
     }
     
