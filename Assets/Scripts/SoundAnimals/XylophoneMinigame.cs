@@ -85,7 +85,7 @@ public class XylophoneMinigame : MonoBehaviour
     void Generator()
     {
         ColorNumber++; // Aumenta o nível
-        LevelText.text = "Level: " + ColorNumber;
+        LevelText.text = "Nível: " + ColorNumber;
 
         // Aumenta o tamanho da sequência a cada dois níveis (máx 4)
         int sequenceLength = Mathf.Min(1 + (ColorNumber - 1) / 2, 4);
