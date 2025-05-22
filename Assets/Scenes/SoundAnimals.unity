@@ -550,7 +550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8234674830842163646, guid: 60ff66e0a5196354e936cd60944eaa82, type: 3}
+  m_Sprite: {fileID: 6357036100811131104, guid: 3a2d119105939b9418a995e12a8d5119, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2238,8 +2238,8 @@ MonoBehaviour:
     openMouth: {fileID: 4145484686654580726, guid: a6783dc2420e338408ece036997fe231, type: 3}
   - closedMouth: {fileID: 3554276316412997218, guid: 1d60beca413ebaf4ab694dbcd2a9e639, type: 3}
     openMouth: {fileID: 3328207178356701938, guid: 6f9c1468228256640abb13c0c3d36086, type: 3}
-  - closedMouth: {fileID: 8234674830842163646, guid: 60ff66e0a5196354e936cd60944eaa82, type: 3}
-    openMouth: {fileID: 5497561726966372469, guid: beff44143a106084ebc3ca9c5e7169bd, type: 3}
+  - closedMouth: {fileID: 6357036100811131104, guid: 3a2d119105939b9418a995e12a8d5119, type: 3}
+    openMouth: {fileID: 5156074999995559641, guid: acff2a9dc5097404d9e61d51af553ac6, type: 3}
   - closedMouth: {fileID: -5262890102341169347, guid: 992d10b75012969459c4ff222f8c0586, type: 3}
     openMouth: {fileID: 928583848088422442, guid: 27cb7940b17854943966868e1e955a05, type: 3}
   AnimalButtons:
@@ -2399,6 +2399,7 @@ MonoBehaviour:
   sfxVolumeText: {fileID: 1234051506}
   musicVolumeText: {fileID: 568114569}
   backgroundMusic: {fileID: 742348013}
+  sfxSource: {fileID: 0}
 --- !u!1 &1164550291
 GameObject:
   m_ObjectHideFlags: 0
