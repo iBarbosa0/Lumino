@@ -4,18 +4,26 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public GameObject settingsPanel;
-    public Slider volumeSlider;
-    public Text volumePercentText;
+    public Slider sfxVolumeSlider;
+    public Slider musicVolumeSlider;
+    public Text sfxVolumeText;
+    public Text musicVolumeText;
+    public AudioSource backgroundMusic; // Atribui o AudioSource da música de fundo
+    public AudioSource sfxSource;
 
     private void Start()
     {
-        // Carrega o volume salvo ou usa 1f por padrão
-        float savedVolume = PlayerPrefs.GetFloat("MinigameVolume", 1f);
-        volumeSlider.value = savedVolume;
-        SetVolume(savedVolume);
+        // SFX
+        float savedSfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f); // Carrega o volume salvo ou usa 1f por padrão
+        sfxVolumeSlider.value = savedSfxVolume;
+        SetSFXVolume(savedSfxVolume);
+        sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume); // Liga o evento do slider
 
-        // Liga o evento do slider
-        volumeSlider.onValueChanged.AddListener(SetVolume);
+        // Music
+        float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        musicVolumeSlider.value = savedMusicVolume;
+        SetMusicVolume(savedMusicVolume);
+        musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
 
         settingsPanel.SetActive(false); // Começa escondido
     }
@@ -30,16 +38,32 @@ public class SettingsMenu : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
-    public void SetVolume(float value)
+    public void SetSFXVolume(float value)
     {
-        AudioListener.volume = value; // Controla o volume geral
-        PlayerPrefs.SetFloat("MinigameVolume", value);
-
-        // Atualiza o texto de percentagem
-        if (volumePercentText != null)
+        if (sfxSource != null)
         {
-            int percent = Mathf.RoundToInt(value * 100);
-            volumePercentText.text = percent + "%";
+            sfxSource.volume = value;
+        }
+
+        PlayerPrefs.SetFloat("SFXVolume", value);
+        if (sfxVolumeText != null)
+        {
+            sfxVolumeText.text = Mathf.RoundToInt(value * 100) + "%"; // Atualiza o texto de percentagem   
         }
     }
+
+    public void SetMusicVolume(float value)
+    {
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = value;
+        }
+
+        PlayerPrefs.SetFloat("MusicVolume", value);
+        if (musicVolumeText != null)
+        {
+            musicVolumeText.text = Mathf.RoundToInt(value * 100) + "%";
+        }
+    }
+
 }

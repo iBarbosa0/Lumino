@@ -32,6 +32,9 @@ public class XylophoneMinigame : MonoBehaviour
     public AudioClip CorrectSound;              // Som para resposta certa
     public AudioClip WrongSound;                // Som para resposta errada
 
+    public AudioSource backgroundMusic;         // Música de fundo
+    public AudioSource sfxSource;
+
     private AudioSource audioSource;             // <- Fonte de áudio
 
     private List<int> Sequence = new List<int>(); // Lista com a sequência gerada
@@ -46,6 +49,22 @@ public class XylophoneMinigame : MonoBehaviour
         EndScene.SetActive(false);    // Esconde o painel de fim de jogo
 
         audioSource = GetComponent<AudioSource>(); // <- Pega o AudioSource
+
+        // Volume SFX
+        float savedSfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        if (sfxSource != null)
+        {
+            sfxSource.volume = savedSfxVolume;
+        }
+
+        // Toca a música se ainda não estiver a tocar
+        if (backgroundMusic != null && !backgroundMusic.isPlaying)
+        {
+            float savedMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+            backgroundMusic.volume = savedMusicVolume;
+            backgroundMusic.loop = true;
+            backgroundMusic.Play();
+        }
 
         // Define a opacidade e a boca fechada nos PreviewAnimals
         foreach (var button in AnimalButtons)

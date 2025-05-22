@@ -8,24 +8,33 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Minigame_Selection 2.0.unity
-    guid: 1fc2ef7061382c548ba36faa9654d680
   - enabled: 0
     path: Assets/Scenes/Xylophone Minigame.unity
     guid: 11fa20d3734a9d94c9f798fa175ae8d7
+  - enabled: 0
+    path: Assets/Scenes/Minigame_Selection.unity
+    guid: 075ae81e4965c364f814f4518391183a
+  - enabled: 1
+    path: Assets/Scenes/MS_House.unity
+    guid: 1fc2ef7061382c548ba36faa9654d680
+  - enabled: 1
+    path: Assets/Scenes/MS_SuperMarket.unity
+    guid: 42919256a8678bc4a951eb7404c30d6e
   - enabled: 1
     path: Assets/Scenes/SoundAnimals.unity
     guid: f201494fcb7021b4ca789ed1bd726867
+  - enabled: 1
+    path: Assets/Scenes/Levels/Home Level/bubble Level - Home.unity
+    guid: 1d59db71b0a254effbc42cd33bf34ded
+  - enabled: 1
+    path: Assets/Scenes/Note Minigame.unity
+    guid: b13ee6c9ee3a3ae47aa5b921161947e2
   - enabled: 0
     path: Assets/Scenes/Swipe_Menu.unity
     guid: b829f43fa43502b40bf8b2a093989333
   - enabled: 0
     path: Assets/Scenes/Math_Prototype.unity
     guid: 5c54df890f5f876458894262aafc4ad8
-  - enabled: 0
-    path: Assets/Scenes/Minigame_Selection.unity
-    guid: 075ae81e4965c364f814f4518391183a
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 1f2945afd2995154b868fc2c3592d764, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f26de2e5fa6c9fa48866196121581ff2, type: 2}
