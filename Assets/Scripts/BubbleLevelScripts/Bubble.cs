@@ -9,16 +9,13 @@ public class Bubble : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector3 _startPosition;
     private Animator _animator;
-    private AudioSource _bubbleSoundSource;
-    [SerializeField] private AudioClip bubblepopSound;
     public bool WasItPoped { get; private set; } = true;
+    [SerializeField] private GameObject letterbubblechild;
 
     private float _XAxisdeviation = 0 ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _bubbleSoundSource = GetComponent<AudioSource>();
-        _bubbleSoundSource.clip = bubblepopSound;
         _animator = GetComponent<Animator>(); // Animator to control the animation of the bubble popping
         _startPosition = transform.position; // get the position
         _rigidbody = GetComponent<Rigidbody2D>();// get the rigidbody of the bubble
@@ -34,7 +31,7 @@ public class Bubble : MonoBehaviour
         //Destroy bubble when it reaches a certain Y axis value (9 in this case)
         if (_rigidbody.transform.position.y>9)
         {
-            GetComponentInChildren<BubbleLetter>().WasItPoped = false;// this is to control what happens in the OnDestroy function of the BubbleletterScript so the code in that fcuntion only happens if the bubble is actually popeed by the player and not when its despawned by the code;
+            GetComponentInChildren<BubbleLetter>().wasItPoped = false;// this is to control what happens in the OnDestroy function of the BubbleletterScript so the code in that fcuntion only happens if the bubble is actually popeed by the player and not when its despawned by the code;
             Destroy(gameObject);
         }
     }
@@ -59,5 +56,10 @@ public class Bubble : MonoBehaviour
         yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f,0.5f));
         //_XAxisdeviation = UnityEngine.Random.Range(-0.025f, 0.02f);
         StartCoroutine(Xdeviation());
+    }
+
+    private void OnDestroy()
+    {
+        //letterbubblechild.transform.SetParent(null);
     }
 }
