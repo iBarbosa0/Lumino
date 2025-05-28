@@ -15,11 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame_Selection.unity
     guid: 075ae81e4965c364f814f4518391183a
   - enabled: 1
+    path: Assets/Scenes/MS_School.unity
+    guid: 3c569aad09fe488459affacc0a2c7b11
+  - enabled: 1
     path: Assets/Scenes/MS_House.unity
     guid: 1fc2ef7061382c548ba36faa9654d680
   - enabled: 1
     path: Assets/Scenes/MS_SuperMarket.unity
     guid: 42919256a8678bc4a951eb7404c30d6e
+  - enabled: 1
+    path: Assets/Scenes/Levels/School Level/Math.unity
+    guid: accc86a5bbc9b474b96be098ca40ddcc
   - enabled: 1
     path: Assets/Scenes/SoundAnimals.unity
     guid: f201494fcb7021b4ca789ed1bd726867

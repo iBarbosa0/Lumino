@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 45443820}
   m_Layer: 0
-  m_Name: MSp_Kiosk
+  m_Name: MSp_Hallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 72439406}
   - component: {fileID: 72439405}
   m_Layer: 5
-  m_Name: CashierBttn_Txt
+  m_Name: PlaygroundBttn_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CAIXA
+  m_Text: RECREIO
 --- !u!222 &72439406
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 101615032}
   - component: {fileID: 101615031}
   m_Layer: 5
-  m_Name: K_BG
+  m_Name: H_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -356053212081458563, guid: e44c823cc005c8b4c915bd02c9fbbd47, type: 3}
+  m_Sprite: {fileID: -2710726481957806859, guid: ed892e00966c06f4d8c013ee8a7b42bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 343645778}
   - component: {fileID: 343645777}
   m_Layer: 5
-  m_Name: HallwayBttn_Txt
+  m_Name: ClassroomBttn_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CORREDOR
+  m_Text: SALA DE AULA
 --- !u!222 &343645778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1647,7 +1647,7 @@ GameObject:
   - component: {fileID: 437532981}
   - component: {fileID: 437532980}
   m_Layer: 5
-  m_Name: KioskBttn
+  m_Name: HallwayBttn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -356053212081458563, guid: e44c823cc005c8b4c915bd02c9fbbd47, type: 3}
+  m_Sprite: {fileID: -2710726481957806859, guid: ed892e00966c06f4d8c013ee8a7b42bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2710726481957806859, guid: ed892e00966c06f4d8c013ee8a7b42bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2696,7 +2696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704363524}
   m_Layer: 0
-  m_Name: MSp_Entrance
+  m_Name: MSp_Theater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3128,7 +3128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7380863415767685915, guid: 9e9d69c526313bf4582ce72848c4bc33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3303,7 +3303,7 @@ GameObject:
   - component: {fileID: 749731523}
   - component: {fileID: 749731522}
   m_Layer: 5
-  m_Name: CashierBttn
+  m_Name: PlaygroundBttn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3417,7 +3417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3724665919710255247, guid: 455e6cd92f35ff64a9a0ce3566109c04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44ea552ad8e3a8d4397de80210d7dff3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3739,7 +3739,7 @@ GameObject:
   - component: {fileID: 825041810}
   - component: {fileID: 825041809}
   m_Layer: 5
-  m_Name: HallwayBttn
+  m_Name: ClassroomBttn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3853,7 +3853,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5120224674601135964, guid: a2bafc908e2769449aed02d41f93923b, type: 3}
+  m_Sprite: {fileID: -2151494691368148408, guid: 7edb48a2d4db3de409c0f83cefd736e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4604,7 +4604,7 @@ GameObject:
   - component: {fileID: 1081068139}
   - component: {fileID: 1081068138}
   m_Layer: 5
-  m_Name: E_BG
+  m_Name: T_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4649,7 +4649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4986190733806725710, guid: df62b8a5f69641047be6af328d97cb73, type: 3}
+  m_Sprite: {fileID: -7380863415767685915, guid: 9e9d69c526313bf4582ce72848c4bc33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4679,7 +4679,7 @@ GameObject:
   - component: {fileID: 1085772554}
   - component: {fileID: 1085772553}
   m_Layer: 5
-  m_Name: C_BG
+  m_Name: P_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4724,7 +4724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3724665919710255247, guid: 455e6cd92f35ff64a9a0ce3566109c04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44ea552ad8e3a8d4397de80210d7dff3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 1207164395}
   - component: {fileID: 1207164394}
   m_Layer: 5
-  m_Name: EntranceBttn
+  m_Name: TheaterBttn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4986190733806725710, guid: df62b8a5f69641047be6af328d97cb73, type: 3}
+  m_Sprite: {fileID: -7380863415767685915, guid: 9e9d69c526313bf4582ce72848c4bc33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5189,7 +5189,7 @@ GameObject:
   - component: {fileID: 1308376347}
   - component: {fileID: 1308376346}
   m_Layer: 5
-  m_Name: EntranceBttn_Txt
+  m_Name: TheaterBttn_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5247,7 +5247,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ENTRADA
+  m_Text: TEATRO
 --- !u!222 &1308376347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5268,7 +5268,7 @@ GameObject:
   - component: {fileID: 1412362490}
   - component: {fileID: 1412362489}
   m_Layer: 5
-  m_Name: H_BG
+  m_Name: C_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5313,7 +5313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5120224674601135964, guid: a2bafc908e2769449aed02d41f93923b, type: 3}
+  m_Sprite: {fileID: -2151494691368148408, guid: 7edb48a2d4db3de409c0f83cefd736e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6519,7 +6519,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6544,7 +6544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7478110212846125754, guid: 8610d46d6871b6f49ac11f5e72f79c98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6885,7 +6885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3210684584516059854, guid: c40be6586c116fb4684fd42a4787706b, type: 3}
+  m_Sprite: {fileID: -360804462831397861, guid: bc37986edaf82a442a22062b2f121c67, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7274,7 +7274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1919985192}
   m_Layer: 0
-  m_Name: MSp_Hallway
+  m_Name: MSp_Classroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7801,7 +7801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2075504358}
   m_Layer: 0
-  m_Name: MSp_Cashier
+  m_Name: MSp_Playground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8192,7 +8192,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8217,7 +8217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3724665919710255247, guid: 455e6cd92f35ff64a9a0ce3566109c04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44ea552ad8e3a8d4397de80210d7dff3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8405,7 +8405,7 @@ GameObject:
   - component: {fileID: 2133464527}
   - component: {fileID: 2133464526}
   m_Layer: 5
-  m_Name: KioksBttn_Txt
+  m_Name: HallwayBttn_Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8463,7 +8463,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIOSQUE
+  m_Text: CORREDOR
 --- !u!222 &2133464527
 CanvasRenderer:
   m_ObjectHideFlags: 0
