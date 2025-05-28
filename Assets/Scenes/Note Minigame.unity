@@ -714,7 +714,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 680635892}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1281734038}
+        m_TargetAssemblyTypeName: NoteMinigame, Assembly-CSharp
+        m_MethodName: OnValidPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &680635892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,7 +1290,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1236889681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1281734038}
+        m_TargetAssemblyTypeName: NoteMinigame, Assembly-CSharp
+        m_MethodName: OnResetPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1236889681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1373,8 @@ MonoBehaviour:
   requestedAmountText: {fileID: 299345223}
   currentTotalText: {fileID: 326016106}
   messageText: {fileID: 729877025}
+  validateButton: {fileID: 680635891}
+  resetButton: {fileID: 1236889680}
   requestedAmount: 20
 --- !u!4 &1281734039
 Transform:
