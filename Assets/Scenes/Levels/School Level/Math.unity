@@ -1225,6 +1225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 0}
+  drawColor: {r: 1, g: 1, b: 1, a: 1}
+  backgroundColor: {r: 0.1, g: 0.2, b: 0.1, a: 1}
+  chalkTexture: {fileID: 0}
 --- !u!64 &1570841099
 MeshCollider:
   m_ObjectHideFlags: 0

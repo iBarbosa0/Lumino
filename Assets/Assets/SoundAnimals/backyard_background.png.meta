@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5743d1aee6003a5449a404bb4c8279d5
+guid: ecee37aa5e6df3041b5402b397e65709
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3014990186307027056
-    second: Bedroom Scenario_0
+      213: 7868946169842528795
+    second: backyard_background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bedroom Scenario_0
+      name: backyard_background_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09f71ef466a9826d0800000000000000
-      internalID: -3014990186307027056
+      spriteID: b12722a99dc143d60800000000000000
+      internalID: 7868946169842528795
       vertices: []
       indices: 
       edges: []
