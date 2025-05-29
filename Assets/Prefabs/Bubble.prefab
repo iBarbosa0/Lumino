@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4221022256835574027}
   - component: {fileID: 2698391362891948564}
   - component: {fileID: 9071287088951619807}
+  - component: {fileID: 1930572566296123665}
   m_Layer: 0
   m_Name: Letter
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +102,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasItPoped: 1
+  splashAnimationPrefab: {fileID: 9110757632656655528, guid: c3c7d379a0bc3468794b11132ef3b951, type: 3}
+--- !u!50 &1930572566296123665
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091453066522820605}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4101598748253159691
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +210,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -9041673403038069113, guid: 94ddbf1f61a5542c4a10ad925abccbd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letterbubblechild: {fileID: 3091453066522820605}
+  splashAnimation: {fileID: 0}
 --- !u!95 &-425179630782488048
 Animator:
   serializedVersion: 7

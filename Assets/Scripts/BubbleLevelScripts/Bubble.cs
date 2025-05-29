@@ -11,6 +11,7 @@ public class Bubble : MonoBehaviour
     private Animator _animator;
     public bool WasItPoped { get; private set; } = true;
     [SerializeField] private GameObject letterbubblechild;
+    [SerializeField] private GameObject splashAnimation;
 
     private float _XAxisdeviation = 0 ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,11 +30,6 @@ public class Bubble : MonoBehaviour
         _rigidbody.transform.position += new Vector3(_XAxisdeviation, 0.04f);
 
         //Destroy bubble when it reaches a certain Y axis value (9 in this case)
-        if (_rigidbody.transform.position.y>9)
-        {
-            GetComponentInChildren<BubbleLetter>().wasItPoped = false;// this is to control what happens in the OnDestroy function of the BubbleletterScript so the code in that fcuntion only happens if the bubble is actually popeed by the player and not when its despawned by the code;
-            Destroy(gameObject);
-        }
     }
     
     void OnMouseDown()
@@ -46,7 +42,7 @@ public class Bubble : MonoBehaviour
     {
         //_bubbleSoundSource.resource = bubblepopSound;
         SFXManager.SfxManagerInstance.PlayBubblePop(transform.position);
-        Destroy(gameObject);
+        predestroyBubble();
     }
     
     //this is a Enumerator to make the bubble change its X axis to give the feeling of floating every x seconds
@@ -57,9 +53,19 @@ public class Bubble : MonoBehaviour
         //_XAxisdeviation = UnityEngine.Random.Range(-0.025f, 0.02f);
         StartCoroutine(Xdeviation());
     }
-
-    private void OnDestroy()
+    
+    private void predestroyBubble()
     {
-        //letterbubblechild.transform.SetParent(null);
+        letterbubblechild.transform.SetParent(null);
+        letterbubblechild.GetComponent<BubbleLetter>().destroyBubble();
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ceiling"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      casa_de_banho_fundo_0: -1988053467900975242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4263333743926581106, guid: 0be4d6500cd624c4f8c16ff2c95055e1, type: 3}
+  m_Sprite: {fileID: -5908124659090338763, guid: 25834ca72ee1c46ef8f57346e8c59f1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -200,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 17482278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3683, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.76391566, y: 0.7538146, z: 0.7538146}
+  m_LocalPosition: {x: -0.03, y: -0.05, z: 0}
+  m_LocalScale: {x: 1.0093255, y: 0.9959793, z: 0.9959793}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1452456987}
@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Selection - Hospital
       objectReference: {fileID: 0}
+    - target: {fileID: 5227883012794089078, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6069967
@@ -737,6 +741,10 @@ PrefabInstance:
     - target: {fileID: 5227883012794089078, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_Name
       value: Level Selection - Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227883012794089078, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalScale.x
@@ -984,6 +992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Selection - School
       objectReference: {fileID: 0}
+    - target: {fileID: 5227883012794089078, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6069967
@@ -998,11 +1010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7686782
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5172772
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1337,11 +1349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5415631
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.53614795
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 7284131965247568854, guid: 0b43c169d374a43ca8f8d841e05e3eb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1405,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346536edfd44442ccb95231e3d8d4260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correspondentLevel: 3
+  correspondentLevel: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

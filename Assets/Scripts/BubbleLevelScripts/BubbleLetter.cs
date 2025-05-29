@@ -9,6 +9,7 @@ public class BubbleLetter : MonoBehaviour
     private Sprite[] _spritesArray;
     public bool wasItPoped = true;
     private int _letterPosition;
+    [SerializeField] private GameObject splashAnimationPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +34,11 @@ public class BubbleLetter : MonoBehaviour
 
     private void OnDestroy()
     {
+       
+    }
+
+    public void destroyBubble()
+    {
         if (wasItPoped == false)
         {
             return;
@@ -40,7 +46,7 @@ public class BubbleLetter : MonoBehaviour
 
         if (LetterManager.LetterManagerInstance.QueueAlphabetPosition.Count == 0)
         {
-           // return;
+            // return;
         }
         if (_letterPosition == LetterManager.LetterManagerInstance.QueueAlphabetPosition.Peek())
         {
@@ -50,6 +56,25 @@ public class BubbleLetter : MonoBehaviour
             LetterManager.LetterManagerInstance.QueueAlphabetPosition.Dequeue(); //POP the correct letter of the queu list;
             SFXManager.SfxManagerInstance.PlayGettingRightLetter(transform.position); //play audio of getting the right letter
             LetterManager.LetterManagerInstance.CheckIfBeatTheLevel();
+            Destroy(gameObject);
         }
+        else
+        {
+            GetComponent<Rigidbody2D>().mass = 1;
+            GetComponent<Rigidbody2D>().gravityScale = 1;
+            gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+            Destroy(gameObject, 3f);
+        }
+        Destroy(gameObject, 3f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            GameObject splash = Instantiate(splashAnimationPrefab, transform.position, Quaternion.identity); ;
+            Destroy(gameObject);
+        }
+      
     }
 }
