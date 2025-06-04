@@ -29,7 +29,7 @@ public class XylophoneMinigame : MonoBehaviour
     public float FeedbackDuration = 1f;          // Tempo que o feedback aparece (em segundos)
     public float MouthOpenDuration = 0.5f;       // Duração da boca aberta após o clique
 
-    public AudioClip CorrectSound;              // Som para resposta certa
+    public AudioClip CorrectSound;              //0 Som para resposta certa
     public AudioClip WrongSound;                // Som para resposta errada
 
     public AudioSource backgroundMusic;         // Música de fundo
@@ -38,10 +38,15 @@ public class XylophoneMinigame : MonoBehaviour
     private AudioSource audioSource;             // <- Fonte de áudio
 
     private List<int> Sequence = new List<int>(); // Lista com a sequência gerada
-    private int ColorNumber = 0;                  // Nível atual (quantidade de animais na sequência)
+    private List<int> CurrentSequence = new List<int>(); // Guarda a sequência para repetir
+
+    private int ColorNumber = 1;                  // Nível atual (quantidade de animais na sequência)
     private int ShowColor = 0;                    // Índice da sequência que o jogador está a tentar acertar
     private int StillMissing = 0;                 // Quantos animais faltam clicar corretamente
     private int Highscore = 0;                    // Maior nível atingido
+
+    private bool retryCurrentLevel = false;       // Marca se é repetição do nível após falha
+    private bool sequenceGenerated = false;     // controle da geração da sequência
 
     void Start()
     {
@@ -98,14 +103,29 @@ public class XylophoneMinigame : MonoBehaviour
 
         SetAnimalButtonsInteractable(false); // Desativa os botões
         yield return new WaitForSeconds(0.5f);
-        Generator(); // Gera nova sequência
+
+        // Atualiza o texto do nível
+        LevelText.text = "Nível: " + ColorNumber;
+
+        if (!retryCurrentLevel && !sequenceGenerated)
+        {
+            Generator(); // Gera nova sequência se necessário
+            sequenceGenerated = true; // marca como gerada
+        }
+        else
+        {
+            Sequence = new List<int>(CurrentSequence); // Repete a sequência anterior
+            retryCurrentLevel = false;
+        }
+
+        ShowColor = 0;
+        StillMissing = Sequence.Count;
+
+        StartCoroutine(RevealSequence());
     }
 
     void Generator()
     {
-        ColorNumber++; // Aumenta o nível
-        LevelText.text = "Nível: " + ColorNumber;
-
         // Aumenta o tamanho da sequência a cada dois níveis (máx 4)
         int sequenceLength = Mathf.Min(1 + (ColorNumber - 1) / 2, 4);
 
@@ -115,10 +135,7 @@ public class XylophoneMinigame : MonoBehaviour
             Sequence.Add(Random.Range(0, AnimalSprites.Count)); // Adiciona um índice aleatório à sequência
         }
 
-        ShowColor = 0;
-        StillMissing = sequenceLength;
-
-        StartCoroutine(RevealSequence()); // Mostra a sequência ao jogador
+        CurrentSequence = new List<int>(Sequence); // Guarda a sequência atual para repetir
     }
 
     IEnumerator RevealSequence()
@@ -176,7 +193,7 @@ public class XylophoneMinigame : MonoBehaviour
         SetAnimalButtonsInteractable(true);
     }
 
-    IEnumerator ShowFeedback(Sprite spriteToShow, bool nextLevel)
+    IEnumerator ShowFeedback(Sprite spriteToShow, bool nextLevel, bool retryLevel = false)
     {
         FeedbackImage.sprite = spriteToShow;
         FeedbackImage.gameObject.SetActive(true);
@@ -196,7 +213,13 @@ public class XylophoneMinigame : MonoBehaviour
 
         if (nextLevel)
         {
+            ColorNumber++;
+            sequenceGenerated = false; // Aumenta o nível apenas após certo
             StartCoroutine(StartGame()); // Próximo nível
+        }
+        else if (retryLevel)
+        {
+            StartCoroutine (StartGame()); // Repetir mesmo nível
         }
         else
         {
@@ -252,6 +275,7 @@ public class XylophoneMinigame : MonoBehaviour
         else
         {
             SetAnimalButtonsInteractable(false);
+
             Highscore = PlayerPrefs.GetInt("Highscore", 0);
             if (ColorNumber > Highscore)
             {
@@ -260,15 +284,15 @@ public class XylophoneMinigame : MonoBehaviour
             }
 
             HighscoreText.text = "Highscore: " + Highscore;
-            StartCoroutine(ShowFeedback(WrongSprite, false));
+
+            retryCurrentLevel = true; // repete o nível atual
+            StartCoroutine(ShowFeedback(WrongSprite, false, true));
         }
     }
 
     public void TryAgain()
     {
-        // Reinicia o jogo
-        Sequence.Clear();
-        ColorNumber = 0;
+        // Repete o nível atual com a mesma sequência
         EndScene.SetActive(false);
         StartCoroutine(StartGame());
     }
@@ -290,4 +314,3 @@ public class XylophoneMinigame : MonoBehaviour
         }
     }
 }
-
