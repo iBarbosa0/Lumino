@@ -283,10 +283,10 @@ public class XylophoneMinigame : MonoBehaviour
                 PlayerPrefs.SetInt("Highscore", Highscore);
             }
 
-            HighscoreText.text = "Highscore: " + Highscore;
+            HighscoreText.text = "Pontuação Máxima: " + Highscore;
 
             retryCurrentLevel = true; // repete o nível atual
-            StartCoroutine(ShowFeedback(WrongSprite, false, true));
+            StartCoroutine(ShowFeedback(WrongSprite, false, false));
         }
     }
 

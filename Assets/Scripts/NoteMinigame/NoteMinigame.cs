@@ -428,7 +428,7 @@ public class NoteMinigame : MonoBehaviour
         settingsPanel.SetActive(true);
     }
 
-    public void Settings()
+    public void CloseSettings()
     {
         settingsPanel.SetActive(false);
     }
