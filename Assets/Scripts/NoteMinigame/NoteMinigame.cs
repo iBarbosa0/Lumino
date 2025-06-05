@@ -10,25 +10,32 @@ public class NoteMinigame : MonoBehaviour
     public Text currentTotalText;    // Texto que mostra quanto o jogador já deu
     public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
+    public Text gameOverHighscoreText; // Texto para mostrar highscore no Game Over
 
+    public Button startButton;       // Botão que inicia o minigame
+    public Button backButton;        // Botão que volta ao menu principal
     public Button validateButton;    // Botão para confirmar total
     public Button resetButton;       // Botão para reiniciar total
-
-    // Botões das denominações
-    public Button button1;
-    public Button button2;
-    public Button button5;
-    public Button button10;
-    public Button button20;
-
+    public Button retryButton;       // Botão "Tentar outra vez"
+    public Button quitButton;        // Botão "sair"
+    
     public Transform leftNoteSlot;
     public Transform rightNoteSlot;
+    public Transform coin1Slot;
+    public Transform coin2Slot;
 
+    public GameObject coin1Prefab;
+    public GameObject coin2Prefab;
     public GameObject note5Prefab;
     public GameObject note10Prefab;
     public GameObject note20Prefab;
 
     public GameObject feedbackPanel;
+    public GameObject mainMenuPanel; // Painel do menu principal
+    public GameObject settingsPanel; // Painel de configurações
+    public GameObject gameOverPanel; // Painel Game Over
+
+    public Slider musicVolumeSlider; // Slider do volume de música
 
     public int requestedAmount = 20; // Valor pedido pela senhora da caixa (nível 1 = 20)
     private int currentTotal = 0;
@@ -36,6 +43,7 @@ public class NoteMinigame : MonoBehaviour
 
     private int currentLevel = 1;
     private int lastRequestedAmount = -1;
+    private int highscore = 1;        // maior nível alcançado
 
     public AudioClip correctSound;    // Som de acerto
     public AudioClip wrongSound;      // Som de erro
@@ -43,20 +51,53 @@ public class NoteMinigame : MonoBehaviour
     private AudioSource audioSource;  // Componente AudioSource
 
     public List<int> availableDenominations = new List<int>();
-    private List<GameObject> currentNotes = new List<GameObject>();
+    private List<GameObject> currentMoneyItems = new List<GameObject>();
+
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string NoteMinigameHighscoreKey = "NoteMinigame_Highscore"; // Chave única para highscore deste minigame
+
+    private Dictionary<int, Transform> notePositions = new Dictionary<int, Transform>();
 
     private void Start()
     {
         // Configuração AudioSource
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = backgroundMusic;
-        audioSource.loop = true; // Faz a música tocar em loop
+        audioSource.loop = true;      // Faz a música tocar em loop
         audioSource.playOnAwake = false;
-        audioSource.volume = 0.5f; // Ajusta o volume (o a 1)
 
         audioSource.Play();
+                                                       
+        // Carrega volume salvo e aplica
+        float savedVolume = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
+        musicVolumeSlider.value = savedVolume;
+        audioSource.volume = savedVolume;
 
-        StartNewRound();
+        // Conecta evento do slider
+        musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
+
+        // Carrega o highscore salvo com a chave exclusiva
+        highscore = PlayerPrefs.GetInt(NoteMinigameHighscoreKey, 1);
+
+        // Conecta os botões do Game Over
+        if (retryButton != null)
+        {
+            retryButton.onClick.AddListener(RetryLevel);
+        }
+
+        if (quitButton != null)
+        {
+            quitButton.onClick.AddListener(QuitToMenu);
+        }
+
+        gameOverPanel.SetActive(false); // Inicalmente o painel de game over deve estar inativado
+        mainMenuPanel.SetActive(true); // Mostra o menu
+    }
+
+    public void StartMinigame()
+    {
+        mainMenuPanel.SetActive(false); // Esconde o menu
+        StartNewRound();               // Inicia o jogo
     }
 
     public void AddNoteValue(int value)
@@ -90,7 +131,7 @@ public class NoteMinigame : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ShowTemporaryMessasge("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
+            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
         }
     }
 
@@ -104,10 +145,14 @@ public class NoteMinigame : MonoBehaviour
 
         validateButton.interactable = false;
         resetButton.interactable = false;
+
+        // Recria as notas
+        DisplayRandomNotes();
     }
 
     private void StartNewRound()
     {
+        notePositions.Clear();
         requestedAmount = GetAmountBasedOnLevel(currentLevel);
         currentTotal = 0;
         interactionLocked = false;
@@ -119,23 +164,24 @@ public class NoteMinigame : MonoBehaviour
         validateButton.interactable = false;
         resetButton.interactable = false;
 
-        UpdateAvailableButtons(); // << ativa/desativa botões conforme as denominações
         DisplayRandomNotes();
     }
 
     private int GetAmountBasedOnLevel(int level)
     {
         int[] allNotes = { 5, 10, 20 };
-        int[] allCoins = { 1, 2 };
-
-        // Escolhe 2 notas aleatórias
         int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
 
-        // Escolhe 1 moeda aleatória
-        int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
+        // Começa apenas com notas
+        availableDenominations = new List<int>(selectedNotes);
 
-        // Guarda denominações disponíveis
-        availableDenominations = selectedNotes.Concat(new int[] { selectedCoin }).ToList();
+        // A partir do nível 6, começa a introduzir moedas
+        if (level >= 6)
+        {
+            int[] allCoins = { 1, 2 };
+            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
+            availableDenominations.Add(selectedCoin);
+        }
 
         // Gera os valores possíveis até 20
         List<int> possibleValues = GeneratePossibleValues(availableDenominations, 20);
@@ -158,21 +204,33 @@ public class NoteMinigame : MonoBehaviour
     {
         HashSet<int> values = new HashSet<int>();
 
-        for (int a = 0; a <= 10; a++)
+        int count = denominations.Count;
+        if (count == 0) return values.ToList(); // Evita erros se lista estiver vazia
+
+        // Limite prático de combinações por denominação
+        int limit = 10;
+
+        // Gera todas as combinações possíveis com base no número de denominações
+        void Recurse(int index, int currentSum)
         {
-            for (int b = 0; b <= 10; b++)
+            if (index >= count)
             {
-                for (int c = 0; c <= 10; c++)
+                if (currentSum > 0 && currentSum <= max)
                 {
-                    int total = a * denominations[0] + b * denominations[1] + c * denominations[2];
-                    if (total > 0 && total <= max)
-                    {
-                        values.Add(total);
-                    }
+                    values.Add(currentSum);
                 }
+                return;
+            }
+
+            for (int i = 0; i <= limit; i++)
+            {
+                int nextSum = currentSum + i * denominations[index];
+                if (nextSum > max) break;
+                Recurse(index + 1, nextSum);
             }
         }
 
+        Recurse(0, 0);
         return values.ToList();
     }
 
@@ -227,12 +285,19 @@ public class NoteMinigame : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         currentLevel++;
+
+        // Atualiza o highscore
+        if (currentLevel > highscore)
+        {
+            highscore = currentLevel;
+            PlayerPrefs.SetInt(NoteMinigameHighscoreKey, highscore);
+        }
+
         StartNewRound();
     }
 
     private IEnumerator HandleWrongAnswer()
     {
-        currentLevel = 1; // Reinicia para o nível 1 ao errar
         ShowMessage("Ups! Deste dinheiro a mais.", Color.red);
         if (wrongSound != null)
         {
@@ -240,10 +305,19 @@ public class NoteMinigame : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
-        StartNewRound();
+
+        // Mostra painel game over
+        feedbackPanel.SetActive(false);
+        gameOverPanel.SetActive(true);
+
+        // Mostra o highscore no painel
+        if (gameOverHighscoreText != null)
+        {
+            gameOverHighscoreText.text = "Pontuação Máxima " + highscore.ToString();
+        }
     }
 
-    private IEnumerator ShowTemporaryMessasge(string message, Color color, float duration)
+    private IEnumerator ShowTemporaryMessage(string message, Color color, float duration)
     {
         ShowMessage(message, color);
         if (wrongSound != null)
@@ -264,24 +338,14 @@ public class NoteMinigame : MonoBehaviour
         }
     }
 
-    private void UpdateAvailableButtons()
-    {
-        button1.gameObject.SetActive(availableDenominations.Contains(1));
-        button2.gameObject.SetActive(availableDenominations.Contains(2));
-        button5.gameObject.SetActive(availableDenominations.Contains(5));
-        button10.gameObject.SetActive(availableDenominations.Contains(10));
-        button20.gameObject.SetActive(availableDenominations.Contains(20));
-
-    }
-
     private void DisplayRandomNotes()
     {
         // Limpa notas anteriores
-        foreach (var note in currentNotes)
+        foreach (var item in currentMoneyItems)
         {
-            Destroy(note);
+            Destroy(item);
         }
-        currentNotes.Clear();
+        currentMoneyItems.Clear();
 
         // Pega apenas notas (>= 5)
         var noteValues = availableDenominations.Where(v => v >= 5).ToList();
@@ -292,33 +356,42 @@ public class NoteMinigame : MonoBehaviour
             return;
         }
 
-        var shuffled = noteValues.OrderBy(x => Random.value).ToList();
-
-        for (int i = 0; i < shuffled.Count; i++)
+        // Se for a primeira vez nesta ronda, define a posição original:
+        if (notePositions.Count == 0)
         {
-            int noteValue = shuffled[i];
+            notePositions.Clear();
+            // aleatoriamente atribui nota ao slot esquerdo ou direito só uma vez
+            bool shuffle = Random.value > 0.5f;
+            notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
+            notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
+        }
+
+        // Para cada nota, instancia-a na posição original
+        foreach (var noteValue in noteValues)
+        {
             GameObject prefab = GetNotePrefab(noteValue);
-            if (prefab != null)
+            if (prefab != null && notePositions.ContainsKey(noteValue))
             {
-                Transform slot = (i == 0) ? leftNoteSlot : rightNoteSlot;
+                Transform slot = notePositions[noteValue];
                 GameObject instance = Instantiate(prefab, slot);
                 instance.transform.localPosition = Vector3.zero;
-
-                // Adiciona a função AddNoteValue ao botão instanciado
-                Button button = instance.GetComponent<Button>();
-                if (button != null)
-                {
-                    int capturedValue = noteValue; // Captura o valor corretamente para evitar closure bugs
-                    button.onClick.AddListener(() => AddNoteValue(capturedValue));
-                }
-                else
-                {
-                    Debug.LogWarning("O prefab não tem componente Button!");
-                }
-
-
-                currentNotes.Add(instance);
+                currentMoneyItems.Add(instance);
             }
+        }
+
+        // Instancia moedas (se disponíveis)
+        if (availableDenominations.Contains(1) && coin1Slot != null && coin1Prefab != null)
+        {
+            GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
+            coin1Instance.transform.localPosition = Vector3.zero;
+            currentMoneyItems.Add(coin1Instance);
+        }
+
+        if (availableDenominations.Contains(2) && coin2Slot != null && coin2Prefab != null)
+        {
+            GameObject coin2Instance = Instantiate(coin2Prefab, coin2Slot);
+            coin2Instance.transform.localPosition = Vector3.zero;
+            currentMoneyItems.Add(coin2Instance);
         }
     }
 
@@ -331,5 +404,80 @@ public class NoteMinigame : MonoBehaviour
             case 20: return note20Prefab;
             default: return null;
         }
+    }      
+
+    private GameObject GetCoinPrefab(int value)
+    {
+        switch (value)
+        {
+            case 1: return coin1Prefab;
+            case 2: return coin2Prefab;
+            default : return null;
+        }
+    }
+
+
+    public void SetMusicVolume(float volume)
+    {
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat(MusicVolumeKey, volume);
+    }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    public void Settings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+    public void RetryLevel()
+    {
+        // Esconde o painel game over
+        gameOverPanel.SetActive(false);
+
+        // Mantém o nível atual e reinicia a rodada
+        currentTotal = 0;
+        interactionLocked = false;
+
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+
+        validateButton.interactable = false;
+        resetButton.interactable = false;
+
+        StartNewRound();
+    }
+
+    public void QuitToMenu()
+    {
+        // Esconde o game over e mostra o menu principal
+        gameOverPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+
+        // Resetar o estado do minigame para o ínicio
+        currentLevel = 1;
+        currentTotal = 0;
+        interactionLocked = false;
+
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+
+        validateButton.interactable = false;
+        resetButton.interactable = false;
+    }
+
+    public void ReceberNota(int valor)
+    {
+        if (interactionLocked) return;
+
+        currentTotal += valor;
+        UpdateUI();
+
+        validateButton.interactable = true;
+        resetButton.interactable = true;
+        feedbackPanel.SetActive(false); // Esconde mensagem até validação
     }
 }

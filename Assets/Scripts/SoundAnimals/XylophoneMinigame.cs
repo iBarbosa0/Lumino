@@ -29,7 +29,7 @@ public class XylophoneMinigame : MonoBehaviour
     public float FeedbackDuration = 1f;          // Tempo que o feedback aparece (em segundos)
     public float MouthOpenDuration = 0.5f;       // Duração da boca aberta após o clique
 
-    public AudioClip CorrectSound;              //0 Som para resposta certa
+    public AudioClip CorrectSound;              // Som para resposta certa
     public AudioClip WrongSound;                // Som para resposta errada
 
     public AudioSource backgroundMusic;         // Música de fundo
