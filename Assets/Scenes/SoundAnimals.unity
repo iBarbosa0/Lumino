@@ -1205,8 +1205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 39}
-  m_SizeDelta: {x: 800, y: 800}
+  m_AnchoredPosition: {x: -100, y: 40}
+  m_SizeDelta: {x: 1144, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &660287603
 GameObject:
@@ -2334,7 +2334,7 @@ MonoBehaviour:
   StartPanel: {fileID: 1575906767}
   FeedbackImage: {fileID: 646326192}
   CorrectSprite: {fileID: 3231845376359937049, guid: fb0f7b431f0d52544aed99b3bbd0c028, type: 3}
-  WrongSprite: {fileID: 6921946628908567046, guid: 3edda4b7ab0f15c479fe99a00b747fd5, type: 3}
+  WrongSprite: {fileID: 5130665430471093796, guid: d30272637b4765d428509e7f34e0c9e1, type: 3}
   FeedbackDuration: 1
   MouthOpenDuration: 0.5
   CorrectSound: {fileID: 8300000, guid: cf3b651aead5b224580c70429c755ec8, type: 3}
