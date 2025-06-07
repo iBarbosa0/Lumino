@@ -11,6 +11,7 @@ public class NoteMinigame : MonoBehaviour
     public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
     public Text gameOverHighscoreText; // Texto para mostrar highscore no Game Over
+    public Text musicVolumePercentageText; // Texto que mostra o volume em %
 
     public Button startButton;       // Botão que inicia o minigame
     public Button backButton;        // Botão que volta ao menu principal
@@ -72,6 +73,12 @@ public class NoteMinigame : MonoBehaviour
         float savedVolume = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
         musicVolumeSlider.value = savedVolume;
         audioSource.volume = savedVolume;
+
+        if (musicVolumePercentageText != null)
+        {
+            int percent = Mathf.RoundToInt(savedVolume * 100f);
+            musicVolumePercentageText.text = Mathf.RoundToInt((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100) + "%";
+        }
 
         // Conecta evento do slider
         musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
@@ -421,6 +428,13 @@ public class NoteMinigame : MonoBehaviour
     {
         audioSource.volume = volume;
         PlayerPrefs.SetFloat(MusicVolumeKey, volume);
+
+        // Atualiza o texto da percentagem
+        if (musicVolumePercentageText != null)
+        {
+            int percent = Mathf.RoundToInt(volume * 100f);
+            musicVolumePercentageText.text = Mathf.RoundToInt((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100) + "%";
+        }
     }
 
     public void OpenSettings()
