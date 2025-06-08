@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class NoteMinigame : MonoBehaviour
 {
-    public Text requestedAmountText; // Texto ao lado da nota verde
     public Text currentTotalText;    // Texto que mostra quanto o jogador já deu
     public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
@@ -33,6 +32,8 @@ public class NoteMinigame : MonoBehaviour
 
     public Slider musicVolumeSlider; // Slider do volume de música
 
+    public Sprite[] requestedSprites; // Ordem: [1, 2, 5, 10, 20]
+
     public int requestedAmount = 20; // Valor pedido pela senhora da caixa (nível 1 = 20)
     private int currentTotal = 0;
     private bool interactionLocked = false;
@@ -46,7 +47,11 @@ public class NoteMinigame : MonoBehaviour
     private AudioSource audioSource;  // Componente AudioSource
 
     public List<int> availableDenominations = new List<int>();
+    public List<Image> requestedAmountImages; // Lista com 3 imagens para mostrar os pedidos
+    private List<int> requestedValues = new List<int>(); // Valores pedidos
     private List<GameObject> currentMoneyItems = new List<GameObject>();
+
+    private int[] possibleRequestedValues = new int[] { 1, 2, 5, 10, 20 };
 
     private const string MusicVolumeKey = "MusicVolume";
     private const string NoteMinigameHighscoreKey = "NoteMinigame_Highscore"; // Chave única para highscore deste minigame
@@ -131,7 +136,9 @@ public class NoteMinigame : MonoBehaviour
     private void StartNewRound()
     {
         notePositions.Clear();
-        requestedAmount = GetAmountBasedOnLevel(currentLevel);
+        UpdateAvailableDenominations(currentLevel);
+        GetMultipleRequestedValues(currentLevel); // Nova lógica com múltiplos itens
+        requestedAmount = requestedValues.Sum(); // Soma dos valores pedidos
         currentTotal = 0;
         interactionLocked = false;
 
@@ -140,6 +147,21 @@ public class NoteMinigame : MonoBehaviour
         feedbackPanel.SetActive(false); // Esconde a mensagem no início
 
         DisplayRandomNotes();
+    }
+
+    private void UpdateAvailableDenominations(int level)
+    {
+        int[] allNotes = { 5, 10, 20 };
+        int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
+
+        availableDenominations = new List<int>(selectedNotes);
+
+        if (level >= 6)
+        {
+            int[] allCoins = { 1, 2 };
+            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
+            availableDenominations.Add(selectedCoin);
+        }
     }
 
     private int GetAmountBasedOnLevel(int level)
@@ -161,17 +183,22 @@ public class NoteMinigame : MonoBehaviour
         // Gera os valores possíveis até 20
         List<int> possibleValues = GeneratePossibleValues(availableDenominations, 20);
 
+        List<int> filteredBySpriteValues = possibleValues
+            .Where(v => possibleRequestedValues.Contains(v))
+            .ToList();
+
         // Filtra por dificuldade
-        List<int> filtered = FilterByLevelDifficulty(possibleValues, level);
+        List<int> filteredByDifficulty = FilterByLevelDifficulty(filteredBySpriteValues, level);
 
         // Evita repetir o mesmo valor da ronda anterior
-        if (lastRequestedAmount != -1 && filtered.Count > 1)
+        if (lastRequestedAmount != -1 && filteredByDifficulty.Count > 1)
         {
-            filtered = filtered.Where(v => v != lastRequestedAmount).ToList();
+            filteredByDifficulty = filteredByDifficulty.Where(v => v != lastRequestedAmount).ToList();
         }
 
-        int selected = filtered[Random.Range(0, filtered.Count)];
+        int selected = filteredByDifficulty[Random.Range(0, filteredByDifficulty.Count)];
         lastRequestedAmount = selected;
+      
         return selected;
     }
 
@@ -229,9 +256,101 @@ public class NoteMinigame : MonoBehaviour
         }
     }
 
+    private void GetMultipleRequestedValues(int level)
+    {
+        int coinCount = 0;
+        int noteCount = 0;
+
+        int totalItemsToRequest = 1;
+        if (level >= 6 && level <= 10) totalItemsToRequest = 2;
+        if (level >= 11) totalItemsToRequest = 3;
+
+        var availableCoins = availableDenominations.Where(d => d == 1 || d == 2).ToList();
+        var availableNotes = availableDenominations.Where(d => d >= 5).ToList();
+
+        if (availableCoins.Count == 0) availableCoins = new List<int>() { 1, 2 };
+        if (availableNotes.Count == 0) availableNotes = new List<int>() { 5, 10, 20 };
+
+        switch (totalItemsToRequest)
+        {
+            case 1:
+                if (Random.value > 0.5f && availableCoins.Count > 0)
+                    coinCount = 1;
+                else
+                    noteCount = 1;
+                break;
+
+            case 2:
+                float choice = Random.value;
+                if (choice < 0.33f && availableCoins.Count >= 2)
+                    coinCount = 2;
+                else if (choice < 0.66f && availableNotes.Count >= 2)
+                    noteCount = 2;
+                else
+                {
+                    coinCount = 1;
+                    noteCount = 1;
+                }
+                break;
+
+            case 3:
+                float choice2 = Random.value;
+                if (choice2 < 0.33f && availableCoins.Count >= 2)
+                {
+                    coinCount = 2;
+                    noteCount = 1;
+                }
+                else if (choice2 < 0.66f && availableNotes.Count >= 2)
+                {
+                    coinCount = 1;
+                    noteCount = 2;
+                }
+                else
+                {
+                    noteCount = 3;
+                }
+                break;
+        }
+
+        requestedValues.Clear();
+
+        for (int i = 0; i < coinCount; i++)
+            requestedValues.Add(availableCoins[Random.Range(0, availableCoins.Count)]);
+
+        for (int i = 0; i < noteCount; i++)
+            requestedValues.Add(availableNotes[Random.Range(0, availableNotes.Count)]);
+
+        UpdateRequestedSprites(requestedValues);
+    }
+
+    private void UpdateRequestedSprites(List<int> values)
+    {
+        for (int i = 0; i < requestedAmountImages.Count; i++)
+        {
+            if (i < values.Count)
+            {
+                int value = values[i];
+                requestedAmountImages[i].enabled = true;
+
+                switch (value)
+                {
+                    case 1: requestedAmountImages[i].sprite = requestedSprites[0]; break;
+                    case 2: requestedAmountImages[i].sprite = requestedSprites[1]; break;
+                    case 5: requestedAmountImages[i].sprite = requestedSprites[2]; break;
+                    case 10: requestedAmountImages[i].sprite = requestedSprites[3]; break;
+                    case 20: requestedAmountImages[i].sprite = requestedSprites[4]; break;
+                    default: requestedAmountImages[i].enabled = false; break;
+                }
+            }
+            else
+            {
+                requestedAmountImages[i].enabled = false;
+            }
+        }
+    }
+
     private void UpdateUI()
     {
-        requestedAmountText.text = requestedAmount.ToString();
         currentTotalText.text = "Total dado: " + currentTotal.ToString();
     }
 
@@ -366,7 +485,6 @@ public class NoteMinigame : MonoBehaviour
             default: return null;
         }
     }
-
 
     public void SetMusicVolume(float volume)
     {
