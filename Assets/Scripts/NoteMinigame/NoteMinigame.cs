@@ -10,16 +10,12 @@ public class NoteMinigame : MonoBehaviour
     public Text currentTotalText;    // Texto que mostra quanto o jogador já deu
     public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
-    public Text gameOverHighscoreText; // Texto para mostrar highscore no Game Over
     public Text musicVolumePercentageText; // Texto que mostra o volume em %
 
     public Button startButton;       // Botão que inicia o minigame
     public Button backButton;        // Botão que volta ao menu principal
-    public Button validateButton;    // Botão para confirmar total
-    public Button resetButton;       // Botão para reiniciar total
-    public Button retryButton;       // Botão "Tentar outra vez"
-    public Button quitButton;        // Botão "sair"
-    
+
+
     public Transform leftNoteSlot;
     public Transform rightNoteSlot;
     public Transform coin1Slot;
@@ -34,7 +30,6 @@ public class NoteMinigame : MonoBehaviour
     public GameObject feedbackPanel;
     public GameObject mainMenuPanel; // Painel do menu principal
     public GameObject settingsPanel; // Painel de configurações
-    public GameObject gameOverPanel; // Painel Game Over
 
     public Slider musicVolumeSlider; // Slider do volume de música
 
@@ -44,7 +39,6 @@ public class NoteMinigame : MonoBehaviour
 
     private int currentLevel = 1;
     private int lastRequestedAmount = -1;
-    private int highscore = 1;        // maior nível alcançado
 
     public AudioClip correctSound;    // Som de acerto
     public AudioClip wrongSound;      // Som de erro
@@ -68,7 +62,7 @@ public class NoteMinigame : MonoBehaviour
         audioSource.playOnAwake = false;
 
         audioSource.Play();
-                                                       
+
         // Carrega volume salvo e aplica
         float savedVolume = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
         musicVolumeSlider.value = savedVolume;
@@ -83,21 +77,6 @@ public class NoteMinigame : MonoBehaviour
         // Conecta evento do slider
         musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
 
-        // Carrega o highscore salvo com a chave exclusiva
-        highscore = PlayerPrefs.GetInt(NoteMinigameHighscoreKey, 1);
-
-        // Conecta os botões do Game Over
-        if (retryButton != null)
-        {
-            retryButton.onClick.AddListener(RetryLevel);
-        }
-
-        if (quitButton != null)
-        {
-            quitButton.onClick.AddListener(QuitToMenu);
-        }
-
-        gameOverPanel.SetActive(false); // Inicalmente o painel de game over deve estar inativado
         mainMenuPanel.SetActive(true); // Mostra o menu
     }
 
@@ -114,9 +93,6 @@ public class NoteMinigame : MonoBehaviour
         currentTotal += value;
         UpdateUI();
 
-        // Ativa botões ao adicionar nota
-        validateButton.interactable = true;
-        resetButton.interactable = true;
         feedbackPanel.SetActive(false); // Oculta mensagem até validação
     }
 
@@ -124,8 +100,6 @@ public class NoteMinigame : MonoBehaviour
     {
         if (interactionLocked) return;
 
-        validateButton.interactable = false;
-        resetButton.interactable = false;
         interactionLocked = true;
 
         if (currentTotal == requestedAmount)
@@ -150,9 +124,6 @@ public class NoteMinigame : MonoBehaviour
         UpdateUI();
         feedbackPanel.SetActive(false);
 
-        validateButton.interactable = false;
-        resetButton.interactable = false;
-
         // Recria as notas
         DisplayRandomNotes();
     }
@@ -167,9 +138,6 @@ public class NoteMinigame : MonoBehaviour
         UpdateUI();
         UpdateLevelUI(); // Atualiza o texto do nível
         feedbackPanel.SetActive(false); // Esconde a mensagem no início
-
-        validateButton.interactable = false;
-        resetButton.interactable = false;
 
         DisplayRandomNotes();
     }
@@ -293,13 +261,6 @@ public class NoteMinigame : MonoBehaviour
         yield return new WaitForSeconds(2f);
         currentLevel++;
 
-        // Atualiza o highscore
-        if (currentLevel > highscore)
-        {
-            highscore = currentLevel;
-            PlayerPrefs.SetInt(NoteMinigameHighscoreKey, highscore);
-        }
-
         StartNewRound();
     }
 
@@ -312,16 +273,6 @@ public class NoteMinigame : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
-
-        // Mostra painel game over
-        feedbackPanel.SetActive(false);
-        gameOverPanel.SetActive(true);
-
-        // Mostra o highscore no painel
-        if (gameOverHighscoreText != null)
-        {
-            gameOverHighscoreText.text = "Pontuação Máxima " + highscore.ToString();
-        }
     }
 
     private IEnumerator ShowTemporaryMessage(string message, Color color, float duration)
@@ -329,20 +280,13 @@ public class NoteMinigame : MonoBehaviour
         ShowMessage(message, color);
         if (wrongSound != null)
         {
-            audioSource.PlayOneShot(wrongSound);    
+            audioSource.PlayOneShot(wrongSound);
         }
 
         yield return new WaitForSeconds(duration);
         feedbackPanel.SetActive(false);
 
         interactionLocked = false;
-
-        // Reativa os botões se o jogador já tiver dado algo
-        if (currentTotal > 0)
-        {
-            validateButton.interactable = true;
-            resetButton.interactable = true;
-        }
     }
 
     private void DisplayRandomNotes()
@@ -411,7 +355,7 @@ public class NoteMinigame : MonoBehaviour
             case 20: return note20Prefab;
             default: return null;
         }
-    }      
+    }
 
     private GameObject GetCoinPrefab(int value)
     {
@@ -419,7 +363,7 @@ public class NoteMinigame : MonoBehaviour
         {
             case 1: return coin1Prefab;
             case 2: return coin2Prefab;
-            default : return null;
+            default: return null;
         }
     }
 
@@ -449,9 +393,6 @@ public class NoteMinigame : MonoBehaviour
 
     public void RetryLevel()
     {
-        // Esconde o painel game over
-        gameOverPanel.SetActive(false);
-
         // Mantém o nível atual e reinicia a rodada
         currentTotal = 0;
         interactionLocked = false;
@@ -459,18 +400,11 @@ public class NoteMinigame : MonoBehaviour
         UpdateUI();
         feedbackPanel.SetActive(false);
 
-        validateButton.interactable = false;
-        resetButton.interactable = false;
-
         StartNewRound();
     }
 
     public void QuitToMenu()
     {
-        // Esconde o game over e mostra o menu principal
-        gameOverPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
-
         // Resetar o estado do minigame para o ínicio
         currentLevel = 1;
         currentTotal = 0;
@@ -478,9 +412,6 @@ public class NoteMinigame : MonoBehaviour
 
         UpdateUI();
         feedbackPanel.SetActive(false);
-
-        validateButton.interactable = false;
-        resetButton.interactable = false;
     }
 
     public void ReceberNota(int valor)
@@ -490,8 +421,6 @@ public class NoteMinigame : MonoBehaviour
         currentTotal += valor;
         UpdateUI();
 
-        validateButton.interactable = true;
-        resetButton.interactable = true;
         feedbackPanel.SetActive(false); // Esconde mensagem até validação
     }
 }

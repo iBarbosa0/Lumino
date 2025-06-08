@@ -196,6 +196,12 @@ public class XylophoneMinigame : MonoBehaviour
     IEnumerator ShowFeedback(Sprite spriteToShow, bool nextLevel, bool retryLevel = false)
     {
         FeedbackImage.sprite = spriteToShow;
+
+        if (spriteToShow == CorrectSprite)
+        {
+            FeedbackImage.color = new Color(1f, 1f, 1f, 0f); // Deixa o sprite de acerto invisível
+        }
+
         FeedbackImage.gameObject.SetActive(true);
 
         // Toca o som correto
