@@ -469,32 +469,23 @@ public class NoteMinigame : MonoBehaviour
         var noteValues = availableDenominations.Where(v => v >= 5).ToList();
         var coinValues = availableDenominations.Where(v => v == 1 || v == 2).ToList();
 
-        if (notePositions.Count == 0 && (noteValues.Count > 0 || coinValues.Count > 0))
+        if (notePositions.Count == 0 && noteValues.Count > 0)
         {
             notePositions.Clear();
-
             bool shuffle = Random.value > 0.5f;
 
-            if (noteValues.Count > 0)
+            if (noteValues.Count >= 2)
             {
-                if (noteValues.Count >= 2)
-                {
-                    notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
-                    notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
-                }
-                else
-                {
-                    notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
-                }
+                notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
+                notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
             }
-            else if (coinValues.Count > 0)
+            else if (noteValues.Count == 1)
             {
-                if (coinValues.Contains(1)) notePositions[1] = coin1Slot;
-                if (coinValues.Contains(2)) notePositions[2] = coin2Slot;
+                notePositions[noteValues[0]] = leftNoteSlot;
             }
         }
 
-        // Instancia notas (se disponíveis)
+        // Mostra notas se disponíveis
         foreach (var noteValue in noteValues)
         {
             GameObject prefab = GetNotePrefab(noteValue);
@@ -507,19 +498,38 @@ public class NoteMinigame : MonoBehaviour
             }
         }
 
-        // Instancia moedas (se disponíveis)
-        if (coinValues.Contains(1) && coin1Slot != null && coin1Prefab != null)
+        // Níveis 1-5: mostrar apenas 1 moeda aleatória
+        if (currentLevel <= 5)
         {
-            GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
-            coin1Instance.transform.localPosition = Vector3.zero;
-            currentMoneyItems.Add(coin1Instance);
-        }
+            int[] allCoins = { 1, 2 };
+            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
 
-        if (coinValues.Contains(2) && coin2Slot != null && coin2Prefab != null)
+            Transform coinSlot = selectedCoin == 1 ? coin1Slot : coin2Slot;
+            GameObject coinPrefab = selectedCoin == 1 ? coin1Prefab : coin2Prefab;
+
+            if (coinSlot != null && coinPrefab != null)
+            {
+                GameObject instance = Instantiate(coinPrefab, coinSlot);
+                instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(instance);
+            }
+        }
+        else
         {
-            GameObject coin2Instance = Instantiate(coin2Prefab, coin2Slot);
-            coin2Instance.transform.localPosition = Vector3.zero;
-            currentMoneyItems.Add(coin2Instance);
+            // Níveis 6+: mostrar moedas com base nas denominações visíveis
+            if (coinValues.Contains(1) && coin1Slot != null && coin1Prefab != null)
+            {
+                GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
+                coin1Instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(coin1Instance);
+            }
+
+            if (coinValues.Contains(2) && coin2Slot != null && coin2Prefab != null)
+            {
+                GameObject coin2Instance = Instantiate(coin2Prefab, coin2Slot);
+                coin2Instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(coin2Instance);
+            }
         }
     }
 
