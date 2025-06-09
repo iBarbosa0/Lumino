@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chocolati_0: -9102676408463912289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
