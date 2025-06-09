@@ -7,6 +7,7 @@ public class DraggableNote : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Vector3 startLocalPosition;
     private RectTransform parentRectTransform;
     private CanvasGroup canvasGroup;
+    private NoteMinigame noteMinigame; // Referência ao script principal
 
     private bool isClone = false;
 
@@ -18,6 +19,17 @@ public class DraggableNote : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        // Procura o objeto com o NoteMinigame
+        GameObject gameManager = GameObject.Find("GameManager"); // Ou o nome do objeto com o script
+        if (gameManager != null)
+        {
+            noteMinigame = gameManager.GetComponent<NoteMinigame>();
+        }
+        else
+        {
+            Debug.LogError("NoteMinigame não encontrado!");
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -58,9 +70,30 @@ public class DraggableNote : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         canvasGroup.blocksRaycasts = true;
 
-        // Se não estiver sobre uma dropzone, volta para a posição original
-        if (eventData.pointerEnter == null || !eventData.pointerEnter.CompareTag("DropZone"))
+        if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("DropZone"))
         {
+            // Confirma o valor assim que larga na DropZone
+            if (noteMinigame != null)
+            {
+                noteMinigame.ReceberNota(noteValue); // Envia o valor para o jogo validar
+            }
+            else
+            {
+                Debug.LogWarning("NoteMinigame não encontrado ao largar!");
+            }
+
+            if (isClone)
+            {
+                Destroy(gameObject); // Destroi o clone
+            }
+            else
+            {
+                transform.localPosition = startLocalPosition; // Reseta posição
+            }
+        }
+        else
+        {
+            // Volta para posição original se não estiver na DropZone
             if (isClone)
             {
                 Destroy(gameObject);

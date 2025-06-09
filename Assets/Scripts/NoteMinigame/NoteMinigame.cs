@@ -54,9 +54,11 @@ public class NoteMinigame : MonoBehaviour
     private int[] possibleRequestedValues = new int[] { 1, 2, 5, 10, 20 };
 
     private const string MusicVolumeKey = "MusicVolume";
-    private const string NoteMinigameHighscoreKey = "NoteMinigame_Highscore"; // Chave única para highscore deste minigame
 
     private Dictionary<int, Transform> notePositions = new Dictionary<int, Transform>();
+
+    public GameObject feedbackCheck; // ✓ Sprite por cima do dinheiro
+    private bool isCheckActive = false;
 
     private void Start()
     {
@@ -109,14 +111,17 @@ public class NoteMinigame : MonoBehaviour
 
         if (currentTotal == requestedAmount)
         {
+            ShowCheck(); // Motra o check
             StartCoroutine(HandleCorrectAnswer());
         }
         else if (currentTotal > requestedAmount)
         {
+            HideCheck(); // Esconde o check se for errado
             StartCoroutine(HandleWrongAnswer());
         }
         else
         {
+            HideCheck(); // Esconde o check se for "ainda falta"
             StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
         }
     }
@@ -145,43 +150,45 @@ public class NoteMinigame : MonoBehaviour
         UpdateUI();
         UpdateLevelUI(); // Atualiza o texto do nível
         feedbackPanel.SetActive(false); // Esconde a mensagem no início
-
+        HideCheck(); // Esconde o check no início da nova ronda
         DisplayRandomNotes();
     }
 
     private void UpdateAvailableDenominations(int level)
     {
-        int[] allNotes = { 5, 10, 20 };
-        int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
+        int[] allCoins = { 1, 2 };
 
-        availableDenominations = new List<int>(selectedNotes);
-
-        if (level >= 6)
+        // Níveis 1 a 5 → apenas moedas
+        if (level <= 5)
         {
-            int[] allCoins = { 1, 2 };
-            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
-            availableDenominations.Add(selectedCoin);
+            availableDenominations = new List<int>(allCoins);
+        }
+
+        // Níveis 6+ → moedas + notas
+        else
+        {
+            int[] allNotes = { 5, 10, 20 };
+            int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
+
+            availableDenominations = new List<int>(selectedNotes);
+            availableDenominations.Add(allCoins[Random.Range(0, allCoins.Length)]);
         }
     }
 
     private int GetAmountBasedOnLevel(int level)
     {
-        int[] allNotes = { 5, 10, 20 };
-        int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
+        List<int> possibleValues;
 
-        // Começa apenas com notas
-        availableDenominations = new List<int>(selectedNotes);
-
-        // A partir do nível 6, começa a introduzir moedas
-        if (level >= 6)
+        if (level <= 5)
         {
-            int[] allCoins = { 1, 2 };
-            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
-            availableDenominations.Add(selectedCoin);
+            // Só usa moedas
+            possibleValues = GeneratePossibleValues(new List<int>() { 1, 2 }, 20);
         }
-
-        // Gera os valores possíveis até 20
-        List<int> possibleValues = GeneratePossibleValues(availableDenominations, 20);
+        else
+        {
+            // Usa moedas e notas disponíveis
+            possibleValues = GeneratePossibleValues(availableDenominations, 20);
+        }
 
         List<int> filteredBySpriteValues = possibleValues
             .Where(v => possibleRequestedValues.Contains(v))
@@ -198,7 +205,7 @@ public class NoteMinigame : MonoBehaviour
 
         int selected = filteredByDifficulty[Random.Range(0, filteredByDifficulty.Count)];
         lastRequestedAmount = selected;
-      
+
         return selected;
     }
 
@@ -269,45 +276,71 @@ public class NoteMinigame : MonoBehaviour
         var availableNotes = availableDenominations.Where(d => d >= 5).ToList();
 
         if (availableCoins.Count == 0) availableCoins = new List<int>() { 1, 2 };
-        if (availableNotes.Count == 0) availableNotes = new List<int>() { 5, 10, 20 };
+        if (availableNotes.Count == 0 && level >= 6) availableNotes = new List<int>() { 5, 10, 20 };
 
         switch (totalItemsToRequest)
         {
             case 1:
-                if (Random.value > 0.5f && availableCoins.Count > 0)
-                    coinCount = 1;
+                if (level <= 5)
+                {
+                    coinCount = 1; // Apenas moedas nos primeiros níveis
+                }
                 else
-                    noteCount = 1;
+                {
+                    float choice = Random.value;
+                    if (choice < 0.5f && availableCoins.Count > 0)
+                    {
+                        coinCount = 1;
+                    }
+                    else
+                    {
+                        noteCount = 1;
+                    }
+                }
                 break;
 
             case 2:
-                float choice = Random.value;
-                if (choice < 0.33f && availableCoins.Count >= 2)
-                    coinCount = 2;
-                else if (choice < 0.66f && availableNotes.Count >= 2)
-                    noteCount = 2;
+                if (level <= 5)
+                {
+                    coinCount = 2; // Apenas moedas até ao nível 5
+                }
                 else
                 {
-                    coinCount = 1;
-                    noteCount = 1;
+                    float choice = Random.value;
+                    if (choice < 0.33f && availableCoins.Count >= 2)
+                    {
+                        coinCount = 2;
+                    }
+                    else if (choice < 0.66f && availableNotes.Count >= 2)
+                    {
+                        noteCount = 2;
+                    }
+                    else
+                    {
+                        coinCount = 1;
+                        noteCount = 1;
+                    }
                 }
                 break;
 
             case 3:
-                float choice2 = Random.value;
-                if (choice2 < 0.33f && availableCoins.Count >= 2)
+                if (level >= 6)
                 {
-                    coinCount = 2;
-                    noteCount = 1;
-                }
-                else if (choice2 < 0.66f && availableNotes.Count >= 2)
-                {
-                    coinCount = 1;
-                    noteCount = 2;
-                }
-                else
-                {
-                    noteCount = 3;
+                    float choice = Random.value;
+                    if (choice < 0.33f && availableCoins.Count >= 2)
+                    {
+                        coinCount = 2;
+                        noteCount = 1;
+                    }
+                    else if (choice < 0.66f && availableNotes.Count >= 2)
+                    {
+                        coinCount = 1;
+                        noteCount = 2;
+                    }
+                    else
+                    {
+                        noteCount = 3;
+                    }
                 }
                 break;
         }
@@ -371,31 +404,47 @@ public class NoteMinigame : MonoBehaviour
 
     private IEnumerator HandleCorrectAnswer()
     {
+        ShowCheck(); // Mostra o check imediatamente
+
+        yield return new WaitForSeconds(0.5f); // Pequeno delay antes da mensagem
+
         ShowMessage("Certo! Pagamento concluído.", Color.green);
+
         if (correctSound != null)
         {
             audioSource.PlayOneShot(correctSound);
         }
 
-        yield return new WaitForSeconds(2f);
-        currentLevel++;
+        yield return new WaitForSeconds(1.5f); // Tempo restante para totalizar os 2 segundos
 
+        currentLevel++;
         StartNewRound();
     }
 
     private IEnumerator HandleWrongAnswer()
     {
+        HideCheck(); // Garante que o check some
+
         ShowMessage("Ups! Deste dinheiro a mais.", Color.red);
+
         if (wrongSound != null)
         {
             audioSource.PlayOneShot(wrongSound);
         }
 
         yield return new WaitForSeconds(2f);
+
+        currentTotal = 0;
+        interactionLocked = false;
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+        DisplayRandomNotes();
     }
 
     private IEnumerator ShowTemporaryMessage(string message, Color color, float duration)
     {
+        HideCheck(); // Garante que o check some
+
         ShowMessage(message, color);
         if (wrongSound != null)
         {
@@ -403,8 +452,8 @@ public class NoteMinigame : MonoBehaviour
         }
 
         yield return new WaitForSeconds(duration);
-        feedbackPanel.SetActive(false);
 
+        feedbackPanel.SetActive(false);
         interactionLocked = false;
     }
 
@@ -417,26 +466,35 @@ public class NoteMinigame : MonoBehaviour
         }
         currentMoneyItems.Clear();
 
-        // Pega apenas notas (>= 5)
         var noteValues = availableDenominations.Where(v => v >= 5).ToList();
+        var coinValues = availableDenominations.Where(v => v == 1 || v == 2).ToList();
 
-        if (noteValues.Count != 2)
-        {
-            Debug.LogWarning("Esperado 2 notas para mostrar");
-            return;
-        }
-
-        // Se for a primeira vez nesta ronda, define a posição original:
-        if (notePositions.Count == 0)
+        if (notePositions.Count == 0 && (noteValues.Count > 0 || coinValues.Count > 0))
         {
             notePositions.Clear();
-            // aleatoriamente atribui nota ao slot esquerdo ou direito só uma vez
+
             bool shuffle = Random.value > 0.5f;
-            notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
-            notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
+
+            if (noteValues.Count > 0)
+            {
+                if (noteValues.Count >= 2)
+                {
+                    notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
+                    notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
+                }
+                else
+                {
+                    notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
+                }
+            }
+            else if (coinValues.Count > 0)
+            {
+                if (coinValues.Contains(1)) notePositions[1] = coin1Slot;
+                if (coinValues.Contains(2)) notePositions[2] = coin2Slot;
+            }
         }
 
-        // Para cada nota, instancia-a na posição original
+        // Instancia notas (se disponíveis)
         foreach (var noteValue in noteValues)
         {
             GameObject prefab = GetNotePrefab(noteValue);
@@ -450,14 +508,14 @@ public class NoteMinigame : MonoBehaviour
         }
 
         // Instancia moedas (se disponíveis)
-        if (availableDenominations.Contains(1) && coin1Slot != null && coin1Prefab != null)
+        if (coinValues.Contains(1) && coin1Slot != null && coin1Prefab != null)
         {
             GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
             coin1Instance.transform.localPosition = Vector3.zero;
             currentMoneyItems.Add(coin1Instance);
         }
 
-        if (availableDenominations.Contains(2) && coin2Slot != null && coin2Prefab != null)
+        if (coinValues.Contains(2) && coin2Slot != null && coin2Prefab != null)
         {
             GameObject coin2Instance = Instantiate(coin2Prefab, coin2Slot);
             coin2Instance.transform.localPosition = Vector3.zero;
@@ -540,5 +598,39 @@ public class NoteMinigame : MonoBehaviour
         UpdateUI();
 
         feedbackPanel.SetActive(false); // Esconde mensagem até validação
+
+        if (currentTotal == requestedAmount)
+        {
+            ShowCheck(); // Mostra o check imediatamente após largar a nota correta
+            StartCoroutine(HandleCorrectAnswer());
+        }
+        else if (currentTotal > requestedAmount)
+        {
+            HideCheck(); // Garante que o check some
+            StartCoroutine(HandleWrongAnswer());
+        }
+        else
+        {
+            HideCheck();
+            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
+        }
+    }
+
+    private void ShowCheck()
+    {
+        if (feedbackCheck != null)
+        {
+            feedbackCheck.SetActive(true);
+            isCheckActive = true;
+        }
+    }
+
+    private void HideCheck()
+    {
+        if (isCheckActive && feedbackCheck != null)
+        {
+            feedbackCheck.SetActive(false);
+            isCheckActive = false;
+        }
     }
 }
