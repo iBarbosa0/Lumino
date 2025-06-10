@@ -1,0 +1,646 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class NoteMinigame : MonoBehaviour
+{
+    public Text currentTotalText;    // Texto que mostra quanto o jogador já deu
+    public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
+    public Text levelText;           // Texto para mostrar o nível atual
+    public Text musicVolumePercentageText; // Texto que mostra o volume em %
+
+    public Button startButton;       // Botão que inicia o minigame
+    public Button backButton;        // Botão que volta ao menu principal
+
+
+    public Transform leftNoteSlot;
+    public Transform rightNoteSlot;
+    public Transform coin1Slot;
+    public Transform coin2Slot;
+
+    public GameObject coin1Prefab;
+    public GameObject coin2Prefab;
+    public GameObject note5Prefab;
+    public GameObject note10Prefab;
+    public GameObject note20Prefab;
+
+    public GameObject feedbackPanel;
+    public GameObject mainMenuPanel; // Painel do menu principal
+    public GameObject settingsPanel; // Painel de configurações
+
+    public Slider musicVolumeSlider; // Slider do volume de música
+
+    public Sprite[] requestedSprites; // Ordem: [1, 2, 5, 10, 20]
+
+    public int requestedAmount = 20; // Valor pedido pela senhora da caixa (nível 1 = 20)
+    private int currentTotal = 0;
+    private bool interactionLocked = false;
+
+    private int currentLevel = 1;
+    private int lastRequestedAmount = -1;
+
+    public AudioClip correctSound;    // Som de acerto
+    public AudioClip wrongSound;      // Som de erro
+    public AudioClip backgroundMusic; // Música de fundo
+    private AudioSource audioSource;  // Componente AudioSource
+
+    public List<int> availableDenominations = new List<int>();
+    public List<Image> requestedAmountImages; // Lista com 3 imagens para mostrar os pedidos
+    private List<int> requestedValues = new List<int>(); // Valores pedidos
+    private List<GameObject> currentMoneyItems = new List<GameObject>();
+
+    private int[] possibleRequestedValues = new int[] { 1, 2, 5, 10, 20 };
+
+    private const string MusicVolumeKey = "MusicVolume";
+
+    private Dictionary<int, Transform> notePositions = new Dictionary<int, Transform>();
+
+    public GameObject feedbackCheck; // ✓ Sprite por cima do dinheiro
+    private bool isCheckActive = false;
+
+    private void Start()
+    {
+        // Configuração AudioSource
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true;      // Faz a música tocar em loop
+        audioSource.playOnAwake = false;
+
+        audioSource.Play();
+
+        // Carrega volume salvo e aplica
+        float savedVolume = PlayerPrefs.GetFloat(MusicVolumeKey, 0.5f);
+        musicVolumeSlider.value = savedVolume;
+        audioSource.volume = savedVolume;
+
+        if (musicVolumePercentageText != null)
+        {
+            int percent = Mathf.RoundToInt(savedVolume * 100f);
+            musicVolumePercentageText.text = Mathf.RoundToInt((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100) + "%";
+        }
+
+        // Conecta evento do slider
+        musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
+
+        mainMenuPanel.SetActive(true); // Mostra o menu
+    }
+
+    public void StartMinigame()
+    {
+        mainMenuPanel.SetActive(false); // Esconde o menu
+        StartNewRound();               // Inicia o jogo
+    }
+
+    public void AddNoteValue(int value)
+    {
+        if (interactionLocked) return;
+
+        currentTotal += value;
+        UpdateUI();
+
+        feedbackPanel.SetActive(false); // Oculta mensagem até validação
+    }
+
+    public void OnValidPressed()
+    {
+        if (interactionLocked) return;
+
+        interactionLocked = true;
+
+        if (currentTotal == requestedAmount)
+        {
+            ShowCheck(); // Motra o check
+            StartCoroutine(HandleCorrectAnswer());
+        }
+        else if (currentTotal > requestedAmount)
+        {
+            HideCheck(); // Esconde o check se for errado
+            StartCoroutine(HandleWrongAnswer());
+        }
+        else
+        {
+            HideCheck(); // Esconde o check se for "ainda falta"
+            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
+        }
+    }
+
+    public void OnResetPressed()
+    {
+        if (interactionLocked) return;
+
+        currentTotal = 0;
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+
+        // Recria as notas
+        DisplayRandomNotes();
+    }
+
+    private void StartNewRound()
+    {
+        notePositions.Clear();
+        UpdateAvailableDenominations(currentLevel);
+        GetMultipleRequestedValues(currentLevel); // Nova lógica com múltiplos itens
+        requestedAmount = requestedValues.Sum(); // Soma dos valores pedidos
+        currentTotal = 0;
+        interactionLocked = false;
+
+        UpdateUI();
+        UpdateLevelUI(); // Atualiza o texto do nível
+        feedbackPanel.SetActive(false); // Esconde a mensagem no início
+        HideCheck(); // Esconde o check no início da nova ronda
+        DisplayRandomNotes();
+    }
+
+    private void UpdateAvailableDenominations(int level)
+    {
+        int[] allCoins = { 1, 2 };
+
+        // Níveis 1 a 5 → apenas moedas
+        if (level <= 5)
+        {
+            availableDenominations = new List<int>(allCoins);
+        }
+
+        // Níveis 6+ → moedas + notas
+        else
+        {
+            int[] allNotes = { 5, 10, 20 };
+            int[] selectedNotes = allNotes.OrderBy(x => Random.value).Take(2).ToArray();
+
+            availableDenominations = new List<int>(selectedNotes);
+            availableDenominations.Add(allCoins[Random.Range(0, allCoins.Length)]);
+        }
+    }
+
+    private int GetAmountBasedOnLevel(int level)
+    {
+        List<int> possibleValues;
+
+        if (level <= 5)
+        {
+            // Só usa moedas
+            possibleValues = GeneratePossibleValues(new List<int>() { 1, 2 }, 20);
+        }
+        else
+        {
+            // Usa moedas e notas disponíveis
+            possibleValues = GeneratePossibleValues(availableDenominations, 20);
+        }
+
+        List<int> filteredBySpriteValues = possibleValues
+            .Where(v => possibleRequestedValues.Contains(v))
+            .ToList();
+
+        // Filtra por dificuldade
+        List<int> filteredByDifficulty = FilterByLevelDifficulty(filteredBySpriteValues, level);
+
+        // Evita repetir o mesmo valor da ronda anterior
+        if (lastRequestedAmount != -1 && filteredByDifficulty.Count > 1)
+        {
+            filteredByDifficulty = filteredByDifficulty.Where(v => v != lastRequestedAmount).ToList();
+        }
+
+        int selected = filteredByDifficulty[Random.Range(0, filteredByDifficulty.Count)];
+        lastRequestedAmount = selected;
+
+        return selected;
+    }
+
+    private List<int> GeneratePossibleValues(List<int> denominations, int max)
+    {
+        HashSet<int> values = new HashSet<int>();
+
+        int count = denominations.Count;
+        if (count == 0) return values.ToList(); // Evita erros se lista estiver vazia
+
+        // Limite prático de combinações por denominação
+        int limit = 10;
+
+        // Gera todas as combinações possíveis com base no número de denominações
+        void Recurse(int index, int currentSum)
+        {
+            if (index >= count)
+            {
+                if (currentSum > 0 && currentSum <= max)
+                {
+                    values.Add(currentSum);
+                }
+                return;
+            }
+
+            for (int i = 0; i <= limit; i++)
+            {
+                int nextSum = currentSum + i * denominations[index];
+                if (nextSum > max) break;
+                Recurse(index + 1, nextSum);
+            }
+        }
+
+        Recurse(0, 0);
+        return values.ToList();
+    }
+
+    private List<int> FilterByLevelDifficulty(List<int> values, int level)
+    {
+        if (level <= 5)
+        {
+            return values.Where(v => v >= 3 && v <= 10).ToList();
+        }
+        else if (level <= 10)
+        {
+            return values.Where(v => v >= 11 && v <= 15).ToList();
+        }
+        else if (level <= 15)
+        {
+            return values.Where(v => v >= 16 && v <= 19).ToList();
+        }
+        else
+        {
+            return values.Where(v => new int[] { 2, 3, 5, 7, 9, 11, 13, 17, 19, 20 }.Contains(v)).ToList();
+        }
+    }
+
+    private void GetMultipleRequestedValues(int level)
+    {
+        int coinCount = 0;
+        int noteCount = 0;
+
+        int totalItemsToRequest = 1;
+        if (level >= 6 && level <= 10) totalItemsToRequest = 2;
+        if (level >= 11) totalItemsToRequest = 3;
+
+        var availableCoins = availableDenominations.Where(d => d == 1 || d == 2).ToList();
+        var availableNotes = availableDenominations.Where(d => d >= 5).ToList();
+
+        if (availableCoins.Count == 0) availableCoins = new List<int>() { 1, 2 };
+        if (availableNotes.Count == 0 && level >= 6) availableNotes = new List<int>() { 5, 10, 20 };
+
+        switch (totalItemsToRequest)
+        {
+            case 1:
+                if (level <= 5)
+                {
+                    coinCount = 1; // Apenas moedas nos primeiros níveis
+                }
+                else
+                {
+                    float choice = Random.value;
+                    if (choice < 0.5f && availableCoins.Count > 0)
+                    {
+                        coinCount = 1;
+                    }
+                    else
+                    {
+                        noteCount = 1;
+                    }
+                }
+                break;
+
+            case 2:
+                if (level <= 5)
+                {
+                    coinCount = 2; // Apenas moedas até ao nível 5
+                }
+                else
+                {
+                    float choice = Random.value;
+                    if (choice < 0.33f && availableCoins.Count >= 2)
+                    {
+                        coinCount = 2;
+                    }
+                    else if (choice < 0.66f && availableNotes.Count >= 2)
+                    {
+                        noteCount = 2;
+                    }
+                    else
+                    {
+                        coinCount = 1;
+                        noteCount = 1;
+                    }
+                }
+                break;
+
+            case 3:
+                if (level >= 6)
+                {
+                    float choice = Random.value;
+                    if (choice < 0.33f && availableCoins.Count >= 2)
+                    {
+                        coinCount = 2;
+                        noteCount = 1;
+                    }
+                    else if (choice < 0.66f && availableNotes.Count >= 2)
+                    {
+                        coinCount = 1;
+                        noteCount = 2;
+                    }
+                    else
+                    {
+                        noteCount = 3;
+                    }
+                }
+                break;
+        }
+
+        requestedValues.Clear();
+
+        for (int i = 0; i < coinCount; i++)
+            requestedValues.Add(availableCoins[Random.Range(0, availableCoins.Count)]);
+
+        for (int i = 0; i < noteCount; i++)
+            requestedValues.Add(availableNotes[Random.Range(0, availableNotes.Count)]);
+
+        UpdateRequestedSprites(requestedValues);
+    }
+
+    private void UpdateRequestedSprites(List<int> values)
+    {
+        for (int i = 0; i < requestedAmountImages.Count; i++)
+        {
+            if (i < values.Count)
+            {
+                int value = values[i];
+                requestedAmountImages[i].enabled = true;
+
+                switch (value)
+                {
+                    case 1: requestedAmountImages[i].sprite = requestedSprites[0]; break;
+                    case 2: requestedAmountImages[i].sprite = requestedSprites[1]; break;
+                    case 5: requestedAmountImages[i].sprite = requestedSprites[2]; break;
+                    case 10: requestedAmountImages[i].sprite = requestedSprites[3]; break;
+                    case 20: requestedAmountImages[i].sprite = requestedSprites[4]; break;
+                    default: requestedAmountImages[i].enabled = false; break;
+                }
+            }
+            else
+            {
+                requestedAmountImages[i].enabled = false;
+            }
+        }
+    }
+
+    private void UpdateUI()
+    {
+        currentTotalText.text = "Total dado: " + currentTotal.ToString();
+    }
+
+    private void UpdateLevelUI()
+    {
+        if (levelText != null)
+        {
+            levelText.text = "Nível: " + currentLevel.ToString();
+        }
+    }
+
+    private void ShowMessage(string message, Color color)
+    {
+        messageText.text = message;
+        messageText.color = color;
+        feedbackPanel.SetActive(true);
+    }
+
+    private IEnumerator HandleCorrectAnswer()
+    {
+        ShowCheck(); // Mostra o check imediatamente
+
+        yield return new WaitForSeconds(0.5f); // Pequeno delay antes da mensagem
+
+        ShowMessage("Certo! Pagamento concluído.", Color.green);
+
+        if (correctSound != null)
+        {
+            audioSource.PlayOneShot(correctSound);
+        }
+
+        yield return new WaitForSeconds(1.5f); // Tempo restante para totalizar os 2 segundos
+
+        currentLevel++;
+        StartNewRound();
+    }
+
+    private IEnumerator HandleWrongAnswer()
+    {
+        HideCheck(); // Garante que o check some
+
+        ShowMessage("Ups! Deste dinheiro a mais.", Color.red);
+
+        if (wrongSound != null)
+        {
+            audioSource.PlayOneShot(wrongSound);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        currentTotal = 0;
+        interactionLocked = false;
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+        DisplayRandomNotes();
+    }
+
+    private IEnumerator ShowTemporaryMessage(string message, Color color, float duration)
+    {
+        HideCheck(); // Garante que o check some
+
+        ShowMessage(message, color);
+        if (wrongSound != null)
+        {
+            audioSource.PlayOneShot(wrongSound);
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        feedbackPanel.SetActive(false);
+        interactionLocked = false;
+    }
+
+    private void DisplayRandomNotes()
+    {
+        // Limpa notas anteriores
+        foreach (var item in currentMoneyItems)
+        {
+            Destroy(item);
+        }
+        currentMoneyItems.Clear();
+
+        var noteValues = availableDenominations.Where(v => v >= 5).ToList();
+        var coinValues = availableDenominations.Where(v => v == 1 || v == 2).ToList();
+
+        if (notePositions.Count == 0 && noteValues.Count > 0)
+        {
+            notePositions.Clear();
+            bool shuffle = Random.value > 0.5f;
+
+            if (noteValues.Count >= 2)
+            {
+                notePositions[noteValues[0]] = shuffle ? leftNoteSlot : rightNoteSlot;
+                notePositions[noteValues[1]] = shuffle ? rightNoteSlot : leftNoteSlot;
+            }
+            else if (noteValues.Count == 1)
+            {
+                notePositions[noteValues[0]] = leftNoteSlot;
+            }
+        }
+
+        // Mostra notas se disponíveis
+        foreach (var noteValue in noteValues)
+        {
+            GameObject prefab = GetNotePrefab(noteValue);
+            if (prefab != null && notePositions.ContainsKey(noteValue))
+            {
+                Transform slot = notePositions[noteValue];
+                GameObject instance = Instantiate(prefab, slot);
+                instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(instance);
+            }
+        }
+
+        // Níveis 1-5: mostrar apenas 1 moeda aleatória
+        if (currentLevel <= 5)
+        {
+            int[] allCoins = { 1, 2 };
+            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
+
+            Transform coinSlot = selectedCoin == 1 ? coin1Slot : coin2Slot;
+            GameObject coinPrefab = selectedCoin == 1 ? coin1Prefab : coin2Prefab;
+
+            if (coinSlot != null && coinPrefab != null)
+            {
+                GameObject instance = Instantiate(coinPrefab, coinSlot);
+                instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(instance);
+            }
+        }
+        else
+        {
+            // Níveis 6+: mostrar moedas com base nas denominações visíveis
+            if (coinValues.Contains(1) && coin1Slot != null && coin1Prefab != null)
+            {
+                GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
+                coin1Instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(coin1Instance);
+            }
+
+            if (coinValues.Contains(2) && coin2Slot != null && coin2Prefab != null)
+            {
+                GameObject coin2Instance = Instantiate(coin2Prefab, coin2Slot);
+                coin2Instance.transform.localPosition = Vector3.zero;
+                currentMoneyItems.Add(coin2Instance);
+            }
+        }
+    }
+
+    private GameObject GetNotePrefab(int value)
+    {
+        switch (value)
+        {
+            case 5: return note5Prefab;
+            case 10: return note10Prefab;
+            case 20: return note20Prefab;
+            default: return null;
+        }
+    }
+
+    private GameObject GetCoinPrefab(int value)
+    {
+        switch (value)
+        {
+            case 1: return coin1Prefab;
+            case 2: return coin2Prefab;
+            default: return null;
+        }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat(MusicVolumeKey, volume);
+
+        // Atualiza o texto da percentagem
+        if (musicVolumePercentageText != null)
+        {
+            int percent = Mathf.RoundToInt(volume * 100f);
+            musicVolumePercentageText.text = Mathf.RoundToInt((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100) + "%";
+        }
+    }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+    public void RetryLevel()
+    {
+        // Mantém o nível atual e reinicia a rodada
+        currentTotal = 0;
+        interactionLocked = false;
+
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+
+        StartNewRound();
+    }
+
+    public void QuitToMenu()
+    {
+        // Resetar o estado do minigame para o ínicio
+        currentLevel = 1;
+        currentTotal = 0;
+        interactionLocked = false;
+
+        UpdateUI();
+        feedbackPanel.SetActive(false);
+    }
+
+    public void ReceberNota(int valor)
+    {
+        if (interactionLocked) return;
+
+        currentTotal += valor;
+        UpdateUI();
+
+        feedbackPanel.SetActive(false); // Esconde mensagem até validação
+
+        if (currentTotal == requestedAmount)
+        {
+            ShowCheck(); // Mostra o check imediatamente após largar a nota correta
+            StartCoroutine(HandleCorrectAnswer());
+        }
+        else if (currentTotal > requestedAmount)
+        {
+            HideCheck(); // Garante que o check some
+            StartCoroutine(HandleWrongAnswer());
+        }
+        else
+        {
+            HideCheck();
+            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
+        }
+    }
+
+    private void ShowCheck()
+    {
+        if (feedbackCheck != null)
+        {
+            feedbackCheck.SetActive(true);
+            isCheckActive = true;
+        }
+    }
+
+    private void HideCheck()
+    {
+        if (isCheckActive && feedbackCheck != null)
+        {
+            feedbackCheck.SetActive(false);
+            isCheckActive = false;
+        }
+    }
+}
