@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: OrangeCatData
   m_EditorClassIdentifier: 
   animalName: 
-  animalSprite: {fileID: 21300000, guid: a78eeae3238490e4c8cdc0407e4f80ef, type: 3}
   idleAnim: {fileID: 7400000, guid: ecc93c680b55bc84aa45ec750e315b1b, type: 2}
   eatAnim: {fileID: 7400000, guid: b79248bcbf32f9442ae02328d3e6dd66, type: 2}
   playAnim: {fileID: 7400000, guid: 958c93fc0a15e6e4b8fc04badfc37f78, type: 2}

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BlackCatData
   m_EditorClassIdentifier: 
   animalName: 
-  animalSprite: {fileID: 21300000, guid: 7fe1adb6f88a26c4a8074d4cee781c56, type: 3}
   idleAnim: {fileID: 7400000, guid: c342f122432334a4f981b6bb284a7680, type: 2}
   eatAnim: {fileID: 7400000, guid: 44d1136a1d447534ea532ebba8aef98c, type: 2}
   playAnim: {fileID: 7400000, guid: 754b53f0f2a848646bb6b3ba3f1fa2d6, type: 2}
