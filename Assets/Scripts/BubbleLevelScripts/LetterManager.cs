@@ -35,6 +35,7 @@ public class LetterManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 0f;
         if (LetterManagerInstance == null)
         {
             LetterManagerInstance = this;
@@ -88,13 +89,13 @@ public class LetterManager : MonoBehaviour
         { 
             ChosenWord = _guessWords[UnityEngine.Random.Range(0, _guessWords.Length)];
         }
-        _keyword = Instantiate(keywordPrefab, new Vector3(7, -3.44f), Quaternion.identity);
+        _keyword = Instantiate(keywordPrefab, new Vector3(7, -4.0f), Quaternion.identity);
         _keyword.GetComponent<SpriteRenderer>().sprite = _guessWordsDictionary[ChosenWord];
         AlphabetPosition = new int[ChosenWord.Length];
         BubbleLetterBox =  new GameObject[ChosenWord.Length];
-        _spawnPoint = new Vector3(-8f, -4.44f);
+        _spawnPoint = new Vector3(-7.5f, -4f);
         Debug.Log(ChosenWord); 
-        float distanceBetweenLetters = 10/ChosenWord.Length +1f;
+        float distanceBetweenLetters = 10/ChosenWord.Length +0.75f;
 
         for (int i = 0; i < ChosenWord.Length; i++)
         { 
