@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0fc2e7ab59dddb74890ac545adf76dbf
+guid: 74ef59e2c65554769819d1ebf6a532ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -701067416262137188
-    second: buttongamebwdog_0
+      213: -5060240223181173648
+    second: buttongamerythmgame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttongamebwdog_0
+      name: buttongamerythmgame_0
       rect:
         serializedVersion: 2
         x: 358
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9a281a36ee4546f0800000000000000
-      internalID: -701067416262137188
+      spriteID: 07c842bc35a66c9b0800000000000000
+      internalID: -5060240223181173648
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      buttongamebwdog_0: -701067416262137188
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

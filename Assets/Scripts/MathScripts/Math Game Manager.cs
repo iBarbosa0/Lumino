@@ -87,7 +87,7 @@ public class MathGameManager : MonoBehaviour
         {
             integer1 = UnityEngine.Random.Range(0, 10);
             integer2 = UnityEngine.Random.Range(0, 10);
-            while (integer1 - integer2 >= 10 && integer1 - integer2 < 0 )
+            while ( integer1 - integer2 < 0 || integer2 - integer1 < 0)
             {
                 integer1 = UnityEngine.Random.Range(0, 10);
                 integer2 = UnityEngine.Random.Range(0, 10);
