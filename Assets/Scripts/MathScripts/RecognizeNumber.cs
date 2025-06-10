@@ -8,7 +8,7 @@ using System.Linq;
 
 public class RecognizeNumber : MonoBehaviour
 {
-    
+    public static RecognizeNumber RecognizeNumberScriptInstance;
      public ModelAsset mnistONNX;
     // engine type
     Worker engine;
@@ -22,7 +22,7 @@ public class RecognizeNumber : MonoBehaviour
     // input tensor
     Tensor<float> inputTensor = null;
     
-    int predictedNumber;
+    public int PredictedNumber { get; private set; }
     float probability;
     public Text predictionText, probabilityText;
 
@@ -71,9 +71,10 @@ public class RecognizeNumber : MonoBehaviour
         var probabilityAndIndex = GetMostLikelyDigitProbability(drawableTexture);
 
         probability = probabilityAndIndex.Item1;
-        predictedNumber = probabilityAndIndex.Item2;
+        PredictedNumber = probabilityAndIndex.Item2;
         Debug.Log("probability: " + probability * 100 + "%");
-        Debug.Log("predicted number: " + predictedNumber);
+        Debug.Log("predicted number: " + PredictedNumber);
+        MathGameManager.Instance.checkifimageiscorrect(PredictedNumber);
         //predictionText.text = predictedNumber.ToString();
         //if (probabilityText) probabilityText.text = Mathf.Floor(probability * 100) + "%";
     }
