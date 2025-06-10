@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ddf8a828ce3366c42896ed947a9efaf3
+guid: 72641fe2fbc5e4544b6c904ca3229702
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7918832926595042734
-    second: buttongamewhitecat_0
+      213: -4437526761557154602
+    second: fundo2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttongamewhitecat_0
+      name: fundo2_0
       rect:
         serializedVersion: 2
-        x: 358
-        y: 46
-        width: 1177
-        height: 1013
+        x: 0
+        y: 0
+        width: 957
+        height: 541
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 252b2a6b867aa1290800000000000000
-      internalID: -7918832926595042734
+      spriteID: 6d4a810ebecba62c0800000000000000
+      internalID: -4437526761557154602
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      buttongamewhitecat_0: -7918832926595042734
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

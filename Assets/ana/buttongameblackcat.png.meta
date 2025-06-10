@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      buttongameblackcat_0: 8528285834232117706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
