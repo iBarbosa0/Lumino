@@ -65,9 +65,15 @@ public class LetterManager : MonoBehaviour
         Keyword.GetComponent<SpriteRenderer>().sprite = _guessWordsDictionary[ChosenWord];
         AlphabetPosition = new int[ChosenWord.Length];
         BubbleLetterBox =  new GameObject[ChosenWord.Length];
+<<<<<<< Updated upstream
         _spawnPoint = new Vector3(-8f, -4.44f);
         Debug.Log(ChosenWord); 
         float distanceBetweenLetters = 10/ChosenWord.Length +1f;
+=======
+        _spawnPoint = new Vector3(-6.5f, -4f);
+        Debug.Log(ChosenWord); 
+        float distanceBetweenLetters = 10/ChosenWord.Length +0.65f;
+>>>>>>> Stashed changes
 
         for (int i = 0; i < ChosenWord.Length; i++)
         { 

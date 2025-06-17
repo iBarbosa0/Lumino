@@ -2,21 +2,32 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-public class LevelSelector : MonoBehaviour, IPointerDownHandler
+public class LevelSelector : MonoBehaviour
 {
-    [SerializeField]
-    private int correspondentLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log(correspondentLevel);
-        SceneManager.LoadScene(correspondentLevel);
-    }
 
-    public void MainMenu()
+    public void LoadBubbleMinigame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(6);
     }
+    public void LoadMathMinigame()
+    {
+        SceneManager.LoadScene(7);
+    }
+    public void LoadAnimalMinigame()
+    {
+        SceneManager.LoadScene(5);
+    }
+    public void LoadShopMinigame()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void LoadAnmals()
+    {
+        SceneManager.LoadScene(2);
+    }
+    
+
     
 
 }
