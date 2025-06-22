@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using Object = System.Object;
+using System.Collections;
 
 
 public class DrawOnScreen : MonoBehaviour
@@ -18,7 +19,7 @@ public class DrawOnScreen : MonoBehaviour
     private bool _isdrawing = false;
     public Color drawColor = Color.white; // White for chalk digits
     public Color backgroundColor = new Color(0.1f, 0.2f, 0.1f); // Dark green chalkboard
-    public Texture2D chalkTexture;
+    //public Texture2D chalkTexture;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +27,7 @@ public class DrawOnScreen : MonoBehaviour
         _renderQuad = FindAnyObjectByType<Renderer>();
         _renderQuad.material = new Material(Shader.Find("Unlit/Texture"));
         PaintBoardBlack();
+        StartCoroutine(paintboardblackEnumerator());
     }
 
     private void FixedUpdate()
@@ -79,13 +81,13 @@ public class DrawOnScreen : MonoBehaviour
                     Color chalkColor = new Color(drawColor.r, drawColor.g, drawColor.b, opacity);
 
                     // Optional: Blend with chalk texture if assigned
-                    if (chalkTexture != null)
-                    {
-                        int texX = Mathf.FloorToInt((i + 2) * chalkTexture.width / 5f);
-                        int texY = Mathf.FloorToInt((j + 2) * chalkTexture.height / 5f);
-                        Color textureColor = chalkTexture.GetPixel(texX, texY);
-                        chalkColor = new Color(chalkColor.r * textureColor.r, chalkColor.g * textureColor.g, chalkColor.b * textureColor.b, opacity * textureColor.a);
-                    }
+                   // if (chalkTexture != null)
+                   // {
+                   //     int texX = Mathf.FloorToInt((i + 2) * chalkTexture.width / 5f);
+                   //     int texY = Mathf.FloorToInt((j + 2) * chalkTexture.height / 5f);
+                   //     Color textureColor = chalkTexture.GetPixel(texX, texY);
+                   //     chalkColor = new Color(chalkColor.r * textureColor.r, chalkColor.g * textureColor.g, chalkColor.b * textureColor.b, opacity * textureColor.a);
+                   // }
 
                     // Blend with existing pixel for chalk dust effect
                     Color current = texture.GetPixel(pixelX + i, pixelY + j);
@@ -117,6 +119,12 @@ public class DrawOnScreen : MonoBehaviour
             if (e2 > -dy) { err -= dy; x += sx; }
             if (e2 < dx) { err += dx; y += sy; }
         }
+    }
+
+    public IEnumerator paintboardblackEnumerator()
+    {
+        yield return new WaitForEndOfFrame();
+        PaintBoardBlack();
     }
     
     //Reset Blackboard to Black

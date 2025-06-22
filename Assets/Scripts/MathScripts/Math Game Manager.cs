@@ -87,7 +87,7 @@ public class MathGameManager : MonoBehaviour
         {
             integer1 = UnityEngine.Random.Range(0, 10);
             integer2 = UnityEngine.Random.Range(0, 10);
-            while ( integer1 - integer2 < 0 || integer2 - integer1 < 0)
+            while ( integer1 - integer2 < 0)
             {
                 integer1 = UnityEngine.Random.Range(0, 10);
                 integer2 = UnityEngine.Random.Range(0, 10);
@@ -103,6 +103,7 @@ public class MathGameManager : MonoBehaviour
     
     public void DisableUI()
     {
+        StartCoroutine(_drawOnScreen.paintboardblackEnumerator());
         previousButton.SetActive(false);
         nextButton.SetActive(false);
         rightAnswerText.SetActive(true);
@@ -110,6 +111,10 @@ public class MathGameManager : MonoBehaviour
         quad.SetActive(true);
         reDoDrawingButton.SetActive(true);
         checkDrawingButton.SetActive(true);
+        _drawOnScreen.PaintBoardBlack();
+        _drawOnScreen.PaintBoardBlack();
+        _drawOnScreen.PaintBoardBlack();
+
         
     }
     
@@ -127,7 +132,7 @@ public class MathGameManager : MonoBehaviour
 
     public void checkifimageiscorrect(int numberdrawn)
     {
-        if (sumorsubtraction==true)
+       /* if (sumorsubtraction==true)
         {
             if (integer1+integer2 == numberdrawn)
             {
@@ -155,6 +160,11 @@ public class MathGameManager : MonoBehaviour
                 _drawOnScreen.PaintBoardBlack();
             }
         }
+        */
+       _pontos++;
+       ChoseArithmetic();
+       EnableUI();
+       _drawOnScreen.PaintBoardBlack();
         
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -19,5 +20,11 @@ public class Pause : MonoBehaviour
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+
+    public void HomeScreen()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
 }

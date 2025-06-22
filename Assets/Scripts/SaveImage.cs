@@ -21,7 +21,8 @@ public class SaveImage : MonoBehaviour
         // Save to file (optional)
         Texture2D resize =  ResizeTextureAccurate(_drawOnScreenScript.texture,28,28);
         System.IO.File.WriteAllBytes(Application.persistentDataPath + "/drawing.png", imageBytes);
-        _recognizeNumber.Infer(resize);
+       // _recognizeNumber.Infer(resize);
+       MathGameManager.Instance.checkifimageiscorrect(0);
        // Debug.Log(number);
     }
     
