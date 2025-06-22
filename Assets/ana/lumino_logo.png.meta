@@ -1,37 +1,28 @@
 fileFormatVersion: 2
-guid: 0a7c9464216a0490ca40bc847a800c2d
+guid: 92f1155a66b373a4789ba4624c9a8eb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6470867578370466778
-    second: numeros_0
+      213: 5049117210235773770
+    second: lumino_logo_0
   - first:
-      213: -3135580922033174793
-    second: numeros_1
+      213: 781924075811229717
+    second: lumino_logo_1
   - first:
-      213: -4179497071990469181
-    second: numeros_2
+      213: -6270432993440336206
+    second: lumino_logo_2
   - first:
-      213: 304221450693625531
-    second: numeros_3
+      213: -1765325382086913362
+    second: lumino_logo_3
   - first:
-      213: 6212347161148443379
-    second: numeros_4
+      213: -8504796535434770190
+    second: lumino_logo_4
   - first:
-      213: -8053310839433305973
-    second: numeros_5
+      213: -300771114230761794
+    second: lumino_logo_5
   - first:
-      213: 3387370511887836641
-    second: numeros_6
-  - first:
-      213: -3756077529615928843
-    second: numeros_7
-  - first:
-      213: -2691486261050626275
-    second: numeros_8
-  - first:
-      213: 8095142291523682330
-    second: numeros_9
+      213: 5535151561780937967
+    second: lumino_logo_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -136,96 +127,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: numeros_0
+      name: lumino_logo_0
       rect:
         serializedVersion: 2
-        x: 186
-        y: 583
-        width: 246
-        height: 303
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad32d5547c32dc950800000000000000
-      internalID: 6470867578370466778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_1
-      rect:
-        serializedVersion: 2
-        x: 538
-        y: 589
-        width: 182
-        height: 308
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7f688b1b3cd2c74d0800000000000000
-      internalID: -3135580922033174793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_2
-      rect:
-        serializedVersion: 2
-        x: 861
-        y: 582
-        width: 224
-        height: 285
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cd09349e817ff5c0800000000000000
-      internalID: -4179497071990469181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_3
-      rect:
-        serializedVersion: 2
-        x: 1211
-        y: 579
+        x: 158
+        y: 356
         width: 221
-        height: 305
+        height: 325
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb6c5ad2ccfc83400800000000000000
-      internalID: 304221450693625531
+      spriteID: a432a61f951121640800000000000000
+      internalID: 5049117210235773770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_4
+      name: lumino_logo_1
       rect:
         serializedVersion: 2
-        x: 1543
-        y: 582
-        width: 238
-        height: 298
+        x: 367
+        y: 352
+        width: 255
+        height: 324
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fac8a124d0b63650800000000000000
-      internalID: 6212347161148443379
+      spriteID: 510dd0cddc3f9da00800000000000000
+      internalID: 781924075811229717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_5
+      name: lumino_logo_2
       rect:
         serializedVersion: 2
-        x: 198
-        y: 160
-        width: 223
-        height: 302
+        x: 619
+        y: 360
+        width: 378
+        height: 327
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8066c5b574ec3090800000000000000
-      internalID: -8053310839433305973
+      spriteID: 2b679162a62faf8a0800000000000000
+      internalID: -6270432993440336206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_6
+      name: lumino_logo_3
       rect:
         serializedVersion: 2
-        x: 533
-        y: 159
-        width: 235
-        height: 303
+        x: 998
+        y: 353
+        width: 112
+        height: 326
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +212,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e525b3988b520f20800000000000000
-      internalID: 3387370511887836641
+      spriteID: ea29ab70bed4087e0800000000000000
+      internalID: -1765325382086913362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_7
+      name: lumino_logo_4
       rect:
         serializedVersion: 2
-        x: 898
-        y: 150
-        width: 218
-        height: 297
+        x: 1114
+        y: 355
+        width: 302
+        height: 327
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f17a6a236bbfdbc0800000000000000
-      internalID: -3756077529615928843
+      spriteID: 2f800728c94e8f980800000000000000
+      internalID: -8504796535434770190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_8
+      name: lumino_logo_5
       rect:
         serializedVersion: 2
-        x: 1217
-        y: 158
-        width: 225
-        height: 303
+        x: 1417
+        y: 356
+        width: 293
+        height: 355
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1fab34718be5aad0800000000000000
-      internalID: -2691486261050626275
+      spriteID: eb6b391e34273dbf0800000000000000
+      internalID: -300771114230761794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_9
+      name: lumino_logo_6
       rect:
         serializedVersion: 2
-        x: 1584
-        y: 150
-        width: 232
-        height: 308
+        x: 1662
+        y: 648
+        width: 102
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a10c2843609b75070800000000000000
-      internalID: 8095142291523682330
+      spriteID: fe4c6e9d40fc0dc40800000000000000
+      internalID: 5535151561780937967
       vertices: []
       indices: 
       edges: []
@@ -376,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -386,16 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      numeros_0: 6470867578370466778
-      numeros_1: -3135580922033174793
-      numeros_2: -4179497071990469181
-      numeros_3: 304221450693625531
-      numeros_4: 6212347161148443379
-      numeros_5: -8053310839433305973
-      numeros_6: 3387370511887836641
-      numeros_7: -3756077529615928843
-      numeros_8: -2691486261050626275
-      numeros_9: 8095142291523682330
+      lumino_logo_0: 5049117210235773770
+      lumino_logo_1: 781924075811229717
+      lumino_logo_2: -6270432993440336206
+      lumino_logo_3: -1765325382086913362
+      lumino_logo_4: -8504796535434770190
+      lumino_logo_5: -300771114230761794
+      lumino_logo_6: 5535151561780937967
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
