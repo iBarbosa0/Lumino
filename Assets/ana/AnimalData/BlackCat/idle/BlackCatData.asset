@@ -16,3 +16,8 @@ MonoBehaviour:
   idleAnim: {fileID: 7400000, guid: c342f122432334a4f981b6bb284a7680, type: 2}
   eatAnim: {fileID: 7400000, guid: 44d1136a1d447534ea532ebba8aef98c, type: 2}
   playAnim: {fileID: 7400000, guid: 754b53f0f2a848646bb6b3ba3f1fa2d6, type: 2}
+  foodPrefab: {fileID: 3654909087567761744, guid: 713b53090e8f8b944a42fab0ad08b297, type: 3}
+  toyPrefab: {fileID: 3654909087567761744, guid: 713b53090e8f8b944a42fab0ad08b297, type: 3}
+  idleAudio: {fileID: 8300000, guid: 4cde174b748bc2144a3c9dbb266d2764, type: 3}
+  eatAudio: {fileID: 8300000, guid: 155126c8c59296141bf095b21322a459, type: 3}
+  playAudio: {fileID: 8300000, guid: 367bc60dfa6aee04bbaeefd1edac8571, type: 3}
