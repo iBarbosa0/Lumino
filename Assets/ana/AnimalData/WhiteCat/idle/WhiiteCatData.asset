@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: WhiiteCatData
   m_EditorClassIdentifier: 
   animalName: WhiteCat
+  animalSprite: {fileID: 21300000, guid: 08e3521c8817fd74ba08c5a6afe44138, type: 3}
   idleAnim: {fileID: 7400000, guid: 7e1fbcf26c5bee84f9b317c87d5aa942, type: 2}
   eatAnim: {fileID: 7400000, guid: fc96cdecda069694b819a04c853afe2e, type: 2}
   playAnim: {fileID: 7400000, guid: d80c13bd3a35d794aa2a1f64bab79fec, type: 2}
-  foodPrefab: {fileID: 3654909087567761744, guid: 713b53090e8f8b944a42fab0ad08b297, type: 3}
-  toyPrefab: {fileID: 3654909087567761744, guid: 713b53090e8f8b944a42fab0ad08b297, type: 3}
-  idleAudio: {fileID: 8300000, guid: 4cde174b748bc2144a3c9dbb266d2764, type: 3}
-  eatAudio: {fileID: 8300000, guid: 155126c8c59296141bf095b21322a459, type: 3}
-  playAudio: {fileID: 8300000, guid: 367bc60dfa6aee04bbaeefd1edac8571, type: 3}
