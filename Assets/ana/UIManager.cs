@@ -8,13 +8,20 @@ public class UIManager : MonoBehaviour
     public GameObject playButton;
     public GameObject backButton;
 
-    public GameObject foodPrefab;
-    public GameObject toyPrefab;
+ 
 
     public Transform spawnPoint;
     public AnimalManager animalManager;
 
     private GameObject spawnedObject;
+
+    private AnimalData currentAnimal;
+
+    void Start()
+    {
+        currentAnimal = AnimalHolder.SelectedAnimal;
+    }
+
 
     public void OnFeedButtonClick()
     {
@@ -22,7 +29,7 @@ public class UIManager : MonoBehaviour
         playButton.SetActive(false);
         backButton.SetActive(true);
 
-        spawnedObject = Instantiate(foodPrefab, spawnPoint.position, Quaternion.identity);
+        spawnedObject = Instantiate(currentAnimal.foodPrefab, spawnPoint.position, Quaternion.identity);
         spawnedObject.GetComponent<ObjectThrow>().Init("Eat", this);
     }
 
@@ -32,7 +39,7 @@ public class UIManager : MonoBehaviour
         playButton.SetActive(false);
         backButton.SetActive(true);
 
-        spawnedObject = Instantiate(toyPrefab, spawnPoint.position, Quaternion.identity);
+        spawnedObject = Instantiate(currentAnimal.toyPrefab, spawnPoint.position, Quaternion.identity);
         spawnedObject.GetComponent<ObjectThrow>().Init("Play", this);
     }
 

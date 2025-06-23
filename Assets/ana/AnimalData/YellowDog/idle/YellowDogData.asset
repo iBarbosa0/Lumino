@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: YellowDogData
   m_EditorClassIdentifier: 
   animalName: 
-  animalSprite: {fileID: 21300000, guid: 404b16355e782dc45a10be5939644688, type: 3}
   idleAnim: {fileID: 7400000, guid: 61eabb1bc62b0ce47a0e344e12a38230, type: 2}
   eatAnim: {fileID: 7400000, guid: 6582a26bbf3de2e48806f1a174037d59, type: 2}
   playAnim: {fileID: 7400000, guid: ca7aa7a3e25d3654ea360f945cd9ae3b, type: 2}
+  foodPrefab: {fileID: 2629978700332586407, guid: 40c56b7fd020c904f84a4288bcac3f0a, type: 3}
+  toyPrefab: {fileID: 3014333546901871639, guid: 79d97e662ea737749a1be9bdb65b0e05, type: 3}
+  idleAudio: {fileID: 8300000, guid: c710efc020a022741b85c4582b45efe8, type: 3}
+  eatAudio: {fileID: 8300000, guid: 395dc8b7b388d504995e8744761cb754, type: 3}
+  playAudio: {fileID: 8300000, guid: 37f7f94b6a0924240b7a5f9a383f8854, type: 3}

@@ -8,4 +8,11 @@ public class AnimalData : ScriptableObject
     public AnimationClip idleAnim;
     public AnimationClip eatAnim;
     public AnimationClip playAnim;
+
+    public GameObject foodPrefab;
+    public GameObject toyPrefab;
+
+    public AudioClip idleAudio;
+    public AudioClip eatAudio;
+    public AudioClip playAudio;
 }
