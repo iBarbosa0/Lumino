@@ -14,17 +14,18 @@ public class NoteMinigame : MonoBehaviour
     public Button startButton;       // Botão que inicia o minigame
     public Button backButton;        // Botão que volta ao menu principal
 
-
     public Transform leftNoteSlot;
     public Transform rightNoteSlot;
     public Transform coin1Slot;
     public Transform coin2Slot;
+    public Transform[] feedbackCheckSlots; // Array com 3 posições (ex: 3 RectTransforms)
 
     public GameObject coin1Prefab;
     public GameObject coin2Prefab;
     public GameObject note5Prefab;
     public GameObject note10Prefab;
     public GameObject note20Prefab;
+    public GameObject feedbackCheckPrefab; // Prefab do check
 
     public GameObject feedbackPanel;
     public GameObject mainMenuPanel; // Painel do menu principal
@@ -35,7 +36,6 @@ public class NoteMinigame : MonoBehaviour
     public Sprite[] requestedSprites; // Ordem: [1, 2, 5, 10, 20]
 
     public int requestedAmount = 20; // Valor pedido pela senhora da caixa (nível 1 = 20)
-    private int currentTotal = 0;
     private bool interactionLocked = false;
 
     private int currentLevel = 1;
@@ -50,15 +50,14 @@ public class NoteMinigame : MonoBehaviour
     public List<Image> requestedAmountImages; // Lista com 3 imagens para mostrar os pedidos
     private List<int> requestedValues = new List<int>(); // Valores pedidos
     private List<GameObject> currentMoneyItems = new List<GameObject>();
+    private List<GameObject> currentFeedbackChecks = new List<GameObject>(); // Lista de checks ativos
+    private List<int> receivedValues = new List<int>();
 
     private int[] possibleRequestedValues = new int[] { 1, 2, 5, 10, 20 };
 
     private const string MusicVolumeKey = "MusicVolume";
 
     private Dictionary<int, Transform> notePositions = new Dictionary<int, Transform>();
-
-    public GameObject feedbackCheck; // ✓ Sprite por cima do dinheiro
-    private bool isCheckActive = false;
 
     private void Start()
     {
@@ -93,64 +92,19 @@ public class NoteMinigame : MonoBehaviour
         StartNewRound();               // Inicia o jogo
     }
 
-    public void AddNoteValue(int value)
-    {
-        if (interactionLocked) return;
-
-        currentTotal += value;
-        UpdateUI();
-
-        feedbackPanel.SetActive(false); // Oculta mensagem até validação
-    }
-
-    public void OnValidPressed()
-    {
-        if (interactionLocked) return;
-
-        interactionLocked = true;
-
-        if (currentTotal == requestedAmount)
-        {
-            ShowCheck(); // Motra o check
-            StartCoroutine(HandleCorrectAnswer());
-        }
-        else if (currentTotal > requestedAmount)
-        {
-            HideCheck(); // Esconde o check se for errado
-            StartCoroutine(HandleWrongAnswer());
-        }
-        else
-        {
-            HideCheck(); // Esconde o check se for "ainda falta"
-            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
-        }
-    }
-
-    public void OnResetPressed()
-    {
-        if (interactionLocked) return;
-
-        currentTotal = 0;
-        UpdateUI();
-        feedbackPanel.SetActive(false);
-
-        // Recria as notas
-        DisplayRandomNotes();
-    }
-
     private void StartNewRound()
     {
         notePositions.Clear();
+        HideAllFeedbackChecks(); // Garante que nenhum check fique visível
         UpdateAvailableDenominations(currentLevel);
-        GetMultipleRequestedValues(currentLevel); // Nova lógica com múltiplos itens
-        requestedAmount = requestedValues.Sum(); // Soma dos valores pedidos
-        currentTotal = 0;
+        GetRequestedValueMatchingOnly();
         interactionLocked = false;
+
+        receivedValues.Clear(); // limpa os valores recebidos
 
         UpdateUI();
         UpdateLevelUI(); // Atualiza o texto do nível
         feedbackPanel.SetActive(false); // Esconde a mensagem no início
-        HideCheck(); // Esconde o check no início da nova ronda
         DisplayRandomNotes();
     }
 
@@ -175,183 +129,41 @@ public class NoteMinigame : MonoBehaviour
         }
     }
 
-    private int GetAmountBasedOnLevel(int level)
+    private void GetRequestedValueMatchingOnly()
     {
-        List<int> possibleValues;
-
-        if (level <= 5)
-        {
-            // Só usa moedas
-            possibleValues = GeneratePossibleValues(new List<int>() { 1, 2 }, 20);
-        }
-        else
-        {
-            // Usa moedas e notas disponíveis
-            possibleValues = GeneratePossibleValues(availableDenominations, 20);
-        }
-
-        List<int> filteredBySpriteValues = possibleValues
-            .Where(v => possibleRequestedValues.Contains(v))
-            .ToList();
-
-        // Filtra por dificuldade
-        List<int> filteredByDifficulty = FilterByLevelDifficulty(filteredBySpriteValues, level);
-
-        // Evita repetir o mesmo valor da ronda anterior
-        if (lastRequestedAmount != -1 && filteredByDifficulty.Count > 1)
-        {
-            filteredByDifficulty = filteredByDifficulty.Where(v => v != lastRequestedAmount).ToList();
-        }
-
-        int selected = filteredByDifficulty[Random.Range(0, filteredByDifficulty.Count)];
-        lastRequestedAmount = selected;
-
-        return selected;
-    }
-
-    private List<int> GeneratePossibleValues(List<int> denominations, int max)
-    {
-        HashSet<int> values = new HashSet<int>();
-
-        int count = denominations.Count;
-        if (count == 0) return values.ToList(); // Evita erros se lista estiver vazia
-
-        // Limite prático de combinações por denominação
-        int limit = 10;
-
-        // Gera todas as combinações possíveis com base no número de denominações
-        void Recurse(int index, int currentSum)
-        {
-            if (index >= count)
-            {
-                if (currentSum > 0 && currentSum <= max)
-                {
-                    values.Add(currentSum);
-                }
-                return;
-            }
-
-            for (int i = 0; i <= limit; i++)
-            {
-                int nextSum = currentSum + i * denominations[index];
-                if (nextSum > max) break;
-                Recurse(index + 1, nextSum);
-            }
-        }
-
-        Recurse(0, 0);
-        return values.ToList();
-    }
-
-    private List<int> FilterByLevelDifficulty(List<int> values, int level)
-    {
-        if (level <= 5)
-        {
-            return values.Where(v => v >= 3 && v <= 10).ToList();
-        }
-        else if (level <= 10)
-        {
-            return values.Where(v => v >= 11 && v <= 15).ToList();
-        }
-        else if (level <= 15)
-        {
-            return values.Where(v => v >= 16 && v <= 19).ToList();
-        }
-        else
-        {
-            return values.Where(v => new int[] { 2, 3, 5, 7, 9, 11, 13, 17, 19, 20 }.Contains(v)).ToList();
-        }
-    }
-
-    private void GetMultipleRequestedValues(int level)
-    {
-        int coinCount = 0;
-        int noteCount = 0;
-
-        int totalItemsToRequest = 1;
-        if (level >= 6 && level <= 10) totalItemsToRequest = 2;
-        if (level >= 11) totalItemsToRequest = 3;
-
-        var availableCoins = availableDenominations.Where(d => d == 1 || d == 2).ToList();
-        var availableNotes = availableDenominations.Where(d => d >= 5).ToList();
-
-        if (availableCoins.Count == 0) availableCoins = new List<int>() { 1, 2 };
-        if (availableNotes.Count == 0 && level >= 6) availableNotes = new List<int>() { 5, 10, 20 };
-
-        switch (totalItemsToRequest)
-        {
-            case 1:
-                if (level <= 5)
-                {
-                    coinCount = 1; // Apenas moedas nos primeiros níveis
-                }
-                else
-                {
-                    float choice = Random.value;
-                    if (choice < 0.5f && availableCoins.Count > 0)
-                    {
-                        coinCount = 1;
-                    }
-                    else
-                    {
-                        noteCount = 1;
-                    }
-                }
-                break;
-
-            case 2:
-                if (level <= 5)
-                {
-                    coinCount = 2; // Apenas moedas até ao nível 5
-                }
-                else
-                {
-                    float choice = Random.value;
-                    if (choice < 0.33f && availableCoins.Count >= 2)
-                    {
-                        coinCount = 2;
-                    }
-                    else if (choice < 0.66f && availableNotes.Count >= 2)
-                    {
-                        noteCount = 2;
-                    }
-                    else
-                    {
-                        coinCount = 1;
-                        noteCount = 1;
-                    }
-                }
-                break;
-
-            case 3:
-                if (level >= 6)
-                {
-                    float choice = Random.value;
-                    if (choice < 0.33f && availableCoins.Count >= 2)
-                    {
-                        coinCount = 2;
-                        noteCount = 1;
-                    }
-                    else if (choice < 0.66f && availableNotes.Count >= 2)
-                    {
-                        coinCount = 1;
-                        noteCount = 2;
-                    }
-                    else
-                    {
-                        noteCount = 3;
-                    }
-                }
-                break;
-        }
-
         requestedValues.Clear();
 
-        for (int i = 0; i < coinCount; i++)
-            requestedValues.Add(availableCoins[Random.Range(0, availableCoins.Count)]);
+        int numberOfRequestedValues = 1;
+        if (currentLevel >= 11)
+            numberOfRequestedValues = 3;
+        else if (currentLevel >= 6)
+            numberOfRequestedValues = 2;
 
-        for (int i = 0; i < noteCount; i++)
-            requestedValues.Add(availableNotes[Random.Range(0, availableNotes.Count)]);
+        // Garante que há denominações suficientes para escolher
+        List<int> possibleValues = new List<int>(availableDenominations);
+
+        // Se não houver valores suficientes, repete alguns
+        for (int i = 0; i < numberOfRequestedValues; i++)
+        {
+            int selectedValue;
+
+            if (possibleValues.Count > 0)
+            {
+                int index = Random.Range(0, possibleValues.Count);
+                selectedValue = possibleValues[index];
+                possibleValues.RemoveAt(index);
+            }
+            else
+            {
+                // Repetir valores se não houver mais disponíveis
+                selectedValue = availableDenominations[Random.Range(0, availableDenominations.Count)];
+            }
+
+            requestedValues.Add(selectedValue);
+        }
+
+        // Como agora são vários valores, vamos pedir apenas o primeiro como base para `requestedAmount`
+        requestedAmount = requestedValues[0];
 
         UpdateRequestedSprites(requestedValues);
     }
@@ -384,7 +196,7 @@ public class NoteMinigame : MonoBehaviour
 
     private void UpdateUI()
     {
-        currentTotalText.text = "Total dado: " + currentTotal.ToString();
+        currentTotalText.text = ""; // ou remove o uso do texto totalmente
     }
 
     private void UpdateLevelUI()
@@ -395,37 +207,54 @@ public class NoteMinigame : MonoBehaviour
         }
     }
 
-    private void ShowMessage(string message, Color color)
+    public void ReceberNota(int valor)
     {
-        messageText.text = message;
-        messageText.color = color;
-        feedbackPanel.SetActive(true);
+        if (interactionLocked) return;
+
+        if (requestedValues.Contains(valor))
+        {
+            receivedValues.Add(valor);
+            requestedValues.Remove(valor);
+
+            // Atualiza os checks visuais
+            ShowFeedbackChecks(receivedValues);
+
+            // Se já entregou todos os valores pedidos
+            if (requestedValues.Count == 0)
+            {
+                interactionLocked = true;
+                StartCoroutine(HandleCorrectAnswer());
+            }
+        }
+        else
+        {
+            interactionLocked = true;
+            HideAllFeedbackChecks();
+            StartCoroutine(HandleWrongAnswer());
+        }
     }
+
+
 
     private IEnumerator HandleCorrectAnswer()
     {
-        ShowCheck(); // Mostra o check imediatamente
-
-        yield return new WaitForSeconds(0.5f); // Pequeno delay antes da mensagem
-
-        ShowMessage("Certo! Pagamento concluído.", Color.green);
+        ShowMessage("Certo! Corresponde ao valor pedido.", Color.green);
 
         if (correctSound != null)
         {
             audioSource.PlayOneShot(correctSound);
         }
 
-        yield return new WaitForSeconds(1.5f); // Tempo restante para totalizar os 2 segundos
+        yield return new WaitForSeconds(2f); // Tempo de duração dos checks
 
+        HideAllFeedbackChecks(); // Esconde os checks
         currentLevel++;
         StartNewRound();
     }
 
     private IEnumerator HandleWrongAnswer()
     {
-        HideCheck(); // Garante que o check some
-
-        ShowMessage("Ups! Deste dinheiro a mais.", Color.red);
+        ShowMessage("Errado! Não corresponde ao valor pedido.", Color.red);
 
         if (wrongSound != null)
         {
@@ -434,27 +263,15 @@ public class NoteMinigame : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        currentTotal = 0;
         interactionLocked = false;
-        UpdateUI();
         feedbackPanel.SetActive(false);
-        DisplayRandomNotes();
     }
 
-    private IEnumerator ShowTemporaryMessage(string message, Color color, float duration)
+    private void ShowMessage(string message, Color color)
     {
-        HideCheck(); // Garante que o check some
-
-        ShowMessage(message, color);
-        if (wrongSound != null)
-        {
-            audioSource.PlayOneShot(wrongSound);
-        }
-
-        yield return new WaitForSeconds(duration);
-
-        feedbackPanel.SetActive(false);
-        interactionLocked = false;
+        messageText.text = message;
+        messageText.color = color;
+        feedbackPanel.SetActive(true);
     }
 
     private void DisplayRandomNotes()
@@ -469,6 +286,17 @@ public class NoteMinigame : MonoBehaviour
         var noteValues = availableDenominations.Where(v => v >= 5).ToList();
         var coinValues = availableDenominations.Where(v => v == 1 || v == 2).ToList();
 
+        // Garante que o valor pedido está incluído
+        if (!availableDenominations.Contains(requestedAmount))
+        {
+            availableDenominations.Add(requestedAmount);
+            if (requestedAmount >= 5)
+                noteValues.Add(requestedAmount);
+            else
+                coinValues.Add(requestedAmount);
+        }
+
+        // Posicionamento de notas
         if (notePositions.Count == 0 && noteValues.Count > 0)
         {
             notePositions.Clear();
@@ -485,8 +313,7 @@ public class NoteMinigame : MonoBehaviour
             }
         }
 
-        // Mostra notas se disponíveis
-        foreach (var noteValue in noteValues)
+        foreach (var noteValue in noteValues.Distinct())
         {
             GameObject prefab = GetNotePrefab(noteValue);
             if (prefab != null && notePositions.ContainsKey(noteValue))
@@ -498,14 +325,11 @@ public class NoteMinigame : MonoBehaviour
             }
         }
 
-        // Níveis 1-5: mostrar apenas 1 moeda aleatória
+        // Moedas
         if (currentLevel <= 5)
         {
-            int[] allCoins = { 1, 2 };
-            int selectedCoin = allCoins[Random.Range(0, allCoins.Length)];
-
-            Transform coinSlot = selectedCoin == 1 ? coin1Slot : coin2Slot;
-            GameObject coinPrefab = selectedCoin == 1 ? coin1Prefab : coin2Prefab;
+            Transform coinSlot = requestedAmount == 1 ? coin1Slot : coin2Slot;
+            GameObject coinPrefab = requestedAmount == 1 ? coin1Prefab : coin2Prefab;
 
             if (coinSlot != null && coinPrefab != null)
             {
@@ -516,7 +340,7 @@ public class NoteMinigame : MonoBehaviour
         }
         else
         {
-            // Níveis 6+: mostrar moedas com base nas denominações visíveis
+            // Mostrar todas as moedas disponíveis (incluindo a pedida)
             if (coinValues.Contains(1) && coin1Slot != null && coin1Prefab != null)
             {
                 GameObject coin1Instance = Instantiate(coin1Prefab, coin1Slot);
@@ -533,6 +357,7 @@ public class NoteMinigame : MonoBehaviour
         }
     }
 
+
     private GameObject GetNotePrefab(int value)
     {
         switch (value)
@@ -540,16 +365,6 @@ public class NoteMinigame : MonoBehaviour
             case 5: return note5Prefab;
             case 10: return note10Prefab;
             case 20: return note20Prefab;
-            default: return null;
-        }
-    }
-
-    private GameObject GetCoinPrefab(int value)
-    {
-        switch (value)
-        {
-            case 1: return coin1Prefab;
-            case 2: return coin2Prefab;
             default: return null;
         }
     }
@@ -580,7 +395,6 @@ public class NoteMinigame : MonoBehaviour
     public void RetryLevel()
     {
         // Mantém o nível atual e reinicia a rodada
-        currentTotal = 0;
         interactionLocked = false;
 
         UpdateUI();
@@ -593,54 +407,35 @@ public class NoteMinigame : MonoBehaviour
     {
         // Resetar o estado do minigame para o ínicio
         currentLevel = 1;
-        currentTotal = 0;
         interactionLocked = false;
-
         UpdateUI();
         feedbackPanel.SetActive(false);
     }
-
-    public void ReceberNota(int valor)
+    
+    private void ShowFeedbackChecks(List<int> values)
     {
-        if (interactionLocked) return;
+        HideAllFeedbackChecks(); // Limpa antes de mostrar novos
 
-        currentTotal += valor;
-        UpdateUI();
-
-        feedbackPanel.SetActive(false); // Esconde mensagem até validação
-
-        if (currentTotal == requestedAmount)
+        for (int i = 0; i < values.Count && i < feedbackCheckSlots.Length; i++)
         {
-            ShowCheck(); // Mostra o check imediatamente após largar a nota correta
-            StartCoroutine(HandleCorrectAnswer());
-        }
-        else if (currentTotal > requestedAmount)
-        {
-            HideCheck(); // Garante que o check some
-            StartCoroutine(HandleWrongAnswer());
-        }
-        else
-        {
-            HideCheck();
-            StartCoroutine(ShowTemporaryMessage("Ainda falta...", new Color(1f, 0.64f, 0f), 2f));
+            if (feedbackCheckPrefab != null && feedbackCheckSlots[i] != null)
+            {
+                GameObject check = Instantiate(feedbackCheckPrefab, feedbackCheckSlots[i]);
+                check.transform.localPosition = Vector3.zero;
+                currentFeedbackChecks.Add(check);
+            }
         }
     }
 
-    private void ShowCheck()
+    private void HideAllFeedbackChecks()
     {
-        if (feedbackCheck != null)
+        foreach (var check in currentFeedbackChecks)
         {
-            feedbackCheck.SetActive(true);
-            isCheckActive = true;
+            if (check != null)
+            {
+                Destroy(check);
+            }
         }
-    }
-
-    private void HideCheck()
-    {
-        if (isCheckActive && feedbackCheck != null)
-        {
-            feedbackCheck.SetActive(false);
-            isCheckActive = false;
-        }
+        currentFeedbackChecks.Clear();
     }
 }
