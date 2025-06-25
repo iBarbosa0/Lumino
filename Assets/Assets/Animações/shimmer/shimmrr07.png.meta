@@ -61,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -285,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shimmrr07_0: 7608303015454887238
+      shimmrr07_1: 7166627983921323590
+      shimmrr07_2: 5829924354032117127
+      shimmrr07_3: 7686654278241591297
+      shimmrr07_4: 3661959432949762971
+      shimmrr07_5: 2470416454818645789
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

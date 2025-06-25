@@ -36,6 +36,8 @@ public class NoteMinigame : MonoBehaviour
 
     public Sprite[] requestedSprites; // Ordem: [1, 2, 5, 10, 20]
 
+    public Animator correctAnimator;
+
     public int requestedAmount = 20; // Valor pedido pela senhora da caixa (nível 1 = 20)
     private bool interactionLocked = false;
 
@@ -79,6 +81,13 @@ public class NoteMinigame : MonoBehaviour
         {
             int percent = Mathf.RoundToInt(savedVolume * 100f);
             musicVolumePercentageText.text = Mathf.RoundToInt((musicVolumeSlider.value / musicVolumeSlider.maxValue) * 100) + "%";
+        }
+
+        if (correctAnimator != null)
+        {
+            correctAnimator.Rebind();
+            correctAnimator.Update(0f);
+            correctAnimator.Play("Idle", 0, 0f);
         }
 
         // Conecta evento do slider
@@ -244,14 +253,19 @@ public class NoteMinigame : MonoBehaviour
 
     private IEnumerator HandleCorrectAnswer()
     {
-        ShowMessage("Certo! Corresponde ao valor pedido.", Color.green);
+        Debug.Log("HandleCorrectAnswer triggered");
+
+        if (correctAnimator != null)
+        {
+            correctAnimator.SetTrigger("ShowCorrect");
+        }
 
         if (correctSound != null)
         {
-            audioSource.PlayOneShot(correctSound);
+            audioSource.PlayOneShot(correctSound, 2.0f); // valor entre 0.0 e 1.0
         }
 
-        yield return new WaitForSeconds(2f); // Tempo de duração dos checks
+        yield return new WaitForSeconds(3.7f); // Tempo de duração dos checks
 
         HideAllFeedbackChecks(); // Esconde os checks
         currentLevel++;
