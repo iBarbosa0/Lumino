@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class NoteMinigame : MonoBehaviour
 {
-    public Text currentTotalText;    // Texto que mostra quanto o jogador já deu
     public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
     public Text musicVolumePercentageText; // Texto que mostra o volume em %
+
+    public Image progressBarFill; // imagem da barra preenchida
 
     public Button startButton;       // Botão que inicia o minigame
     public Button backButton;        // Botão que volta ao menu principal
@@ -100,6 +101,7 @@ public class NoteMinigame : MonoBehaviour
         GetRequestedValueMatchingOnly();
         interactionLocked = false;
 
+        progressBarFill.fillAmount = 0f;
         receivedValues.Clear(); // limpa os valores recebidos
 
         UpdateUI();
@@ -196,7 +198,7 @@ public class NoteMinigame : MonoBehaviour
 
     private void UpdateUI()
     {
-        currentTotalText.text = ""; // ou remove o uso do texto totalmente
+        //currentTotalText.text = "";
     }
 
     private void UpdateLevelUI()
@@ -218,6 +220,10 @@ public class NoteMinigame : MonoBehaviour
 
             // Atualiza os checks visuais
             ShowFeedbackChecks(receivedValues);
+
+            // Atualiza barra de progresso
+            float progress = (float)receivedValues.Count / (float)(receivedValues.Count + requestedValues.Count);
+            progressBarFill.fillAmount = progress;
 
             // Se já entregou todos os valores pedidos
             if (requestedValues.Count == 0)
