@@ -9,8 +9,6 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip letterfallingonwateClip;
     [SerializeField] private AudioClip gettingtherightletterclip;
     [SerializeField] private AudioClip bubblepopSfxAudioClip;
-    [SerializeField] private AudioClip bubbleSplashSfxAudioClip;
-
 
 
     private void Awake()
@@ -31,7 +29,7 @@ public class SFXManager : MonoBehaviour
     }
     public void PlayLetterFallingOnWater(Vector3 bubbleposition)
     {
-        AudioSource.PlayClipAtPoint(bubbleSplashSfxAudioClip, bubbleposition);
+        AudioSource.PlayClipAtPoint(bubblepopSfxAudioClip, bubbleposition);
     }
     public void PlayGettingRightLetter(Vector3 bubbleposition)
     {

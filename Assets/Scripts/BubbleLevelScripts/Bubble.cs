@@ -9,14 +9,16 @@ public class Bubble : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector3 _startPosition;
     private Animator _animator;
+    private AudioSource _bubbleSoundSource;
+    [SerializeField] private AudioClip bubblepopSound;
     public bool WasItPoped { get; private set; } = true;
-    [SerializeField] private GameObject letterbubblechild;
-    [SerializeField] private GameObject splashAnimation;
 
     private float _XAxisdeviation = 0 ;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _bubbleSoundSource = GetComponent<AudioSource>();
+        _bubbleSoundSource.clip = bubblepopSound;
         _animator = GetComponent<Animator>(); // Animator to control the animation of the bubble popping
         _startPosition = transform.position; // get the position
         _rigidbody = GetComponent<Rigidbody2D>();// get the rigidbody of the bubble
@@ -30,6 +32,11 @@ public class Bubble : MonoBehaviour
         _rigidbody.transform.position += new Vector3(_XAxisdeviation, 0.04f);
 
         //Destroy bubble when it reaches a certain Y axis value (9 in this case)
+        if (_rigidbody.transform.position.y>9)
+        {
+            GetComponentInChildren<BubbleLetter>().WasItPoped = false;// this is to control what happens in the OnDestroy function of the BubbleletterScript so the code in that fcuntion only happens if the bubble is actually popeed by the player and not when its despawned by the code;
+            Destroy(gameObject);
+        }
     }
     
     void OnMouseDown()
@@ -42,7 +49,7 @@ public class Bubble : MonoBehaviour
     {
         //_bubbleSoundSource.resource = bubblepopSound;
         SFXManager.SfxManagerInstance.PlayBubblePop(transform.position);
-        predestroyBubble();
+        Destroy(gameObject);
     }
     
     //this is a Enumerator to make the bubble change its X axis to give the feeling of floating every x seconds
@@ -52,20 +59,5 @@ public class Bubble : MonoBehaviour
         yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f,0.5f));
         //_XAxisdeviation = UnityEngine.Random.Range(-0.025f, 0.02f);
         StartCoroutine(Xdeviation());
-    }
-    
-    private void predestroyBubble()
-    {
-        letterbubblechild.transform.SetParent(null);
-        letterbubblechild.GetComponent<BubbleLetter>().destroyBubble();
-        Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ceiling"))
-        {
-            Destroy(gameObject);
-        }
     }
 }

@@ -10,19 +10,10 @@ public class BubbleLetterBox : MonoBehaviour
         Transform childTransform = transform.Find("Letter");
         _spriteRenderer = childTransform.GetComponent<SpriteRenderer>();
         letterPosition = LetterPosition;
-
-        if (LetterManager.LetterManagerInstance.Level < 2)
-        {
-            _spriteRenderer.sprite = LetterManager.LetterManagerInstance.SpritesArray[letterPosition];
-            _spriteRenderer.color= new Color(_spriteRenderer.color.r, _spriteRenderer.color.g,_spriteRenderer.color.b, 0.5f);
-            return;
-        }
-        if (UnityEngine.Random.Range(0, 2) == 0)
-        {
-            return;
-        }
-            _spriteRenderer.sprite = LetterManager.LetterManagerInstance.SpritesArray[letterPosition];
-            _spriteRenderer.color= new Color(_spriteRenderer.color.r, _spriteRenderer.color.g,_spriteRenderer.color.b, 0.5f);
+        Debug.Log("Sprite Renderer" + _spriteRenderer.name);
+        //Debug.Log("letterposition" + letterPosition);
+        _spriteRenderer.sprite = LetterManager.LetterManagerInstance.SpritesArray[letterPosition];
+        _spriteRenderer.color= new Color(_spriteRenderer.color.r, _spriteRenderer.color.g,_spriteRenderer.color.b, 0.5f);
     }
  
 }
