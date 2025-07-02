@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 8dc434f78394baa4791bdb85d5c3421d
+guid: 6a6d379f6460c10408e0ec250cd541dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -521570426849421364
-    second: morango_0
+      213: 5279395829598554799
+    second: mercado2_0
   - first:
-      213: -1938648532396914916
-    second: morango_1
+      213: 6748647817054453789
+    second: mercado2_1
   - first:
-      213: 6732669973024311599
-    second: morango_2
+      213: -8797459502336644353
+    second: mercado2_2
   - first:
-      213: 2237986726927582597
-    second: morango_3
+      213: -6195532226982822648
+    second: mercado2_3
   - first:
-      213: 5354139959583903456
-    second: morango_4
-  - first:
-      213: -6987253679432533788
-    second: morango_5
+      213: 4934296832315031771
+    second: mercado2_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -141,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: morango_0
+      name: mercado2_0
       rect:
         serializedVersion: 2
-        x: 1332
-        y: 377
-        width: 461
-        height: 185
+        x: 65
+        y: 815
+        width: 1482
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +153,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc79a4ec57203c8f0800000000000000
-      internalID: -521570426849421364
+      spriteID: faa86eb198e244940800000000000000
+      internalID: 5279395829598554799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercado2_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 605
+        width: 1481
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d100fb90f6308ad50800000000000000
+      internalID: 6748647817054453789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercado2_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 0
+        width: 1004
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffae65d813529e580800000000000000
+      internalID: -8797459502336644353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercado2_3
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 46
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d3430d34c050aa0800000000000000
+      internalID: -6195532226982822648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mercado2_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 19
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd0097273d42a7440800000000000000
+      internalID: 4934296832315031771
       vertices: []
       indices: 
       edges: []
@@ -176,12 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      morango_0: -521570426849421364
-      morango_1: -1938648532396914916
-      morango_2: 6732669973024311599
-      morango_3: 2237986726927582597
-      morango_4: 5354139959583903456
-      morango_5: -6987253679432533788
+      mercado2_0: 5279395829598554799
+      mercado2_1: 6748647817054453789
+      mercado2_2: -8797459502336644353
+      mercado2_3: -6195532226982822648
+      mercado2_4: 4934296832315031771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

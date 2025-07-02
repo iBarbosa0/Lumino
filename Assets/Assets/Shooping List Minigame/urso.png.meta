@@ -55,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -138,10 +138,10 @@ TextureImporter:
       name: urso_0
       rect:
         serializedVersion: 2
-        x: 1418
-        y: 450
-        width: 48
-        height: 63
+        x: 1416
+        y: 421
+        width: 241
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,72 +152,6 @@ TextureImporter:
       bones: []
       spriteID: 9f340e494095fb040800000000000000
       internalID: 4665545615191589881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: urso_1
-      rect:
-        serializedVersion: 2
-        x: 1482
-        y: 449
-        width: 38
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3f273a7104f66310800000000000000
-      internalID: 1398073021527699262
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: urso_2
-      rect:
-        serializedVersion: 2
-        x: 1531
-        y: 444
-        width: 47
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98b5699639c6ba440800000000000000
-      internalID: 4948167995984075657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: urso_3
-      rect:
-        serializedVersion: 2
-        x: 1588
-        y: 436
-        width: 60
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 65500cd381113cd90800000000000000
-      internalID: -7078795393483405994
       vertices: []
       indices: 
       edges: []

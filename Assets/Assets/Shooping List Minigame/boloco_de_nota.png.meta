@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: a21f4d8b6190c7144a71a4b589f372a4
+guid: d75bc291c9aaf5e4c881e22ab1dad623
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3426253202219438317
-    second: melao_0
-  - first:
-      213: 8689888043053894490
-    second: melao_1
-  - first:
-      213: -2196456295488834702
-    second: melao_2
-  - first:
-      213: 5064209440207128769
-    second: melao_3
-  - first:
-      213: 4277021862025059937
-    second: melao_4
+      213: -431019663509907676
+    second: boloco_de_nota_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -138,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: melao_0
+      name: boloco_de_nota_0
       rect:
         serializedVersion: 2
-        x: 1360
-        y: 398
-        width: 65
-        height: 124
+        x: 1095
+        y: 0
+        width: 820
+        height: 754
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,96 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de095d4622f7c8f20800000000000000
-      internalID: 3426253202219438317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melao_1
-      rect:
-        serializedVersion: 2
-        x: 1425
-        y: 396
-        width: 73
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a5b4428522fa89870800000000000000
-      internalID: 8689888043053894490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melao_2
-      rect:
-        serializedVersion: 2
-        x: 1502
-        y: 400
-        width: 21
-        height: 113
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 273b7b6f2ae9481e0800000000000000
-      internalID: -2196456295488834702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melao_3
-      rect:
-        serializedVersion: 2
-        x: 1541
-        y: 459
-        width: 45
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c8c9bf87afa74640800000000000000
-      internalID: 5064209440207128769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melao_4
-      rect:
-        serializedVersion: 2
-        x: 1545
-        y: 404
-        width: 127
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 16e559e09b80b5b30800000000000000
-      internalID: 4277021862025059937
+      spriteID: 427984156e5b40af0800000000000000
+      internalID: -431019663509907676
       vertices: []
       indices: 
       edges: []
@@ -251,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      melao_0: 3426253202219438317
-      melao_1: 8689888043053894490
-      melao_2: -2196456295488834702
-      melao_3: 5064209440207128769
-      melao_4: 4277021862025059937
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

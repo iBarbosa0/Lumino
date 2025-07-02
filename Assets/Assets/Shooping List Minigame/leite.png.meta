@@ -58,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -141,10 +141,10 @@ TextureImporter:
       name: leite_0
       rect:
         serializedVersion: 2
-        x: 1420
-        y: 419
-        width: 76
-        height: 107
+        x: 1409
+        y: 388
+        width: 302
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,94 +155,6 @@ TextureImporter:
       bones: []
       spriteID: 67749723e4eeeba50800000000000000
       internalID: 6538925728610207606
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leite_1
-      rect:
-        serializedVersion: 2
-        x: 1498
-        y: 411
-        width: 77
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc06c3b0b96b464b0800000000000000
-      internalID: -5448028872186765107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leite_2
-      rect:
-        serializedVersion: 2
-        x: 1567
-        y: 474
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d423154e8c8b7a40800000000000000
-      internalID: 5367037923614205138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leite_3
-      rect:
-        serializedVersion: 2
-        x: 1587
-        y: 405
-        width: 60
-        height: 117
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0e287a9238b80e5a0800000000000000
-      internalID: -6494037267212434720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leite_4
-      rect:
-        serializedVersion: 2
-        x: 1640
-        y: 406
-        width: 62
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b46796e3f5bf796d0800000000000000
-      internalID: -2983639841622100405
       vertices: []
       indices: 
       edges: []

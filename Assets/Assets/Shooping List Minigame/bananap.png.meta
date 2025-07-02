@@ -52,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -135,12 +135,12 @@ TextureImporter:
       name: bananap_0
       rect:
         serializedVersion: 2
-        x: 1368
-        y: 432
-        width: 129
-        height: 90
+        x: 1365
+        y: 422
+        width: 391
+        height: 106
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,50 +149,6 @@ TextureImporter:
       bones: []
       spriteID: 8803f36efda09ee80800000000000000
       internalID: -8148970093993316216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bananap_1
-      rect:
-        serializedVersion: 2
-        x: 1488
-        y: 445
-        width: 129
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 80782d1c2d20440d0800000000000000
-      internalID: -3439621111186028792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bananap_2
-      rect:
-        serializedVersion: 2
-        x: 1615
-        y: 437
-        width: 137
-        height: 60
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 708eb07e6495df8b0800000000000000
-      internalID: -5116835440564115449
       vertices: []
       indices: 
       edges: []

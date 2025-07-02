@@ -64,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,10 +147,10 @@ TextureImporter:
       name: iogurt_0
       rect:
         serializedVersion: 2
-        x: 1390
-        y: 516
-        width: 19
-        height: 20
+        x: 1373
+        y: 345
+        width: 380
+        height: 196
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,138 +161,6 @@ TextureImporter:
       bones: []
       spriteID: a4a2a8c91565f90c0800000000000000
       internalID: -4566836588611753398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_1
-      rect:
-        serializedVersion: 2
-        x: 1673
-        y: 411
-        width: 74
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30db4cd1100fbfda0800000000000000
-      internalID: -5909866198408577789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_2
-      rect:
-        serializedVersion: 2
-        x: 1374
-        y: 457
-        width: 20
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 822e119494dd8a4e0800000000000000
-      internalID: -1970081530146332120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_3
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 438
-        width: 73
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93b63dbf75801d9b0800000000000000
-      internalID: -5057251732580242631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_4
-      rect:
-        serializedVersion: 2
-        x: 1478
-        y: 350
-        width: 104
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e42dd76e8008c9b80800000000000000
-      internalID: -8386687630355606962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_5
-      rect:
-        serializedVersion: 2
-        x: 1540
-        y: 427
-        width: 59
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00f7383b2f041cae0800000000000000
-      internalID: -1530870987191255296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: iogurt_6
-      rect:
-        serializedVersion: 2
-        x: 1605
-        y: 414
-        width: 74
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3f4543a4644997800800000000000000
-      internalID: 610682254098978035
       vertices: []
       indices: 
       edges: []

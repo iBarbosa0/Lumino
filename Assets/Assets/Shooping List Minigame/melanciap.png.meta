@@ -70,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,10 +153,10 @@ TextureImporter:
       name: melanciap_0
       rect:
         serializedVersion: 2
-        x: 1357
-        y: 383
-        width: 74
-        height: 148
+        x: 1351
+        y: 335
+        width: 517
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,182 +167,6 @@ TextureImporter:
       bones: []
       spriteID: f64e91506c84a0030800000000000000
       internalID: 3461659278913954927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_1
-      rect:
-        serializedVersion: 2
-        x: 1428
-        y: 382
-        width: 68
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 83d2c2d241047e960800000000000000
-      internalID: 7631138549003988280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_2
-      rect:
-        serializedVersion: 2
-        x: 1498
-        y: 390
-        width: 25
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c0abddc566883eef0800000000000000
-      internalID: -80070395136460276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_3
-      rect:
-        serializedVersion: 2
-        x: 1733
-        y: 456
-        width: 23
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba987d70f01fcb4a0800000000000000
-      internalID: -6576116309009397333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_4
-      rect:
-        serializedVersion: 2
-        x: 1524
-        y: 385
-        width: 82
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c5083589dec18940800000000000000
-      internalID: 5296742070402680261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_5
-      rect:
-        serializedVersion: 2
-        x: 1602
-        y: 379
-        width: 64
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6ab5a51eb7577270800000000000000
-      internalID: 8248157716470938220
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_6
-      rect:
-        serializedVersion: 2
-        x: 1662
-        y: 384
-        width: 66
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d300c9117fed49b0800000000000000
-      internalID: -5094152334443805739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_7
-      rect:
-        serializedVersion: 2
-        x: 1727
-        y: 380
-        width: 22
-        height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 477dbc379134d0620800000000000000
-      internalID: 2741921524734482292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: melanciap_8
-      rect:
-        serializedVersion: 2
-        x: 1756
-        y: 375
-        width: 102
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86a1325e852aab6d0800000000000000
-      internalID: -2973886101239686552
       vertices: []
       indices: 
       edges: []
