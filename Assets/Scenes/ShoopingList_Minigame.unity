@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 22669632}
   m_Layer: 0
   m_Name: iogurte
-  m_TagString: Untagged
+  m_TagString: iogurte
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 113968821}
   m_Layer: 0
   m_Name: urso
-  m_TagString: Untagged
+  m_TagString: urso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 295899541}
   m_Layer: 0
   m_Name: laranja
-  m_TagString: Untagged
+  m_TagString: laranja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,7 +1190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &536580320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ GameObject:
   - component: {fileID: 559100788}
   m_Layer: 0
   m_Name: morango
-  m_TagString: Untagged
+  m_TagString: morango
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1534,7 +1534,7 @@ GameObject:
   - component: {fileID: 787491308}
   m_Layer: 0
   m_Name: ovos
-  m_TagString: Untagged
+  m_TagString: ovos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1858,7 +1858,7 @@ GameObject:
   - component: {fileID: 999140653}
   m_Layer: 0
   m_Name: bife
-  m_TagString: Untagged
+  m_TagString: bife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2020,7 +2020,7 @@ GameObject:
   - component: {fileID: 1027656137}
   m_Layer: 0
   m_Name: banana
-  m_TagString: Untagged
+  m_TagString: banana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2560,7 +2560,7 @@ GameObject:
   - component: {fileID: 1287576099}
   m_Layer: 0
   m_Name: "ma\xE7a"
-  m_TagString: Untagged
+  m_TagString: "ma\xE7a"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2709,7 +2709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1331990858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2726,8 +2726,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.768}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1551.5902, y: 396.42776}
-  m_SizeDelta: {x: 223.6477, y: 112.6283}
+  m_AnchoredPosition: {x: 1551.5902, y: 394.4897}
+  m_SizeDelta: {x: 223.6477, y: 116.0636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331990859
 MonoBehaviour:
@@ -2784,7 +2784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1474054826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2933,7 +2933,7 @@ GameObject:
   - component: {fileID: 1663989906}
   m_Layer: 0
   m_Name: melancia
-  m_TagString: Untagged
+  m_TagString: melancia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3299,7 +3299,7 @@ GameObject:
   - component: {fileID: 1833841150}
   m_Layer: 0
   m_Name: "p\xE3o"
-  m_TagString: Untagged
+  m_TagString: "p\xE3o"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3447,7 +3447,7 @@ GameObject:
   - component: {fileID: 1959678130}
   m_Layer: 0
   m_Name: leite
-  m_TagString: Untagged
+  m_TagString: leite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
