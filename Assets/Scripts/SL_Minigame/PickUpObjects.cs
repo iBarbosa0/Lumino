@@ -6,14 +6,18 @@ public class PickUpObjects : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     private RectTransform rectTransform;
     private Canvas canvas;
-    private Vector3 startPosition;
+    public Vector3 startPosition;
+    public Transform originalParent;  // Novo: guarda o pai original
     private CanvasGroup canvasGroup;
+
+    private bool isDroppedInZone = false; // Controle pra saber se foi dropado na zona
 
     void Start()
     {
         // Get the RectTransform and Canvas components
         rectTransform = GetComponent<RectTransform>();
         startPosition = rectTransform.anchoredPosition;
+        originalParent = transform.parent;  // Guarda o pai original
         canvas = GetComponentInParent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
 
@@ -35,6 +39,8 @@ public class PickUpObjects : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (canvasGroup != null)
             canvasGroup.blocksRaycasts = false;
+
+        isDroppedInZone = false; // Reseta ao começar arrastar
     }
 
     // Called when dragging the UI element
@@ -44,17 +50,21 @@ public class PickUpObjects : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (!eventData.pointerEnter || !eventData.pointerEnter.GetComponent<DropZone>())
-        {
-            rectTransform.anchoredPosition = startPosition; // Volta só se não for drop válido
-        }
-    }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         if (canvasGroup != null)
             canvasGroup.blocksRaycasts = true;
+
+        if (!isDroppedInZone)
+        {
+            transform.SetParent(originalParent);             // Volta para o pai original e reposiciona
+            rectTransform.anchoredPosition = startPosition;             // Não foi dropado em nenhuma DropZone — volta pra posição original
+        }
+    }
+
+    // Método chamado pela DropZone para indicar que o item foi aceito
+    public void MarkAsDroppedInZone()
+    {
+        isDroppedInZone = true;
     }
 }

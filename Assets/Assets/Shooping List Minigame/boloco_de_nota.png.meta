@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      boloco_de_nota_0: -431019663509907676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

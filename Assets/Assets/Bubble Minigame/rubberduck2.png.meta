@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rubberduck2_0: -9193871537704415496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

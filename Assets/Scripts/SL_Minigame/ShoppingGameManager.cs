@@ -1,95 +1,128 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class ShoppingGameManager : MonoBehaviour
 {
     public static ShoppingGameManager instance;
-    [SerializeField] private GameObject[] shoppingItemsSprites =  new GameObject[12];
-    [SerializeField] private GameObject[] shoppingItemslist =  new GameObject[12];
-    List<GameObject> availableshoppingItems = new List<GameObject>();
-    List<GameObject> shoppingItems = new List<GameObject>();
+    [SerializeField] private GameObject[] shoppingItemsSprites =  new GameObject[11];
+    [SerializeField] private GameObject[] shoppingItemslist =  new GameObject[11];
+    public List<GameObject> availableshoppingItems = new List<GameObject>();
+    public List<GameObject> shoppingItems = new List<GameObject>();
     List<int> _itemsalreadyselected = new List<int>();
     private Vector3 _rectTransformPosition =  new Vector3(1572, 540.7663f);
-    
-    
 
-    private int level = 2;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Text LevelTextUI;
+    public Text CartCountTextUI;
+
+    [SerializeField] private GameObject endGamePanel;
+
+    private int level = 1;
+    public int correctItemsInCart = 0;
 
     void Awake()
     {
         instance = this;
     }
-    
+
+    public void UpdateLevelUI()
+    {
+        LevelTextUI.text = "Nível " + level;
+    }
+
+    public void UpdateCartCountUI()
+    {
+        CartCountTextUI.text = correctItemsInCart + "/" + shoppingItems.Count;
+    }
+
+    public void CheckLevelProgression()
+    {
+        if (correctItemsInCart >= shoppingItems.Count)
+        {
+            level++;
+
+            // Limpa objetos do nível anterior
+            foreach (GameObject obj in shoppingItems)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
+
+                    // Reset da posição
+                    PickUpObjects pickup = obj.GetComponent<PickUpObjects>();
+                    if (pickup != null)
+                    {
+                        obj.transform.SetParent(pickup.originalParent);
+                        obj.GetComponent<RectTransform>().anchoredPosition = pickup.startPosition;
+                    }
+                }
+            }
+
+            // Reset dos riscos visuais
+            DropZone_Cart dropZone = FindObjectOfType<DropZone_Cart>();
+            if (dropZone != null)
+            {
+                foreach (GameObject risco in dropZone.allRiskObjects)
+                {
+                    if (risco != null)
+                        risco.SetActive(false);
+                }
+            }
+
+            shoppingItems.Clear();
+            _rectTransformPosition = new Vector3(1572, 540.7663f);
+            correctItemsInCart = 0;
+
+            if (level > 3)
+            {
+                Debug.Log("Todos os níveis concluídos!");
+                if (endGamePanel != null) endGamePanel.SetActive(true);
+                return;
+            }
+
+            UpdateLevelUI();
+            UpdateCartCountUI();
+            LevelSelect();
+        }
+    }
+
     void Start()
     {
         for (int i = 0; i < shoppingItemslist.Length; i++)
         {
             _itemsalreadyselected.Add(i);
         }
-        LevelSelect();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        correctItemsInCart = 0;
+        LevelSelect();
+        UpdateLevelUI();
+        UpdateCartCountUI();
     }
 
     void LevelSelect()
     {
-        if (level == 1)
+        correctItemsInCart = 0;
+        UpdateLevelUI();
+        UpdateCartCountUI();
+
+        List<int> selectedItems = new();
+        int itemsCount = level == 1 ? 3 : level == 2 ? 5 : 8;
+
+        for (int i = 0; i < itemsCount; i++)
         {
-            List<int> selectedItems = new();
-            for (int i = 0; i < 3; i++)
-            { 
-                List<int> availableItems = Enumerable.Range(0, _itemsalreadyselected.Count)
-                    .Where(num => !selectedItems.Contains(num)).ToList();
-                
-               int itemselected = availableItems[Random.Range(0, availableItems.Count)];
-               if(!shoppingItems.Contains(shoppingItemslist[itemselected]))
-               {
-                   shoppingItems.Add(shoppingItemslist[itemselected]);
-                   selectedItems.Add(itemselected);
-               }
+            List<int> availableItems = Enumerable.Range(0, _itemsalreadyselected.Count)
+                .Where(num => !selectedItems.Contains(num)).ToList();
+
+            int itemselected = availableItems[Random.Range(0, availableItems.Count)];
+            if (!shoppingItems.Contains(shoppingItemslist[itemselected]))
+            {
+                shoppingItems.Add(shoppingItemslist[itemselected]);
+                selectedItems.Add(itemselected);
             }
-            setupshopingItems();
         }
-        if (level == 2)
-        {
-            List<int> selectedItems = new();
-            for (int i = 0; i < 5; i++)
-            { 
-                List<int> availableItems = Enumerable.Range(0, _itemsalreadyselected.Count)
-                    .Where(num => !selectedItems.Contains(num)).ToList();
-                
-                int itemselected = availableItems[Random.Range(0, availableItems.Count)];
-                if(!shoppingItems.Contains(shoppingItemslist[itemselected]))
-                {
-                    shoppingItems.Add(shoppingItemslist[itemselected]);
-                    selectedItems.Add(itemselected);
-                }
-            }
-            setupshopingItems();
-        }
-        if (level == 3)
-        {
-            List<int> selectedItems = new();
-            for (int i = 0; i < 8; i++)
-            { 
-                List<int> availableItems = Enumerable.Range(0, _itemsalreadyselected.Count)
-                    .Where(num => !selectedItems.Contains(num)).ToList();
-                
-                int itemselected = availableItems[Random.Range(0, availableItems.Count)];
-                if(!shoppingItems.Contains(shoppingItemslist[itemselected]))
-                {
-                    shoppingItems.Add(shoppingItemslist[itemselected]);
-                    selectedItems.Add(itemselected);
-                }
-            }
-            setupshopingItems();
-        }
+
+        setupshopingItems();
     }
 
     void setupshopingItems()
@@ -123,7 +156,6 @@ public class ShoppingGameManager : MonoBehaviour
                 shoppingItems[i].GetComponent<Transform>().localScale = new Vector3(0.55f, 0.55f, 0.1f);
                 _rectTransformPosition += new Vector3(0, -70f, 0);
             }
-        }
-       
+        }       
     }
 }

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      botao_animal_0: 2713578945143412044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
