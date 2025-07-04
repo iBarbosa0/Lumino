@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 09a270c63344b5a4d9ac31b70f9e436b
+guid: dae6a5c184c4544b2a2837167e8c0005
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8142421610710119483
-    second: bedroom_background_0
+      213: 998774285297520775
+    second: try_again_button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bedroom_background_0
+      name: try_again_button_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 474
+        y: 141
+        width: 849
+        height: 829
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b3437d58051bff070800000000000000
-      internalID: 8142421610710119483
+      spriteID: 78014f5bbeb5cdd00800000000000000
+      internalID: 998774285297520775
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bedroom_background_0: 8142421610710119483
+      try_again_button_0: 998774285297520775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SuperMarket Button 1_0: -657060503724460804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
