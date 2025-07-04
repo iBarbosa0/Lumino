@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bubbles minigame background_0: -3655062378567795950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

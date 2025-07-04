@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      validate_button 1_0: 5190405588329249673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
