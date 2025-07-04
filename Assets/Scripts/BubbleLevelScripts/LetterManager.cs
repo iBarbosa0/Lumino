@@ -12,10 +12,19 @@ public class LetterManager : MonoBehaviour
     [SerializeField] private GameObject _letterPrefab; // The Case letters prefab txo make it spawn dynamically 
     public GameObject[] BubbleLetterBox { get; private set; } // Game object array to store the CaseLetters prefab that will be Instantiated 
     public Sprite[] SpritesArray { get; private set; } //Array to store all the letters of the alphabets sprites
+<<<<<<< HEAD
     public char[] Alphabet { get; private set; } //char string to store all the letters of the alphabet
     public int[] AlphabetPosition { get; private set; }
     public Queue<int> QueueAlphabetPosition  = new Queue<int>();
     
+=======
+    private GameObject _keyword;
+    public char[] Alphabet { get; private set; } //char string to store all the letters of the alphabet
+    public int[] AlphabetPosition { get; private set; }
+    public Queue<int> QueueAlphabetPosition  = new Queue<int>();
+
+    public int Level { get; private set; }
+>>>>>>> parent of 2f5f4f1 (Merge branch 'João')
     //load Sprites
     [SerializeField] private GameObject keywordPrefab;
     [SerializeField] private Sprite lua;
@@ -28,29 +37,30 @@ public class LetterManager : MonoBehaviour
     [SerializeField] private Sprite sol;
     [SerializeField] private Sprite sapo;
 
-    //Dictionary to match guess word to the respective sprite
+    //Dictionary to help match guess word to the respective sprite
     private Dictionary<string, Sprite> _guessWordsDictionary = new Dictionary<string, Sprite>();
 
     private void Awake()
     {
+        Time.timeScale = 0f;
         if (LetterManagerInstance == null)
         {
             LetterManagerInstance = this;
         }
-        _guessWords[0] = "gato";
-        _guessWords[1] = "lua";
-        _guessWords[2] = "carro";
-        _guessWords[3] = "sol";
-        _guessWords[4] = "sapo";
+        _guessWords[0] = "lua";
+        _guessWords[1] = "sol";
+        _guessWords[2] = "gato";
+        _guessWords[3] = "sapo";
+        _guessWords[4] = "carro";
         _guessWords[5] = "pizza";
         _guessWords[6] = "livro";
         _guessWords[7] = "banana";
       //  _guessWords[8] = "chocolate";
-        _guessWordsDictionary.Add(_guessWords[0], gato);
-        _guessWordsDictionary.Add(_guessWords[1], lua);
-        _guessWordsDictionary.Add(_guessWords[2], carro);
-        _guessWordsDictionary.Add(_guessWords[3], sol);
-        _guessWordsDictionary.Add(_guessWords[4], sapo);
+        _guessWordsDictionary.Add(_guessWords[0], lua);
+        _guessWordsDictionary.Add(_guessWords[1], sol);
+        _guessWordsDictionary.Add(_guessWords[2], gato);
+        _guessWordsDictionary.Add(_guessWords[3], sapo);
+        _guessWordsDictionary.Add(_guessWords[4], carro);
         _guessWordsDictionary.Add(_guessWords[5], pizza);
         _guessWordsDictionary.Add(_guessWords[6], livro);
         _guessWordsDictionary.Add(_guessWords[7], banana);
@@ -61,14 +71,44 @@ public class LetterManager : MonoBehaviour
     void Start()
     {
         InitializeAlphabet();
-        ChosenWord = _guessWords[UnityEngine.Random.Range(0, _guessWords.Length)];
-        GameObject Keyword = Instantiate(keywordPrefab, new Vector3(7, -3.44f), Quaternion.identity);
-        Keyword.GetComponent<SpriteRenderer>().sprite = _guessWordsDictionary[ChosenWord];
+        SpritesArray = Resources.LoadAll<Sprite>("Letters");
+        SetupChosenWord();
+    }
+    private void InitializeAlphabet()
+    {
+        Debug.Log(("Initializing alphabet"));
+        Alphabet = new char[] 
+        {
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
+            'u', 'v', 'w', 'x', 'y', 'z'
+        };
+    }
+
+    private void SetupChosenWord()
+    {
+        //ChosenWord = _guessWords[UnityEngine.Random.Range(0, _guessWords.Length)];
+        if (Level<=7)
+        {
+            ChosenWord = _guessWords[Level]; 
+        }
+        else
+        { 
+            ChosenWord = _guessWords[UnityEngine.Random.Range(0, _guessWords.Length)];
+        }
+        _keyword = Instantiate(keywordPrefab, new Vector3(7, -4.0f), Quaternion.identity);
+        _keyword.GetComponent<SpriteRenderer>().sprite = _guessWordsDictionary[ChosenWord];
         AlphabetPosition = new int[ChosenWord.Length];
         BubbleLetterBox =  new GameObject[ChosenWord.Length];
+<<<<<<< HEAD
         _spawnPoint = new Vector3(-8f, -4.44f);
         Debug.Log(ChosenWord); 
         float distanceBetweenLetters = 10/ChosenWord.Length +1f;
+=======
+        _spawnPoint = new Vector3(-7.5f, -4f);
+        Debug.Log(ChosenWord); 
+        float distanceBetweenLetters = 10/ChosenWord.Length +0.75f;
+>>>>>>> parent of 2f5f4f1 (Merge branch 'João')
 
         for (int i = 0; i < ChosenWord.Length; i++)
         { 
@@ -78,7 +118,6 @@ public class LetterManager : MonoBehaviour
             BubbleLetterBox[i].transform.localScale = new Vector3((1f/ChosenWord.Length)+0.5f, 1f/ChosenWord.Length+0.5f);
             _spawnPoint += new Vector3(distanceBetweenLetters, 0, 0f);
         }
-        SpritesArray = Resources.LoadAll<Sprite>("Letters");
         int j = 0;
         foreach (char c in ChosenWord.ToCharArray())
         {
@@ -99,14 +138,24 @@ public class LetterManager : MonoBehaviour
             Debug.Log(AlphabetPosition[i]);
         }
     }
-    private void InitializeAlphabet()
+
+    public void CheckIfBeatTheLevel()
     {
-        Debug.Log(("Initializing alphabet"));
-        Alphabet = new char[] 
+        if(QueueAlphabetPosition.Count <= 0)
         {
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
-            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
-            'u', 'v', 'w', 'x', 'y', 'z'
-        };
+            Level++;
+            Debug.Log("Won");
+            cleanLevel();
+            SetupChosenWord();
+        }
+    }
+
+    private void cleanLevel()
+    {
+        Destroy(_keyword);
+        for (int i = 0; i < BubbleLetterBox.Length; i++)
+        {
+            Destroy(BubbleLetterBox[i]);   
+        }
     }
 }
