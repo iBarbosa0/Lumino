@@ -9,31 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
-<<<<<<< HEAD
     path: Assets/Scenes/Xylophone Minigame.unity
     guid: 11fa20d3734a9d94c9f798fa175ae8d7
   - enabled: 0
-=======
-    path: Assets/Scenes/Levels/Level Template Scene.unity
-    guid: d8eaa38849c424dadbc55c386ce514b0
-  - enabled: 1
-    path: Assets/Scenes/Levels/School Level/Level-School.unity
-    guid: 7a0f61498102b4bef8f8a38b4a03443b
-  - enabled: 1
-    path: Assets/Scenes/Levels/Home Level/Level-Home.unity
-    guid: 2d2d3fb7110a1493195039150ea77d4c
-  - enabled: 0
-    path: Assets/Scenes/Levels/Level-SuperMarkt.unity
-    guid: a45708bfb2ab14f499aa6dd6beee3b3f
-  - enabled: 1
->>>>>>> parent of 2f5f4f1 (Merge branch 'João')
     path: Assets/Scenes/Minigame_Selection.unity
     guid: 075ae81e4965c364f814f4518391183a
   - enabled: 1
     path: Assets/Scenes/MS_School.unity
     guid: 3c569aad09fe488459affacc0a2c7b11
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/MS_House.unity
     guid: 1fc2ef7061382c548ba36faa9654d680
   - enabled: 1
@@ -57,10 +41,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Math_Prototype.unity
     guid: 5c54df890f5f876458894262aafc4ad8
-=======
-    path: Assets/Scenes/AnimalScene.unity
-    guid: a15178515d3b5c149bba2f728228bc46
->>>>>>> parent of 2f5f4f1 (Merge branch 'João')
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 1f2945afd2995154b868fc2c3592d764, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f26de2e5fa6c9fa48866196121581ff2, type: 2}
