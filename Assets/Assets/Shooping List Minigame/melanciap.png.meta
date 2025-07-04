@@ -1,37 +1,34 @@
 fileFormatVersion: 2
-guid: 0a7c9464216a0490ca40bc847a800c2d
+guid: f262b99aaa2cd3140b222008dcddd310
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6470867578370466778
-    second: numeros_0
+      213: 3461659278913954927
+    second: melanciap_0
   - first:
-      213: -3135580922033174793
-    second: numeros_1
+      213: 7631138549003988280
+    second: melanciap_1
   - first:
-      213: -4179497071990469181
-    second: numeros_2
+      213: -80070395136460276
+    second: melanciap_2
   - first:
-      213: 304221450693625531
-    second: numeros_3
+      213: -6576116309009397333
+    second: melanciap_3
   - first:
-      213: 6212347161148443379
-    second: numeros_4
+      213: 5296742070402680261
+    second: melanciap_4
   - first:
-      213: -8053310839433305973
-    second: numeros_5
+      213: 8248157716470938220
+    second: melanciap_5
   - first:
-      213: 3387370511887836641
-    second: numeros_6
+      213: -5094152334443805739
+    second: melanciap_6
   - first:
-      213: -3756077529615928843
-    second: numeros_7
+      213: 2741921524734482292
+    second: melanciap_7
   - first:
-      213: -2691486261050626275
-    second: numeros_8
-  - first:
-      213: 8095142291523682330
-    second: numeros_9
+      213: -2973886101239686552
+    second: melanciap_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: numeros_0
+      name: melanciap_0
       rect:
         serializedVersion: 2
-        x: 186
-        y: 583
-        width: 246
-        height: 303
+        x: 1357
+        y: 383
+        width: 74
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad32d5547c32dc950800000000000000
-      internalID: 6470867578370466778
+      spriteID: f64e91506c84a0030800000000000000
+      internalID: 3461659278913954927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_1
+      name: melanciap_1
       rect:
         serializedVersion: 2
-        x: 538
-        y: 589
-        width: 182
-        height: 308
+        x: 1428
+        y: 382
+        width: 68
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f688b1b3cd2c74d0800000000000000
-      internalID: -3135580922033174793
+      spriteID: 83d2c2d241047e960800000000000000
+      internalID: 7631138549003988280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_2
+      name: melanciap_2
       rect:
         serializedVersion: 2
-        x: 861
-        y: 582
-        width: 224
-        height: 285
+        x: 1498
+        y: 390
+        width: 25
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cd09349e817ff5c0800000000000000
-      internalID: -4179497071990469181
+      spriteID: c0abddc566883eef0800000000000000
+      internalID: -80070395136460276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_3
+      name: melanciap_3
       rect:
         serializedVersion: 2
-        x: 1211
-        y: 579
-        width: 221
-        height: 305
+        x: 1733
+        y: 456
+        width: 23
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb6c5ad2ccfc83400800000000000000
-      internalID: 304221450693625531
+      spriteID: ba987d70f01fcb4a0800000000000000
+      internalID: -6576116309009397333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_4
+      name: melanciap_4
       rect:
         serializedVersion: 2
-        x: 1543
-        y: 582
-        width: 238
-        height: 298
+        x: 1524
+        y: 385
+        width: 82
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +253,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fac8a124d0b63650800000000000000
-      internalID: 6212347161148443379
+      spriteID: 5c5083589dec18940800000000000000
+      internalID: 5296742070402680261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_5
+      name: melanciap_5
       rect:
         serializedVersion: 2
-        x: 198
-        y: 160
-        width: 223
-        height: 302
+        x: 1602
+        y: 379
+        width: 64
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +275,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8066c5b574ec3090800000000000000
-      internalID: -8053310839433305973
+      spriteID: c6ab5a51eb7577270800000000000000
+      internalID: 8248157716470938220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_6
+      name: melanciap_6
       rect:
         serializedVersion: 2
-        x: 533
-        y: 159
-        width: 235
-        height: 303
+        x: 1662
+        y: 384
+        width: 66
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e525b3988b520f20800000000000000
-      internalID: 3387370511887836641
+      spriteID: 5d300c9117fed49b0800000000000000
+      internalID: -5094152334443805739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_7
+      name: melanciap_7
       rect:
         serializedVersion: 2
-        x: 898
-        y: 150
-        width: 218
-        height: 297
+        x: 1727
+        y: 380
+        width: 22
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +319,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f17a6a236bbfdbc0800000000000000
-      internalID: -3756077529615928843
+      spriteID: 477dbc379134d0620800000000000000
+      internalID: 2741921524734482292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_8
+      name: melanciap_8
       rect:
         serializedVersion: 2
-        x: 1217
-        y: 158
-        width: 225
-        height: 303
+        x: 1756
+        y: 375
+        width: 102
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,30 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1fab34718be5aad0800000000000000
-      internalID: -2691486261050626275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_9
-      rect:
-        serializedVersion: 2
-        x: 1584
-        y: 150
-        width: 232
-        height: 308
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a10c2843609b75070800000000000000
-      internalID: 8095142291523682330
+      spriteID: 86a1325e852aab6d0800000000000000
+      internalID: -2973886101239686552
       vertices: []
       indices: 
       edges: []
@@ -376,7 +351,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -386,16 +361,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      numeros_0: 6470867578370466778
-      numeros_1: -3135580922033174793
-      numeros_2: -4179497071990469181
-      numeros_3: 304221450693625531
-      numeros_4: 6212347161148443379
-      numeros_5: -8053310839433305973
-      numeros_6: 3387370511887836641
-      numeros_7: -3756077529615928843
-      numeros_8: -2691486261050626275
-      numeros_9: 8095142291523682330
+      melanciap_0: 3461659278913954927
+      melanciap_1: 7631138549003988280
+      melanciap_2: -80070395136460276
+      melanciap_3: -6576116309009397333
+      melanciap_4: 5296742070402680261
+      melanciap_5: 8248157716470938220
+      melanciap_6: -5094152334443805739
+      melanciap_7: 2741921524734482292
+      melanciap_8: -2973886101239686552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
