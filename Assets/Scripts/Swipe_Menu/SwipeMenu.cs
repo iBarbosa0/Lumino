@@ -5,31 +5,29 @@ using UnityEngine.UI;
 
 public class SwipeMenu : MonoBehaviour
 {
-    public GameObject scrollbar; // Referência ao objeto Scrollbar do menu
-    float scroll_pos = 0; // Armazena a posição atual do scroll
-    float[]pos; // Posições-alvo para cada item no menu
+    public GameObject scrollbar;
+    float scroll_pos = 0;
+    float[]pos;
 
+    // Use this for initialization
     void Start()
     {
-        // Nada definido no Start neste momento
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Define um array com posições igualmente distribuídas com base no número de filhos (itens do menu)
         pos = new float[transform.childCount];
-        float distance = 1f / (pos.Length - 1f); // Espaço entre cada item no scroll
-
-        for (int i = 0; i < pos.Length; i++)
+        float distance = 1f / (pos.Length - 1f);
+        for(int i = 0; i < pos.Length; i++)
         {
-            pos[i] = distance * i; // Preenche o array com as posições-alvo
+            pos[i] = distance * i;
         }
-        // Se o botão do rato estiver pressionado, atualiza a posição do scroll com base na Scrollbar
         if (Input.GetMouseButton(0))
         {
             scroll_pos = scrollbar.GetComponent<Scrollbar> ().value;
-        }
-        else // Se o botão não estiver pressionado, ajusta o scroll suavemente para a posição mais próxima
+        } else
         {
             for (int i = 0; i < pos.Length; i++)
             {
@@ -40,7 +38,6 @@ public class SwipeMenu : MonoBehaviour
             }
         }
 
-        // Aumenta o tamanho do item central e reduz os outros, criando efeito de destaque
         for (int i = 0; i < pos.Length; i++)
         {
             if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
