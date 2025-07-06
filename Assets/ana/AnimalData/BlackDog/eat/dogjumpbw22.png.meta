@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
 guid: 1bdcc614db961ef4f9a7790b1316ab0f
 TextureImporter:
   internalIDToNameTable:
@@ -18,26 +17,6 @@ TextureImporter:
   - first:
       213: -9098317503288880966
     second: dogjumpbw22_4
-========
-guid: 6a6d379f6460c10408e0ec250cd541dd
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5279395829598554799
-    second: mercado2_0
-  - first:
-      213: 6748647817054453789
-    second: mercado2_1
-  - first:
-      213: -8797459502336644353
-    second: mercado2_2
-  - first:
-      213: -6195532226982822648
-    second: mercado2_3
-  - first:
-      213: 4934296832315031771
-    second: mercado2_4
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -146,7 +125,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       name: dogjumpbw22_0
       rect:
         serializedVersion: 2
@@ -154,15 +132,6 @@ TextureImporter:
         y: 32
         width: 427
         height: 883
-========
-      name: mercado2_0
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 815
-        width: 1482
-        height: 45
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,19 +140,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       spriteID: 2b899a116f2fab380800000000000000
       internalID: -8954577770400606030
-========
-      spriteID: faa86eb198e244940800000000000000
-      internalID: 5279395829598554799
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       name: dogjumpbw22_1
       rect:
         serializedVersion: 2
@@ -191,15 +154,6 @@ TextureImporter:
         y: 891
         width: 6
         height: 6
-========
-      name: mercado2_1
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 605
-        width: 1481
-        height: 39
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,19 +162,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       spriteID: dff4d12a8e0d4ffa0800000000000000
       internalID: -5767755525183942659
-========
-      spriteID: d100fb90f6308ad50800000000000000
-      internalID: 6748647817054453789
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       name: dogjumpbw22_2
       rect:
         serializedVersion: 2
@@ -228,15 +176,6 @@ TextureImporter:
         y: 751
         width: 7
         height: 15
-========
-      name: mercado2_2
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 0
-        width: 1004
-        height: 305
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,19 +184,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       spriteID: 399a76a9ab4476b80800000000000000
       internalID: -8401671011591280237
-========
-      spriteID: ffae65d813529e580800000000000000
-      internalID: -8797459502336644353
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       name: dogjumpbw22_3
       rect:
         serializedVersion: 2
@@ -265,15 +198,6 @@ TextureImporter:
         y: 287
         width: 12
         height: 25
-========
-      name: mercado2_3
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 0
-        width: 46
-        height: 88
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,19 +206,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       spriteID: 18acb88e347feb210800000000000000
       internalID: 1350788809294072449
-========
-      spriteID: 80d3430d34c050aa0800000000000000
-      internalID: -6195532226982822648
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       name: dogjumpbw22_4
       rect:
         serializedVersion: 2
@@ -302,15 +220,6 @@ TextureImporter:
         y: 65
         width: 7
         height: 14
-========
-      name: mercado2_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 19
-        height: 35
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,13 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       spriteID: ab05fba8f684cb180800000000000000
       internalID: -9098317503288880966
-========
-      spriteID: bd0097273d42a7440800000000000000
-      internalID: 4934296832315031771
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
       vertices: []
       indices: 
       edges: []
@@ -344,19 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/eat/dogjumpbw22.png.meta
       dogjumpbw22_0: -8954577770400606030
       dogjumpbw22_1: -5767755525183942659
       dogjumpbw22_2: -8401671011591280237
       dogjumpbw22_3: 1350788809294072449
       dogjumpbw22_4: -9098317503288880966
-========
-      mercado2_0: 5279395829598554799
-      mercado2_1: 6748647817054453789
-      mercado2_2: -8797459502336644353
-      mercado2_3: -6195532226982822648
-      mercado2_4: 4934296832315031771
->>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/mercado2.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -311,7 +311,6 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<< HEAD:Assets/Resources/Symbols/mmevd.png.meta
       mmevd_0: 4332188471034792353
       mmevd_1: -8110364325754068400
       mmevd_2: -9017870227383711256
@@ -319,15 +318,6 @@ TextureImporter:
       mmevd_4: 6373439479140980510
       mmevd_5: -3743184463406371807
       mmevd_6: -9021302900974596560
-=======
-      wm5_0: -7948837451796139516
-      wm5_1: -6149146753643761812
-      wm5_2: -9122254758121798684
-      wm5_3: -8038635035326104726
-      wm5_4: -1075172666535532592
-      wm5_5: 3164570170050639640
-      wm5_6: 1683842417582977301
->>>>>>> Ivo:Assets/Assets/Bubble Minigame/wm5.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
