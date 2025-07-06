@@ -35,15 +35,15 @@ public class DrawOnScreen : MonoBehaviour
        //make it so the center of the screen is in relation to the "Quad" which means that if the mouse is in the center of the "Quad" Game object the mouse position should be (x = 0,y = 0)
         Vector3 relativePosition = worldPosition - _quadPosition;
         //Make it so the center of the quad is not (0,0), it makes the bottom left of the quad is the (0,0) position and top right is the furthest position(it is easier to work with pixels if we setup it up like this);
-        Vector3 scalePosition = new Vector3(relativePosition.x /5 +0.5f,relativePosition.y /5 + 0.5f ,relativePosition.z);
+        Vector3 scalePosition = new Vector3(relativePosition.x /3 +0.5f,relativePosition.y /3 + 0.5f ,relativePosition.z);
 
         //called when mouse button is down
         if (Input.GetMouseButton(0))
         {
             //transform the x and y position into pixels (100*100)
-            int pixelX = Mathf.FloorToInt(scalePosition.x * 80);
+            int pixelX = Mathf.FloorToInt(scalePosition.x * 100);
             //Debug.Log("Pixel X: " + pixelX);
-            int pixelY = Mathf.FloorToInt(scalePosition.y * 80);
+            int pixelY = Mathf.FloorToInt(scalePosition.y * 100);
             //Debug.Log("Pixel Y: " + pixelY);
 
             if (_isdrawing == false)
@@ -71,7 +71,7 @@ public class DrawOnScreen : MonoBehaviour
             for (int j = -2; j <= 2; j++) 
             {
                 // This is not to draw out of bounds of the blackboard
-                if (!(pixelX + i >= 80 || pixelX + i <= 0) && !(pixelY + j >= 80 || pixelY + j <= 0))
+                if (!(pixelX + i >= 100 || pixelX + i <= 0) && !(pixelY + j >= 100 || pixelY + j <= 0))
                 {
                     // Perlin noise for chalk irregularity
                     float noise = Mathf.PerlinNoise((pixelX + i + Time.time) * 0.2f, (pixelY + j + Time.time) * 0.2f);
@@ -123,11 +123,11 @@ public class DrawOnScreen : MonoBehaviour
     public void PaintBoardBlack()
     {
         _quadPosition = transform.position;
-        texture = new Texture2D(80, 80, TextureFormat.RGBA32, false);
+        texture = new Texture2D(100, 100, TextureFormat.RGBA32, false);
         texture.filterMode = FilterMode.Point;
-        for (int i = 0; i < 80; i++)
+        for (int i = 0; i < 100; i++)
         {
-            for (int j = 0; j < 80; j++)
+            for (int j = 0; j < 100; j++)
             {
                 texture.SetPixel(i,j,Color.black);
             }
