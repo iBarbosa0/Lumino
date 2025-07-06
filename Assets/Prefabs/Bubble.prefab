@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasItPoped: 1
-  splashAnimationPrefab: {fileID: 0}
+  splashAnimationPrefab: {fileID: 9110757632656655528, guid: c3c7d379a0bc3468794b11132ef3b951, type: 3}
 --- !u!1 &4101598748253159691
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f0b6415321d4737ae74bb9ac41c687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterbubblechild: {fileID: 4937610173690788085, guid: 4afe1a3147ace46b0984f335c0c5aba0, type: 3}
-  splashAnimation: {fileID: 0}
+  letterbubblechild: {fileID: 3091453066522820605}
+  splashAnimation: {fileID: 9110757632656655528, guid: c3c7d379a0bc3468794b11132ef3b951, type: 3}
 --- !u!95 &-425179630782488048
 Animator:
   serializedVersion: 7
