@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6f1d854d55e6f422c9704915d7059c20
+guid: 39ac8c8ae6b5b0346bfe11b58ae49949
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7900601493274412691
-    second: equal_0
+      213: -2647615225611097052
+    second: pao_0
   - first:
-      213: -7841725226659723446
-    second: equal_1
+      213: -8765829025885822794
+    second: pao_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: equal_0
+      name: pao_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 103
-        width: 216
-        height: 63
+        x: 1369
+        y: 404
+        width: 195
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 396ca8ee23394ad60800000000000000
-      internalID: 7900601493274412691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: equal_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 33
-        width: 217
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a474abe14789c2390800000000000000
-      internalID: -7841725226659723446
+      spriteID: 42ce88fdaf7c14bd0800000000000000
+      internalID: -2647615225611097052
       vertices: []
       indices: 
       edges: []
@@ -186,8 +164,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      equal_0: 7900601493274412691
-      equal_1: -7841725226659723446
+      pao_0: -2647615225611097052
+      pao_1: -8765829025885822794
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

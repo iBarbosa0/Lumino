@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f5dd3952bde114c9e867cd1a9ac7345f
+guid: 8610d46d6871b6f49ac11f5e72f79c98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8450473231609413731
-    second: buttongamenumber_0
+      213: 7478110212846125754
+    second: mathminigame_button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttongamenumber_0
+      name: mathminigame_button_0
       rect:
         serializedVersion: 2
         x: 358
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 360c602b1ac164570800000000000000
-      internalID: 8450473231609413731
+      spriteID: ab20aeb2e9597c760800000000000000
+      internalID: 7478110212846125754
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      buttongamenumber_0: 8450473231609413731
+      mathminigame_button_0: 7478110212846125754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: c7554368e91a0924989df2797a4d79f6
+guid: 785cb5e2e681695469ec8590f0dd639e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4252339805276618580
-    second: catbrincarb21_0
+      213: -8093492773996520286
+    second: ovos_0
   - first:
-      213: -5723938290995542280
-    second: catbrincarb21_1
+      213: 7744695897115090295
+    second: ovos_1
   - first:
-      213: -9117358018285274567
-    second: catbrincarb21_2
+      213: -6581803594280379549
+    second: ovos_2
   - first:
-      213: -553231322036259685
-    second: catbrincarb21_3
+      213: 6735005786485731779
+    second: ovos_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,9 +55,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -118,17 +118,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: catbrincarb21_0
+      name: ovos_0
       rect:
         serializedVersion: 2
-        x: 1025
-        y: 52
-        width: 408
-        height: 449
+        x: 1373
+        y: 443
+        width: 268
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45f34c5e588530b30800000000000000
-      internalID: 4252339805276618580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catbrincarb21_1
-      rect:
-        serializedVersion: 2
-        x: 1265
-        y: 499
-        width: 18
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8f644f8737c7090b0800000000000000
-      internalID: -5723938290995542280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catbrincarb21_2
-      rect:
-        serializedVersion: 2
-        x: 1645
-        y: 336
-        width: 44
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93afb0e2033a87180800000000000000
-      internalID: -9117358018285274567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: catbrincarb21_3
-      rect:
-        serializedVersion: 2
-        x: 1145
-        y: 267
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b94b8633b078258f0800000000000000
-      internalID: -553231322036259685
+      spriteID: 2ac1fb504332eaf80800000000000000
+      internalID: -8093492773996520286
       vertices: []
       indices: 
       edges: []
@@ -223,10 +170,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      catbrincarb21_0: 4252339805276618580
-      catbrincarb21_1: -5723938290995542280
-      catbrincarb21_2: -9117358018285274567
-      catbrincarb21_3: -553231322036259685
+      ovos_0: -8093492773996520286
+      ovos_1: 7744695897115090295
+      ovos_2: -6581803594280379549
+      ovos_3: 6735005786485731779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

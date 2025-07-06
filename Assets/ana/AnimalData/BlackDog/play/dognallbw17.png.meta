@@ -198,9 +198,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/play/dognallbw17.png.meta
       dognallbw17_0: 313902572893193838
       dognallbw17_1: -575198636196864916
       dognallbw17_2: -2215323152169786766
+=======
+      School Button_0: -5959312304765881109
+      School Button_1: 9219300921593209786
+      School Button_2: 7130371919710290257
+>>>>>>> Ivo:Assets/Assets/Buttons/School Button.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

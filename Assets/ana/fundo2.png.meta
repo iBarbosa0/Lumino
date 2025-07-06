@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/fundo2.png.meta
       fundo2_0: -4437526761557154602
+=======
+      school bkg_0: -360804462831397861
+>>>>>>> Ivo:Assets/Sprites/Placeholders/school bkg.jpg.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

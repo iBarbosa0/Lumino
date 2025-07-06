@@ -161,7 +161,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/food.png.meta
       food_0: -1045181238759104467
+=======
+      validate_button 1_0: 5190405588329249673
+>>>>>>> Ivo:Assets/Assets/Note Minigame/validate_button 1.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

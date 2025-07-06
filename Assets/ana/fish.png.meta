@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/fish.png.meta
       fish_0: 8966945178157639174
+=======
+      kiosk_0: -356053212081458563
+>>>>>>> Ivo:Assets/Sprites/Placeholders/kiosk.jpg.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

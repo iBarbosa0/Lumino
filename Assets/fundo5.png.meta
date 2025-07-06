@@ -161,7 +161,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/fundo5.png.meta
       fundo5_0: 8761082787618576474
+=======
+      water_0: 8509550459451208454
+>>>>>>> Ivo:Assets/Assets/Bubble Minigame/water.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

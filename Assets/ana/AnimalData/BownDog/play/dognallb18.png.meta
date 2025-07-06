@@ -273,12 +273,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BownDog/play/dognallb18.png.meta
       dognallb18_0: 8421578812958220720
       dognallb18_1: -3669400603940817607
       dognallb18_2: 1585796552322213267
       dognallb18_3: -8490348305956434653
       dognallb18_4: -5188615863740731859
       dognallb18_5: -6148783251569836067
+=======
+      bubble2_0: -3577410830333116246
+      bubble2_1: 4319831173225365157
+      bubble2_2: 8321849883274950379
+      bubble2_3: -2988957946088867537
+      bubble2_4: 29033408443016555
+      bubble2_5: 7954097084170932301
+>>>>>>> Ivo:Assets/Assets/Bubble Minigame/bubble2.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

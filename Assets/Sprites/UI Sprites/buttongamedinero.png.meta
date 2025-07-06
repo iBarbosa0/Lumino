@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 43bffeb282dc14d278136d93fdfdcb55
+guid: bd6d61cbb2b92044cb951e70f9acdbb2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8918465140467849204
-    second: buttongamedinero_0
+      213: -7020615923586268145
+    second: noteminigame_button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttongamedinero_0
+      name: noteminigame_button_0
       rect:
         serializedVersion: 2
         x: 358
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c08a5b0f43f3b3480800000000000000
-      internalID: -8918465140467849204
+      spriteID: f04803aa303c19e90800000000000000
+      internalID: -7020615923586268145
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      buttongamedinero_0: -8918465140467849204
+      noteminigame_button_0: -7020615923586268145
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

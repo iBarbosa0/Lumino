@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/ball.png.meta
       ball_0: -3603556060819865620
+=======
+      note 1_0: 956424012952299613
+>>>>>>> Ivo:Assets/Assets/Note Minigame/note 1.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

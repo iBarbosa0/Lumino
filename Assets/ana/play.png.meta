@@ -161,7 +161,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/play.png.meta
       play_0: 3794550611322748858
+=======
+      settingsbutton_0: -7919234623497951576
+>>>>>>> Ivo:Assets/Assets/Buttons/settingsbutton.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

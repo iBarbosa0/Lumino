@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 25834ca72ee1c46ef8f57346e8c59f1d
+guid: 39cc1cc5e09489d4ab17f11ab33685fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5908124659090338763
-    second: temporary background_0
+      213: -3724665919710255247
+    second: cashier_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: temporary background_0
+      name: cashier_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1053
-        height: 655
+        width: 1920
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53cc136dcef120ea0800000000000000
-      internalID: -5908124659090338763
+      spriteID: 177aaa484145f4cc0800000000000000
+      internalID: -3724665919710255247
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      temporary background_0: -5908124659090338763
+      cashier_0: -3724665919710255247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

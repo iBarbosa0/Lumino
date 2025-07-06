@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/OrangeCat/idle/catidleo53.png.meta
       catidleo53_0: -2413078836404437459
+=======
+      errado_0: 6921946628908567046
+>>>>>>> Ivo:Assets/Sprites/Placeholders/errado.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

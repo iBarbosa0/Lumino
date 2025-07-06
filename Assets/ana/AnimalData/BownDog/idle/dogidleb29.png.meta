@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BownDog/idle/dogidleb29.png.meta
       dogidleb29_0: 2029499821765137284
+=======
+      Yellow Dog (CM)_0: -5262890102341169347
+>>>>>>> Ivo:Assets/Assets/Animals/Xylophone Minigame/Yellow Dog (CM).png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

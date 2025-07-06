@@ -273,12 +273,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/play/dognallbw18.png.meta
       dognallbw18_0: 4176882902435359203
       dognallbw18_1: 1683104566035466103
       dognallbw18_2: -4971801535703323609
       dognallbw18_3: 8821083054963582448
       dognallbw18_4: 6336393285921524393
       dognallbw18_5: -5907291542351288083
+=======
+      abc3_0: -4302706023422914477
+      abc3_1: -2989989202900343248
+      abc3_2: -431375162844417393
+      abc3_3: 8381067876246811025
+      abc3_4: -4222095284795188339
+      abc3_5: -8290680491298308722
+>>>>>>> Ivo:Assets/Assets/abc3.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

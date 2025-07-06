@@ -248,11 +248,19 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BlackDog/play/dognallbw25.png.meta
       dognallbw25_0: 3026913646292637187
       dognallbw25_1: 5192326318547269145
       dognallbw25_2: -6841974990239093852
       dognallbw25_3: 6256565097199120044
       dognallbw25_4: 3523995735379869938
+=======
+      wm2_0: 4881633448372629614
+      wm2_1: 8879187191659641040
+      wm2_2: -1866787312461122050
+      wm2_3: -3686592423484318529
+      wm2_4: -7361151565224699811
+>>>>>>> Ivo:Assets/Assets/Bubble Minigame/wm2.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

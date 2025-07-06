@@ -386,6 +386,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/Resources/Numbers/numeros.png.meta
       numeros_0: 6470867578370466778
       numeros_1: -3135580922033174793
       numeros_2: -4179497071990469181
@@ -396,6 +397,18 @@ TextureImporter:
       numeros_7: -3756077529615928843
       numeros_8: -2691486261050626275
       numeros_9: 8095142291523682330
+=======
+      abc1_0: -333548669506857168
+      abc1_1: -7571800174224253120
+      abc1_2: -79656584213676502
+      abc1_3: 1765813175102660072
+      abc1_4: 8435078229574541570
+      abc1_5: 7466061771304124854
+      abc1_6: -6539632863497497867
+      abc1_7: 3827084955988999687
+      abc1_8: -2283637417289175182
+      abc1_9: 9038596713465788326
+>>>>>>> Ivo:Assets/Assets/abc1.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

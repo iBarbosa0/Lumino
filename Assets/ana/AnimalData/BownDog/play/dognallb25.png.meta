@@ -58,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
@@ -128,10 +128,17 @@ TextureImporter:
       name: dognallb25_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD:Assets/ana/AnimalData/BownDog/play/dognallb25.png.meta
         x: 1439
         y: 437
         width: 116
         height: 131
+=======
+        x: 1409
+        y: 388
+        width: 302
+        height: 152
+>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/leite.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,6 +153,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD:Assets/ana/AnimalData/BownDog/play/dognallb25.png.meta
     - serializedVersion: 2
       name: dognallb25_1
       rect:
@@ -234,6 +242,8 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+>>>>>>> Ivo:Assets/Assets/Shooping List Minigame/leite.png.meta
     outline: []
     customData: 
     physicsShape: []

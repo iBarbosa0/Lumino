@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< HEAD:Assets/ana/AnimalData/BownDog/idle/dogidleb03.png.meta
       dogidleb03_0: -2184181823163059590
+=======
+      cashier_0: -3724665919710255247
+>>>>>>> Ivo:Assets/Sprites/Placeholders/cashier.jpg.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
