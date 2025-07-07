@@ -87,8 +87,8 @@ public class ShoppingGameManager : MonoBehaviour
             }
 
             UpdateLevelUI();
-            UpdateCartCountUI();
             LevelSelect();
+            UpdateCartCountUI();
         }
     }
 

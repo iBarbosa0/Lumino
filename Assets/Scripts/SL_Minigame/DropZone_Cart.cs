@@ -7,7 +7,7 @@ public class DropZone_Cart : MonoBehaviour, IDropHandler
 {
     public List<GameObject> allShoppingListWordObjects; // Lista de palavras da lista de compras (ex: banana, bife, etc.)
     public List<GameObject> allRiskObjects; // Lista dos riscos visuais (na mesma ordem)
-
+    public AudioClip riskSound;
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
@@ -71,6 +71,7 @@ public class DropZone_Cart : MonoBehaviour, IDropHandler
 
             if (indexOfMatchedWord != -1 && allRiskObjects.Count > indexOfMatchedWord && allRiskObjects[indexOfMatchedWord] != null)
             {
+                AudioManager.instance.PlayRiskSound();
                 allRiskObjects[indexOfMatchedWord].SetActive(true);
                 // Posiciona o risco na mesma posição da palavra correspondente
                 allRiskObjects[indexOfMatchedWord].GetComponent<RectTransform>().position =
