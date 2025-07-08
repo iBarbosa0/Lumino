@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NoteMinigame : MonoBehaviour
 {
-    public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
+    //public Text messageText;         // Mensagem de feedback ("Acertou!" etc.)
     public Text levelText;           // Texto para mostrar o nível atual
     public Text musicVolumePercentageText; // Texto que mostra o volume em %
 
@@ -289,8 +289,8 @@ public class NoteMinigame : MonoBehaviour
 
     private void ShowMessage(string message, Color color)
     {
-        messageText.text = message;
-        messageText.color = color;
+        //messageText.text = message;
+        //messageText.color = color;
         feedbackPanel.SetActive(true);
     }
 
