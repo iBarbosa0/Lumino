@@ -12,7 +12,7 @@ public class ShoppingGameManager : MonoBehaviour
     public List<GameObject> shoppingItems = new List<GameObject>();
     List<int> _itemsalreadyselected = new List<int>();
     private Vector3 _rectTransformPosition =  new Vector3(1572, 540.7663f);
-
+    private Vector3[] initialpositions = new Vector3[11];
     public Text LevelTextUI;
     public Text CartCountTextUI;
 
@@ -28,7 +28,7 @@ public class ShoppingGameManager : MonoBehaviour
 
     public void UpdateLevelUI()
     {
-        LevelTextUI.text = "Nível " + level;
+        LevelTextUI.text = "Nï¿½vel " + level;
     }
 
     public void UpdateCartCountUI()
@@ -42,14 +42,14 @@ public class ShoppingGameManager : MonoBehaviour
         {
             level++;
 
-            // Limpa objetos do nível anterior
+            // Limpa objetos do nï¿½vel anterior
             foreach (GameObject obj in shoppingItems)
             {
                 if (obj != null)
                 {
                     obj.SetActive(false);
 
-                    // Reset da posição
+                    // Reset da posiï¿½ï¿½o
                     PickUpObjects pickup = obj.GetComponent<PickUpObjects>();
                     if (pickup != null)
                     {
@@ -57,6 +57,11 @@ public class ShoppingGameManager : MonoBehaviour
                         obj.GetComponent<RectTransform>().anchoredPosition = pickup.startPosition;
                     }
                 }
+            }
+
+            for (int i = 0; i < shoppingItemslist.Length; i++)
+            {
+                shoppingItemsSprites[i].transform.position =  initialpositions[i];
             }
 
             // Reset dos riscos visuais
@@ -76,7 +81,7 @@ public class ShoppingGameManager : MonoBehaviour
 
             if (level > 3)
             {
-                Debug.Log("Todos os níveis concluídos!");
+                Debug.Log("Todos os nï¿½veis concluï¿½dos!");
                 if (endGamePanel != null) endGamePanel.SetActive(true);
                 return;
             }
@@ -91,6 +96,7 @@ public class ShoppingGameManager : MonoBehaviour
     {
         for (int i = 0; i < shoppingItemslist.Length; i++)
         {
+            initialpositions[i] = shoppingItemsSprites[i].gameObject.transform.position;
             _itemsalreadyselected.Add(i);
         }
 
