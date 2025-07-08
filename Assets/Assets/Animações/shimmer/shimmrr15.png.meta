@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 0a7c9464216a0490ca40bc847a800c2d
+guid: 1cdfcc159154c3743b67244410ed2dfe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6470867578370466778
-    second: numeros_0
+      213: 4566698294272272505
+    second: shimmrr15_0
   - first:
-      213: -3135580922033174793
-    second: numeros_1
+      213: 6103541906822795330
+    second: shimmrr15_1
   - first:
-      213: -4179497071990469181
-    second: numeros_2
+      213: -7869596582498483593
+    second: shimmrr15_2
   - first:
-      213: 304221450693625531
-    second: numeros_3
+      213: -6760134472058634752
+    second: shimmrr15_3
   - first:
-      213: 6212347161148443379
-    second: numeros_4
+      213: 3505581242947229273
+    second: shimmrr15_4
   - first:
-      213: -8053310839433305973
-    second: numeros_5
+      213: -2839802048495353288
+    second: shimmrr15_5
   - first:
-      213: 3387370511887836641
-    second: numeros_6
+      213: -8835581005565999339
+    second: shimmrr15_6
   - first:
-      213: -3756077529615928843
-    second: numeros_7
-  - first:
-      213: -2691486261050626275
-    second: numeros_8
-  - first:
-      213: 8095142291523682330
-    second: numeros_9
+      213: 8238595884444163947
+    second: shimmrr15_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -153,13 +147,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: numeros_0
+      name: shimmrr15_0
       rect:
         serializedVersion: 2
-        x: 186
-        y: 583
-        width: 246
-        height: 303
+        x: 1307
+        y: 171
+        width: 55
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad32d5547c32dc950800000000000000
-      internalID: 6470867578370466778
+      spriteID: 9782b7a37eb206f30800000000000000
+      internalID: 4566698294272272505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_1
+      name: shimmrr15_1
       rect:
         serializedVersion: 2
-        x: 538
-        y: 589
-        width: 182
-        height: 308
+        x: 1376
+        y: 208
+        width: 37
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f688b1b3cd2c74d0800000000000000
-      internalID: -3135580922033174793
+      spriteID: 24012ebb60324b450800000000000000
+      internalID: 6103541906822795330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_2
+      name: shimmrr15_2
       rect:
         serializedVersion: 2
-        x: 861
-        y: 582
-        width: 224
-        height: 285
+        x: 1387
+        y: 236
+        width: 56
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cd09349e817ff5c0800000000000000
-      internalID: -4179497071990469181
+      spriteID: 772cc866a9399c290800000000000000
+      internalID: -7869596582498483593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_3
+      name: shimmrr15_3
       rect:
         serializedVersion: 2
-        x: 1211
-        y: 579
-        width: 221
-        height: 305
+        x: 1441
+        y: 195
+        width: 81
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +228,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb6c5ad2ccfc83400800000000000000
-      internalID: 304221450693625531
+      spriteID: 00e721fa38d2f22a0800000000000000
+      internalID: -6760134472058634752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_4
+      name: shimmrr15_4
       rect:
         serializedVersion: 2
-        x: 1543
-        y: 582
-        width: 238
-        height: 298
+        x: 1529
+        y: 235
+        width: 68
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fac8a124d0b63650800000000000000
-      internalID: 6212347161148443379
+      spriteID: 956542d219356a030800000000000000
+      internalID: 3505581242947229273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_5
+      name: shimmrr15_5
       rect:
         serializedVersion: 2
-        x: 198
-        y: 160
-        width: 223
-        height: 302
+        x: 1570
+        y: 154
+        width: 59
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,64 +272,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8066c5b574ec3090800000000000000
-      internalID: -8053310839433305973
+      spriteID: 8320203351ff698d0800000000000000
+      internalID: -2839802048495353288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_6
+      name: shimmrr15_6
       rect:
         serializedVersion: 2
-        x: 533
-        y: 159
-        width: 235
-        height: 303
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e525b3988b520f20800000000000000
-      internalID: 3387370511887836641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_7
-      rect:
-        serializedVersion: 2
-        x: 898
-        y: 150
-        width: 218
-        height: 297
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5f17a6a236bbfdbc0800000000000000
-      internalID: -3756077529615928843
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: numeros_8
-      rect:
-        serializedVersion: 2
-        x: 1217
+        x: 1374
         y: 158
-        width: 225
-        height: 303
+        width: 54
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +294,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1fab34718be5aad0800000000000000
-      internalID: -2691486261050626275
+      spriteID: 517cc0b63e5b16580800000000000000
+      internalID: -8835581005565999339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: numeros_9
+      name: shimmrr15_7
       rect:
         serializedVersion: 2
-        x: 1584
-        y: 150
-        width: 232
-        height: 308
+        x: 1456
+        y: 131
+        width: 116
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,8 +316,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a10c2843609b75070800000000000000
-      internalID: 8095142291523682330
+      spriteID: b6f1a449e4f555270800000000000000
+      internalID: 8238595884444163947
       vertices: []
       indices: 
       edges: []
@@ -376,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -386,16 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      numeros_0: 6470867578370466778
-      numeros_1: -3135580922033174793
-      numeros_2: -4179497071990469181
-      numeros_3: 304221450693625531
-      numeros_4: 6212347161148443379
-      numeros_5: -8053310839433305973
-      numeros_6: 3387370511887836641
-      numeros_7: -3756077529615928843
-      numeros_8: -2691486261050626275
-      numeros_9: 8095142291523682330
+      shimmrr15_0: 4566698294272272505
+      shimmrr15_1: 6103541906822795330
+      shimmrr15_2: -7869596582498483593
+      shimmrr15_3: -6760134472058634752
+      shimmrr15_4: 3505581242947229273
+      shimmrr15_5: -2839802048495353288
+      shimmrr15_6: -8835581005565999339
+      shimmrr15_7: 8238595884444163947
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
