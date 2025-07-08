@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4221022256835574027}
   - component: {fileID: 2698391362891948564}
   - component: {fileID: 9071287088951619807}
+  - component: {fileID: 2600551056612487303}
   m_Layer: 0
   m_Name: Letter
   m_TagString: Untagged
@@ -100,7 +101,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036cf518012d643a5b3a933d307b8593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WasItPoped: 1
+  wasItPoped: 1
+  splashAnimationPrefab: {fileID: 9110757632656655528, guid: c3c7d379a0bc3468794b11132ef3b951, type: 3}
+--- !u!50 &2600551056612487303
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091453066522820605}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4101598748253159691
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f0b6415321d4737ae74bb9ac41c687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubblepopSound: {fileID: 8300000, guid: 3d91aea568d6145eeab875b85b2f1d62, type: 3}
+  letterbubblechild: {fileID: 3091453066522820605}
+  splashAnimation: {fileID: 9110757632656655528, guid: c3c7d379a0bc3468794b11132ef3b951, type: 3}
 --- !u!95 &-425179630782488048
 Animator:
   serializedVersion: 7

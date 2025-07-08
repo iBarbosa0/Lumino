@@ -35,7 +35,7 @@ public class DrawOnScreen : MonoBehaviour
        //make it so the center of the screen is in relation to the "Quad" which means that if the mouse is in the center of the "Quad" Game object the mouse position should be (x = 0,y = 0)
         Vector3 relativePosition = worldPosition - _quadPosition;
         //Make it so the center of the quad is not (0,0), it makes the bottom left of the quad is the (0,0) position and top right is the furthest position(it is easier to work with pixels if we setup it up like this);
-        Vector3 scalePosition = new Vector3(relativePosition.x /3 +0.5f,relativePosition.y /3 + 0.5f ,relativePosition.z);
+        Vector3 scalePosition = new Vector3(relativePosition.x /5 +0.5f,relativePosition.y /5 + 0.5f ,relativePosition.z);
 
         //called when mouse button is down
         if (Input.GetMouseButton(0))
