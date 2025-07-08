@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: eb14b156aaae44b4cab52b172029053e
+guid: a6c6c6ddc4a354b1c80e6c100ec65555
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -228241191059793953
-    second: shimmrr12_0
+      213: 4332188471034792353
+    second: mmevd_0
   - first:
-      213: 5268706392270487903
-    second: shimmrr12_1
+      213: -8110364325754068400
+    second: mmevd_1
   - first:
-      213: 261787322876423001
-    second: shimmrr12_2
+      213: -9017870227383711256
+    second: mmevd_2
   - first:
-      213: -4415287748905804803
-    second: shimmrr12_3
+      213: 220188338299356327
+    second: mmevd_3
   - first:
-      213: -6768507680345191958
-    second: shimmrr12_4
+      213: 6373439479140980510
+    second: mmevd_4
   - first:
-      213: -8365863551175446437
-    second: shimmrr12_5
+      213: -3743184463406371807
+    second: mmevd_5
   - first:
-      213: -828147681671530875
-    second: shimmrr12_6
+      213: -9021302900974596560
+    second: mmevd_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -144,13 +144,79 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shimmrr12_0
+      name: mmevd_0
       rect:
         serializedVersion: 2
-        x: 736
+        x: 32
+        y: 379
+        width: 271
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a9421426760f1c30800000000000000
+      internalID: 4332188471034792353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mmevd_1
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 473
+        width: 260
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 052ad64cd92327f80800000000000000
+      internalID: -8110364325754068400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mmevd_2
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 519
+        width: 216
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e909329ec61ad280800000000000000
+      internalID: -9017870227383711256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mmevd_3
+      rect:
+        serializedVersion: 2
+        x: 1241
         y: 428
-        width: 56
-        height: 75
+        width: 222
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd7d4c398df15dcf0800000000000000
-      internalID: -228241191059793953
+      spriteID: 7a4440880244e0300800000000000000
+      internalID: 220188338299356327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shimmrr12_1
+      name: mmevd_4
       rect:
         serializedVersion: 2
-        x: 790
-        y: 494
-        width: 30
-        height: 49
+        x: 1609
+        y: 497
+        width: 261
+        height: 157
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f51cc198c843e1940800000000000000
-      internalID: 5268706392270487903
+      spriteID: e1716a73071037850800000000000000
+      internalID: 6373439479140980510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shimmrr12_2
+      name: mmevd_5
       rect:
         serializedVersion: 2
-        x: 831
-        y: 466
-        width: 51
-        height: 50
+        x: 853
+        y: 449
+        width: 217
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +269,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95befb2ee2e02a300800000000000000
-      internalID: 261787322876423001
+      spriteID: 12ce6e110998d0cc0800000000000000
+      internalID: -3743184463406371807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shimmrr12_3
+      name: mmevd_6
       rect:
         serializedVersion: 2
-        x: 779
-        y: 371
-        width: 62
-        height: 95
+        x: 1698
+        y: 413
+        width: 83
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,74 +291,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dfbd5518f2fb9b2c0800000000000000
-      internalID: -4415287748905804803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shimmrr12_4
-      rect:
-        serializedVersion: 2
-        x: 810
-        y: 255
-        width: 134
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae98585302e6112a0800000000000000
-      internalID: -6768507680345191958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shimmrr12_5
-      rect:
-        serializedVersion: 2
-        x: 708
-        y: 295
-        width: 66
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b50bcc8ac6b76eb80800000000000000
-      internalID: -8365863551175446437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shimmrr12_6
-      rect:
-        serializedVersion: 2
-        x: 760
-        y: 265
-        width: 41
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 586b76c3214d184f0800000000000000
-      internalID: -828147681671530875
+      spriteID: 03e4538fec4edc280800000000000000
+      internalID: -9021302900974596560
       vertices: []
       indices: 
       edges: []
@@ -301,7 +301,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -311,13 +311,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shimmrr12_0: -228241191059793953
-      shimmrr12_1: 5268706392270487903
-      shimmrr12_2: 261787322876423001
-      shimmrr12_3: -4415287748905804803
-      shimmrr12_4: -6768507680345191958
-      shimmrr12_5: -8365863551175446437
-      shimmrr12_6: -828147681671530875
+      mmevd_0: 4332188471034792353
+      mmevd_1: -8110364325754068400
+      mmevd_2: -9017870227383711256
+      mmevd_3: 220188338299356327
+      mmevd_4: 6373439479140980510
+      mmevd_5: -3743184463406371807
+      mmevd_6: -9021302900974596560
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

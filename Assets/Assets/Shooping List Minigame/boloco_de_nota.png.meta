@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d75bc291c9aaf5e4c881e22ab1dad623
+guid: f5dd3952bde114c9e867cd1a9ac7345f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -431019663509907676
-    second: boloco_de_nota_0
+      213: 8450473231609413731
+    second: buttongamenumber_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boloco_de_nota_0
+      name: buttongamenumber_0
       rect:
         serializedVersion: 2
-        x: 1095
-        y: 0
-        width: 820
-        height: 754
+        x: 358
+        y: 46
+        width: 1177
+        height: 1013
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 427984156e5b40af0800000000000000
-      internalID: -431019663509907676
+      spriteID: 360c602b1ac164570800000000000000
+      internalID: 8450473231609413731
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boloco_de_nota_0: -431019663509907676
+      buttongamenumber_0: 8450473231609413731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
