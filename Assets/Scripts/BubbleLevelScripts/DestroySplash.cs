@@ -6,6 +6,6 @@ public class DestroySplash : MonoBehaviour
     void Start()
     {
         SFXManager.SfxManagerInstance.PlayLetterFallingOnWater(transform.position);
-        Destroy(gameObject,2f);
+        Destroy(gameObject,0.5f);
     }
 }

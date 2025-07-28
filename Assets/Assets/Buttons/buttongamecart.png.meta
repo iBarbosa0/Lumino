@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6a5e7da5e137b542abf4b1b0b8ca8e8
+guid: 74fc028b9960b411d85f565db5bacf27
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8812737997603366924
-    second: complete_rubberduck_0
+      213: 3795937204615783813
+    second: buttongamecart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: complete_rubberduck_0
+      name: buttongamecart_0
       rect:
         serializedVersion: 2
-        x: 528
-        y: 203
-        width: 835
-        height: 585
+        x: 358
+        y: 46
+        width: 1177
+        height: 1013
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c086cb554822d4a70800000000000000
-      internalID: 8812737997603366924
+      spriteID: 58520de96c0eda430800000000000000
+      internalID: 3795937204615783813
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      complete_rubberduck_0: 8812737997603366924
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
