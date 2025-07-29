@@ -66,7 +66,7 @@ public class MathGameManager : MonoBehaviour
     }
     
 
-    private void ChoseArithmetic()
+    public void ChoseArithmetic()
     {
         Score();
         int random = UnityEngine.Random.Range(0, 2);
@@ -125,42 +125,29 @@ public class MathGameManager : MonoBehaviour
         
     }
 
-    public void checkifimageiscorrect(int numberdrawn)
+    public void checkifimageiscorrect()
     {
         if (sumorsubtraction==true)
         {
-            if (integer1+integer2 == numberdrawn)
-            {
-                _pontos++;
-                ChoseArithmetic();
-                EnableUI();
-                _drawOnScreen.PaintBoardBlack();
-            }
-            else
-            {
-                _drawOnScreen.PaintBoardBlack();
-            }
+            _pontos++;
+            ChoseArithmetic();
+            EnableUI();
+            _drawOnScreen.PaintBoardBlack();
         }
         else
         {
-            if (integer1-integer2 == numberdrawn)
-            {
-                _pontos++;
-                ChoseArithmetic();
-                EnableUI();
-                _drawOnScreen.PaintBoardBlack();
-            }
-            else
-            {
-                _drawOnScreen.PaintBoardBlack();
-            }
+            _pontos++;
+            ChoseArithmetic();
+            EnableUI();
+            _drawOnScreen.PaintBoardBlack();
+            _drawOnScreen.PaintBoardBlack();
         }
         
     }
 
     private void Score()
     {
-        pontosText.text = "Pontos: " + _pontos.ToString();
+        //pontosText.te = "Pontos: " + _pontos.ToString();
     }
    
 }

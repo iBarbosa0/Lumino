@@ -74,7 +74,7 @@ public class RecognizeNumber : MonoBehaviour
         PredictedNumber = probabilityAndIndex.Item2;
         Debug.Log("probability: " + probability * 100 + "%");
         Debug.Log("predicted number: " + PredictedNumber);
-        MathGameManager.Instance.checkifimageiscorrect(PredictedNumber);
+       // MathGameManager.Instance.checkifimageiscorrect(PredictedNumber);
         //predictionText.text = predictedNumber.ToString();
         //if (probabilityText) probabilityText.text = Mathf.Floor(probability * 100) + "%";
     }

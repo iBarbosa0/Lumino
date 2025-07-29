@@ -16,13 +16,16 @@ public class SaveImage : MonoBehaviour
     }
     public void Saveimage()
     {
-        Debug.Log(_recognizeNumber);
-        byte[] imageBytes = _drawOnScreenScript.texture.EncodeToPNG();
+        //Debug.Log(_recognizeNumber);
+        //byte[] imageBytes = _drawOnScreenScript.texture.EncodeToPNG();
         // Save to file (optional)
-        Texture2D resize =  ResizeTextureAccurate(_drawOnScreenScript.texture,28,28);
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/drawing.png", imageBytes);
-        _recognizeNumber.Infer(resize);
+        //Texture2D resize =  ResizeTextureAccurate(_drawOnScreenScript.texture,28,28);
+        //System.IO.File.WriteAllBytes(Application.persistentDataPath + "/drawing.png", imageBytes);
+        //_recognizeNumber.Infer(resize);
        // Debug.Log(number);
+
+       Debug.Log("asjdçl");
+       MathGameManager.Instance.checkifimageiscorrect();
     }
     
     Texture2D ResizeTextureAccurate(Texture2D source, int targetWidth, int targetHeight)
