@@ -6,7 +6,7 @@ public class MainMenuButtonsScript : MonoBehaviour
 {
    public void WorldMapButton()
    {
-      SceneManager.LoadScene(1);
+      SceneManager.LoadScene(8);
    }
    public void ExitGame()
    {
