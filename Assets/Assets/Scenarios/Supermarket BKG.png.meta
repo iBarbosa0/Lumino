@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 74fc028b9960b411d85f565db5bacf27
+guid: 2862a2bced7e2dd45bba860e9611b9f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3795937204615783813
-    second: buttongamecart_0
+      213: 868096655704482448
+    second: Supermarket BKG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttongamecart_0
+      name: Supermarket BKG_0
       rect:
         serializedVersion: 2
-        x: 358
-        y: 46
-        width: 1177
-        height: 1013
+        x: 0
+        y: 0
+        width: 1200
+        height: 675
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58520de96c0eda430800000000000000
-      internalID: 3795937204615783813
+      spriteID: 09268f91f491c0c00800000000000000
+      internalID: 868096655704482448
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      buttongamecart_0: 3795937204615783813
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
