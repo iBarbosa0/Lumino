@@ -15,7 +15,7 @@ public class LevelSelector : MonoBehaviour, IPointerDownHandler
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(11);
+        SceneManager.LoadScene(0);
     }
     
 
