@@ -34,6 +34,7 @@ public class Bubble : MonoBehaviour
     
     void OnMouseDown()
     {
+        Debug.Log("alfksnj");
         _animator.SetTrigger("Bubble Pop"); // Activate this animation when the mouse is clicked on top of the bubble;
     }
 

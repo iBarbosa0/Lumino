@@ -14,15 +14,6 @@ public class BubbleSpawner : MonoBehaviour, IPointerDownHandler
     {
         StartCoroutine(SpawnBubble());
     }
-
-    private void FixedUpdate()
-    {
-        if(Input.GetMouseButton(0))
-        {
-            //Debug.Log("awsdf");
-        }
-    }
-    
     public void OnPointerDown(PointerEventData eventData)
     {
       

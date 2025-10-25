@@ -9,6 +9,7 @@ public class CameraDrag : MonoBehaviour
     [SerializeField] private Vector2 maxBounds; // maximum x, y camera position
     void Update()
     {
+      /*
         // start dragging
         if (Input.GetMouseButtonDown(0))
         {
@@ -37,5 +38,6 @@ public class CameraDrag : MonoBehaviour
 
             transform.position = newPosition;
         }
+        */
     }
 }
