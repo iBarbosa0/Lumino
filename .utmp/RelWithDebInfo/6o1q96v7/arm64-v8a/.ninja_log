@@ -1,12 +1,12 @@
 # ninja log v5
-8	498	1761413230301666933	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	da692e1272bc9533
-500	767	1761413230561774714	/Users/joaopereira/iCloud Drive (Archive)/Desktop/GitHub/Lumino/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6o1q96v7/obj/arm64-v8a/libswappywrapper.so	2bdaab7cdb59c238
-5	2212	1761413232011219903	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	789ff059db77c5a0
-3	2217	1761413232017464784	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	abb1ccf6a61d6c17
-2	2286	1761413232086507228	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	43844da630ccb0b9
-6	2325	1761413232125288467	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	14132d6c3e973844
-7	2401	1761413232202686571	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	746eba52921c3281
-2	2630	1761413232432094651	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	58f7c9429847e613
-4	3069	1761413232871208421	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1f931240899cadbc
-1	3217	1761413233021084783	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	8b991f7dda36bd49
-3218	3435	1761413233230254143	/Users/joaopereira/iCloud Drive (Archive)/Desktop/GitHub/Lumino/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6o1q96v7/obj/arm64-v8a/libgame.so	5833209f4e5e823
+3	1204	1761926934058038064	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	da692e1272bc9533
+1206	1558	1761926934410738755	/Users/joaopereira/iCloud Drive (Archive)/Desktop/GitHub/Lumino/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6o1q96v7/obj/arm64-v8a/libswappywrapper.so	2bdaab7cdb59c238
+6	3209	1761926936068281954	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	789ff059db77c5a0
+33	3294	1761926936152119584	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	abb1ccf6a61d6c17
+18	3370	1761926936227707500	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	43844da630ccb0b9
+8	3396	1761926936254688080	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	14132d6c3e973844
+13	3419	1761926936275537343	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	746eba52921c3281
+25	3755	1761926936610429909	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	58f7c9429847e613
+5	4214	1761926937072556657	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1f931240899cadbc
+1	4495	1761926937354712551	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	8b991f7dda36bd49
+4495	4763	1761926937608299797	/Users/joaopereira/iCloud Drive (Archive)/Desktop/GitHub/Lumino/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6o1q96v7/obj/arm64-v8a/libgame.so	5833209f4e5e823
